@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://okbexx.github.io/"/>
-  <updated>2018-01-20T16:17:40.950Z</updated>
+  <updated>2018-01-28T06:34:33.392Z</updated>
   <id>https://okbexx.github.io/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>css世界 1-3</title>
+    <link href="https://okbexx.github.io/2018/01/26/css%E4%B8%96%E7%95%8C/"/>
+    <id>https://okbexx.github.io/2018/01/26/css世界/</id>
+    <published>2018-01-26T14:51:54.000Z</published>
+    <updated>2018-01-28T06:34:33.392Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1概述"><a href="#1概述" class="headerlink" title="1概述"></a>1概述<br></h2><p>1.1 在css世界中，html是魔法石，选择器是选择法器，css属性是魔法师，css各种属性值就是魔法师的魔法技能,浏览器就是王国</p><p>总结：魔法师（css）使用选择法器（选择器）对着魔法石（html）使用魔法技能（css属性值），从而构建出王国样貌里的一小部分。众多魔法师一起合作，便能构建出王国最终的样子。</p><p>1.2 css世界的诞生就是为图文信息展示服务的</p><p>1.3 SVG的强项图形,然而在以前网站的主要功能都是图片和文字信息的展示，所以SVG被CSS压制了10年，到最近技术得到了发展，网站需要更加复杂和丰富多彩的展示，所以SVG又重新火起来<br><br>总结：CSS为什么在图文展示那么强？因为流的存在<br><br>1.3.1 流就是css世界中引导元素排列和定位的一条看不见的“水流”，例如，水会自动铺满，div会铺满，木块（inline-block）会随着水位升高在左侧依次排列</p><p>1.3.2 如果只用流的特性，那么css世界只会呈现W3C那样的文档网页， 所以我们在进行特殊布局时要破坏流</p><p>1.3.3 流体布局，就是利用流的特性进行布局</p><p>1.4 CSS世界的开启从IE8开启</p><p>1.5 略</p><p>1.6 CSS3的来到，让移动端崛起，视觉表现长足进步，但本书围绕CSS2，并不会太深入CSS3</p><h2 id="2需提前了解的术语和概念"><a href="#2需提前了解的术语和概念" class="headerlink" title="2需提前了解的术语和概念"></a>2需提前了解的术语和概念</h2><p>2.1 需了解的术语</p><pre><code>.vocabulary{    height: 99px;    color: transparent;}</code></pre><p>1.属性-&gt; height,color</p><p>2.值-&gt; 99px </p><p>3.关键字-&gt;transparent,常见的还有solid,inherit，所有属性都可以使用的称为泛关键字，如inherit</p><p>4.变量-&gt;内容较少，不详述，如CSS3中的currentColor，有兴趣可自行了解</p><p>5.长度单位-&gt; px</p><p>6.功能符号-&gt; 如rgba(),url(),jsla()</p><p>7.属性值，可以理解为多个值+功能符+关键字</p><p>8.声明-&gt;height: 99px;</p><p>9.声明快-&gt;{这里}</p><p>10.规则或规则集-&gt;上述代码块就是规则集</p><p>11.选择器-&gt;(类选择器.xxx，ID选择器#xxx，属性选择器[attribution]，伪类选择器:firstchild，伪元素选择器::before)<a href="http://www.alloyteam.com/2016/05/summary-of-pseudo-classes-and-pseudo-elements/" target="_blank" rel="noopener">伪类选择器和伪元素选择器的区别</a></p><p>12.关系选择器-&gt;空格、&gt;、~、</p><p>13.@规则</p><p>2.2 当某个浏览器出现和其他浏览器不一样的行为或样式表现的时候，称为未定义行为</p><h2 id="3流、元素与基本尺寸"><a href="#3流、元素与基本尺寸" class="headerlink" title="3流、元素与基本尺寸"></a>3流、元素与基本尺寸</h2><p>3.1 块级元素<br>块级元素与display：block不是一个概念，如li默认的display:list-item,table默认的display:table，但是他们都是块级元素，因为它们符合块级元素的特征:水平流上只能单独显示，多个块级元素则要换行<br><br>这里请查看3-1-1demo了解块级元素在浮动元素中的应用</p><p>3.1.1 <br><br>盒子容器：值为inline-block的元素右外在的内联盒子和内在的块级盒子组成<br></p><p>3.1.2 <br></p><p>3.1.3 <br><br>width/height作用在内在盒子</p><p>3.2<br><br>3.2.1<br><br>width:auto有4种表现<br><br>（1）.充分利用空间，如div宽度默认100%父容器<br>（2）.inline-block的收缩到合适<br>（3）.收缩到最小，中文能断则断<br>（4）.父容器设置了宽度，但本身width为auto,当父元素设置了内容不换行后，本身内容会直接无视父级元素的限制 具体看3-2-2demo</p><p>外部尺寸就是width/heigth设置在外在盒子，不然的话大小始终是100%父容器，内部尺寸就是如果不设置大小的话大小由内容大小决定</p><p>1.外部尺寸与流体特性<br><br>（1）正常流宽度<br>外部尺寸也就是大小由外在盒子决定，例如div，其它都是由内在盒子决定<br><br>本来a是width:auto，宽度会借助流的特性在父元素展示，但设置width:100%，意味着本身宽度与父容器一样，此时再加上padding就会马上大于父容器的宽度，从而突破破容器的限制，具体看3-2-3demo</p><p>(2) 格式化宽度<br><br>absolute fixed<br>在进行定位时，同时设置left、right属性时，宽度会自动调整</p><p>2.内部尺寸与流体特性<br><br>（1）包裹性<br><br>内部尺寸的元素，就是内容多大，这个元素就多大，内容在超过父容器宽度时会自动换行，也造成内部尺寸的大小受父容器的限制，其实不然，如果内容设置不换行，内部尺寸的元素大小还是不受父容器限制<br><br>包裹性应用<br><br>文字少的时候文字居中显示，多的时候换行靠左。因为P设置了inline-block，所以最大宽度不会超过容器，而当文字会自动换行，所以会看起来靠左。具体看demo</p><p>（2）首选最小宽度<br><br>上面例子中，当容器宽度为0时，p的宽度为文字的宽度，这就是最小宽度<br>最小宽度应用3-2-6<br></p><p>（3）最大宽度<br>内部尺寸元素的最大宽度由不换行的内联元素决定</p><p>3.2.2 width值作用的细节<br>width和height值设置在content box上的，而在content box外还有padding box,border box</p><p>3.2.3 略</p><p>3.2.4 改变width/height作用细节的box-sizing</p><p>3.2.6 关于height:100%<br><br>如果父容器没有设置高度，那么子元素设置height:100%是无效的，就算父容器塞满了东西并展现出高度，这时应该<br></p><pre><code>html,body{    height:100%}</code></pre><p>便可以解决,另一种方式是设置absolute，但此时100%是根据父元素的padding box计算的，而没有设置absolute的100%是根据父元素的content box计算，具体看demo</p><p>3.3 minWidth/maxWidth</p><p>3.3.1 为流体而生的min-width/max-width<br><br>场景：在不知道图片大小是否超过用户屏幕时，使用maxwidth:100%,再设置height:auto，那么图片宽度最大为屏幕宽度，而高度会根据原有比例自动缩放。</p><p>3.3.2 与众不同的初始值<br><br>max-width/max-height的初始值为none，min-width/max-height的初始值为auto</p><p>3.3.3 超越!important<br></p><ol><li>max-width会覆盖width，就算width使用了!important</li><li>min-width的值比max-width的值还大时，这时候min-width会活下来，这就是超越最大</li></ol><p>3.3.4 maxheight的应用<br><br>在过渡效果中<br></p><pre><code>.element{    height:0;    overflow:hidden;    transition:height .25s}.element.active{    height:auto}</code></pre><p>这样是没有过渡效果的，这时应该应用max-height</p><pre><code>.element{    max-height:0;    overflow:hidden;    transition:height .25s}.element.active{    max-height:666px;}</code></pre><p>3.4 内联元素<br><br>外在盒子表现为内联盒子的都是内联元素，如inline-block,inline<br></p><pre><code>&lt;p&gt;这是一行普通的文字，这里有个&lt;em&gt;em&lt;/em&gt;标签。&lt;/p&gt;</code></pre><p>上面一段Html,有下面几个概念：<br><br>(1) 内容区域-&gt;包裹文字的区域，就是你用鼠标把文字括起来的区域<br>(2) 内联盒子-&gt;每一个外在盒子表现为inline的元素<br>(3) 行框盒子-&gt;多个内联盒子组成行框盒子<br>(4) 包含盒子-&gt;上面一整段html<br></p><p>每个行框盒子前面都有一个占据一定高度的空白节点，称之为幽灵节点</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1概述&quot;&gt;&lt;a href=&quot;#1概述&quot; class=&quot;headerlink&quot; title=&quot;1概述&quot;&gt;&lt;/a&gt;1概述&lt;br&gt;&lt;/h2&gt;&lt;p&gt;1.1 在css世界中，html是魔法石，选择器是选择法器，css属性是魔法师，css各种属性值就是魔法师的魔法技能,浏览器
+      
+    
+    </summary>
+    
+      <category term="book" scheme="https://okbexx.github.io/categories/book/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vue2.0常用收集</title>
+    <link href="https://okbexx.github.io/2018/01/26/vue2-0%E5%B8%B8%E7%94%A8%E6%94%B6%E9%9B%86/"/>
+    <id>https://okbexx.github.io/2018/01/26/vue2-0常用收集/</id>
+    <published>2018-01-26T14:51:17.000Z</published>
+    <updated>2018-01-26T15:08:36.678Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="class的使用"><a href="#class的使用" class="headerlink" title="class的使用"></a>class的使用</h3><pre><code>1. :class=&quot;{xxx:boolean,xxx:boolean}&quot;2. :class=&quot;{xxx}&quot;data(){    return {        xxx:{            className:boolean        }    }}3. :class&quot;[dataname,dataname]&quot;data(){    return {        dataname:&apos;classname&apos;    }}4. :class&quot;[]&quot;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;class的使用&quot;&gt;&lt;a href=&quot;#class的使用&quot; class=&quot;headerlink&quot; title=&quot;class的使用&quot;&gt;&lt;/a&gt;class的使用&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;1. :class=&amp;quot;{xxx:boolean,xxx:boole
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>前端清障记录 长期更新</title>
@@ -45,7 +89,7 @@
     <link href="https://okbexx.github.io/2018/01/02/hello-world/"/>
     <id>https://okbexx.github.io/2018/01/02/hello-world/</id>
     <published>2018-01-02T15:26:27.019Z</published>
-    <updated>2013-07-13T12:46:25.000Z</updated>
+    <updated>2018-07-13T12:46:25.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
