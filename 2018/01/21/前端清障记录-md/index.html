@@ -31,17 +31,17 @@ ga('send', 'pageview');
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="这里记录这本人在前端学习过程中以及项目过程中所遇到比较复杂的问题（个人认为）的解决办法，如有更好办法请提出，在此感谢。">
+    <meta name="description" content="这里记录这本人在前端学习过程中以及项目过程中所遇到比较复杂的问题（个人认为）的解决办法，如有更好办法请提出，在此感谢。 margin合并冲突####水平垂直 内联元素水平居中方式 inline-block+父元素text-align center 父flex just-content center内联元素垂直居中方式 父flex align-item center块状元素水平居中方式 父relat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端清障记录 长期更新">
 <meta property="og:url" content="https://okbexx.github.io/2018/01/21/前端清障记录-md/index.html">
 <meta property="og:site_name" content="真的会爱上你">
-<meta property="og:description" content="这里记录这本人在前端学习过程中以及项目过程中所遇到比较复杂的问题（个人认为）的解决办法，如有更好办法请提出，在此感谢。">
+<meta property="og:description" content="这里记录这本人在前端学习过程中以及项目过程中所遇到比较复杂的问题（个人认为）的解决办法，如有更好办法请提出，在此感谢。 margin合并冲突####水平垂直 内联元素水平居中方式 inline-block+父元素text-align center 父flex just-content center内联元素垂直居中方式 父flex align-item center块状元素水平居中方式 父relat">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-20T16:17:40.950Z">
+<meta property="og:updated_time" content="2018-03-23T03:22:46.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端清障记录 长期更新">
-<meta name="twitter:description" content="这里记录这本人在前端学习过程中以及项目过程中所遇到比较复杂的问题（个人认为）的解决办法，如有更好办法请提出，在此感谢。">
+<meta name="twitter:description" content="这里记录这本人在前端学习过程中以及项目过程中所遇到比较复杂的问题（个人认为）的解决办法，如有更好办法请提出，在此感谢。 margin合并冲突####水平垂直 内联元素水平居中方式 inline-block+父元素text-align center 父flex just-content center内联元素垂直居中方式 父flex align-item center块状元素水平居中方式 父relat">
     
         <link rel="alternate" type="application/atom+xml" title="真的会爱上你" href="/atom.xml">
     
@@ -159,6 +159,13 @@ ga('send', 'pageview');
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#margin合并冲突"><span class="post-toc-number">1.</span> <span class="post-toc-text">margin合并冲突</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#内联元素水平居中方式"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">内联元素水平居中方式</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#内联元素垂直居中方式"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">内联元素垂直居中方式</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#块状元素水平居中方式"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">块状元素水平居中方式</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#块状元素垂直居中方式"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">块状元素垂直居中方式</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#内联块状元素水平垂直居中"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">内联块状元素水平垂直居中</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多列布局"><span class="post-toc-number">2.</span> <span class="post-toc-text">多列布局</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#vux初始化报错"><span class="post-toc-number">3.</span> <span class="post-toc-text">vux初始化报错</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#更新npm"><span class="post-toc-number">4.</span> <span class="post-toc-text">更新npm</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重装node-gyp"><span class="post-toc-number">5.</span> <span class="post-toc-text">重装node-gyp</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#vue与cordova结合"><span class="post-toc-number">6.</span> <span class="post-toc-text">vue与cordova结合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#宽高"><span class="post-toc-number">7.</span> <span class="post-toc-text">宽高</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#DOM对象"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">DOM对象</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#event对象"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">event对象</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
 <article id="post-前端清障记录-md"
   class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -181,6 +188,35 @@ ga('send', 'pageview');
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>这里记录这本人在前端学习过程中以及项目过程中所遇到比较复杂的问题（个人认为）的解决办法，如有更好办法请提出，在此感谢。</p>
+<h4 id="margin合并冲突"><a href="#margin合并冲突" class="headerlink" title="margin合并冲突"></a>margin合并冲突</h4><p>####水平垂直</p>
+<h5 id="内联元素水平居中方式"><a href="#内联元素水平居中方式" class="headerlink" title="内联元素水平居中方式"></a>内联元素水平居中方式</h5><ol>
+<li>inline-block+父元素text-align center</li>
+<li>父flex just-content center<h5 id="内联元素垂直居中方式"><a href="#内联元素垂直居中方式" class="headerlink" title="内联元素垂直居中方式"></a>内联元素垂直居中方式</h5></li>
+<li>父flex align-item center<h5 id="块状元素水平居中方式"><a href="#块状元素水平居中方式" class="headerlink" title="块状元素水平居中方式"></a>块状元素水平居中方式</h5></li>
+<li>父relative子absolute left50% transform transilateX-50%</li>
+<li>父flex just-content center<h5 id="块状元素垂直居中方式"><a href="#块状元素垂直居中方式" class="headerlink" title="块状元素垂直居中方式"></a>块状元素垂直居中方式</h5></li>
+<li>父display table-cell vertical-align center</li>
+<li>父relative子absolute top50% transform transilatey-50%<h5 id="内联块状元素水平垂直居中"><a href="#内联块状元素水平垂直居中" class="headerlink" title="内联块状元素水平垂直居中"></a>内联块状元素水平垂直居中</h5></li>
+<li>父relative子absolute left50% top50% transform tranplate(-50%,-50%)</li>
+<li>父display table-cell vertical-align text-align 子inline-block</li>
+<li>flex+justify-content+align-items</li>
+</ol>
+<h4 id="多列布局"><a href="#多列布局" class="headerlink" title="多列布局"></a>多列布局</h4><ol>
+<li>左float width marginright 右overflow hidden</li>
+<li></li>
+</ol>
+<h4 id="vux初始化报错"><a href="#vux初始化报错" class="headerlink" title="vux初始化报错"></a>vux初始化报错</h4><p>npm install –global –production windows-build-tools –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>npm install node-gyp -g<br>若之前已安装node-gyp，请重装</p>
+<h4 id="更新npm"><a href="#更新npm" class="headerlink" title="更新npm"></a>更新npm</h4><p>npm cache clean -f<br>npm install npm -g</p>
+<h4 id="重装node-gyp"><a href="#重装node-gyp" class="headerlink" title="重装node-gyp"></a>重装node-gyp</h4><p>npm uninstall node-gyp -g<br>npm uninstall node-gyp<br>npm install node-gyp -g </p>
+<h4 id="vue与cordova结合"><a href="#vue与cordova结合" class="headerlink" title="vue与cordova结合"></a>vue与cordova结合</h4><p>cordova在vue项目中，修改vue项目中的config文件夹index.js，使输出的内容到cordova项目中的www即可<br><br>操作步骤<br></p>
+<ol>
+<li>npm install(vue)</li>
+<li>npm build(vue)</li>
+<li>cordova build android(cordova)</li>
+<li>as中运行</li>
+</ol>
+<h4 id="宽高"><a href="#宽高" class="headerlink" title="宽高"></a>宽高</h4><h5 id="DOM对象"><a href="#DOM对象" class="headerlink" title="DOM对象"></a>DOM对象</h5><p>clientwidth，clientheight（整体内容不包括border-滚动条）<br>offsetwidth, offsetheight（整体内容包括border）<br>clienttop，clientleft（边框的宽高）<br>offsetleft，offsettop（当前元素相对最近的具有定位的元素的距离）<br>scrollheight,scrollwidth（具有滚动条时的宽高）<br>scrolltop,scrollright（不包含border距离最上部的距离）<br>element.scrollHeight - element.scrollTop === element.clientHeight （用于判断是否到底）</p>
+<h5 id="event对象"><a href="#event对象" class="headerlink" title="event对象"></a>event对象</h5><p>clientX和clientY（相对浏览器的距离，不包括滚动条）<br>screenX和screenY（相对屏幕的距离）<br>offsetX和offsetY（相对触发事件元素本身的距离）<br>pageX和pageY（相对页面的距离，包括滚动条）</p>
 
         </div>
 
@@ -188,7 +224,7 @@ ga('send', 'pageview');
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-01-20T16:17:40.950Z" itemprop="dateUpdated">2018-01-21 00:17:40</time>
+    最后更新时间：<time datetime="2018-03-23T03:22:46.831Z" itemprop="dateUpdated">2018-03-23 11:22:46</time>
 </span><br>
 
 

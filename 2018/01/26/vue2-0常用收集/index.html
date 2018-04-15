@@ -38,7 +38,7 @@ ga('send', 'pageview');
 <meta property="og:site_name" content="真的会爱上你">
 <meta property="og:description" content="class的使用1. :class=&amp;quot;{xxx:boolean,xxx:boolean}&amp;quot; 2. :class=&amp;quot;{xxx}&amp;quot; data(){     return {         xxx:{             className:boolean         }     } } 3. :class&amp;quot;[dataname,dataname">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-26T15:08:36.678Z">
+<meta property="og:updated_time" content="2018-04-09T00:44:23.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue2.0常用收集">
 <meta name="twitter:description" content="class的使用1. :class=&amp;quot;{xxx:boolean,xxx:boolean}&amp;quot; 2. :class=&amp;quot;{xxx}&amp;quot; data(){     return {         xxx:{             className:boolean         }     } } 3. :class&amp;quot;[dataname,dataname">
@@ -160,7 +160,7 @@ ga('send', 'pageview');
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#class的使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">class的使用</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#class的使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">class的使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#store"><span class="post-toc-number">2.</span> <span class="post-toc-text">store</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#action使用"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">action使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#router"><span class="post-toc-number">3.</span> <span class="post-toc-text">router</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#router配置"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">router配置</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#跳转"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">跳转</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加插件"><span class="post-toc-number">4.</span> <span class="post-toc-text">添加插件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#以插件方式引入router"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">以插件方式引入router</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#vuex"><span class="post-toc-number">5.</span> <span class="post-toc-text">vuex</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#store-1"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">store</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#state"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">state</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#template"><span class="post-toc-number">6.</span> <span class="post-toc-text">template</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mixins"><span class="post-toc-number">7.</span> <span class="post-toc-text">mixins</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#定义过滤器"><span class="post-toc-number">8.</span> <span class="post-toc-text">定义过滤器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#watch"><span class="post-toc-number">9.</span> <span class="post-toc-text">watch</span></a></li></ol>
         </nav>
     </aside>
     
@@ -183,7 +183,7 @@ ga('send', 'pageview');
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="class的使用"><a href="#class的使用" class="headerlink" title="class的使用"></a>class的使用</h3><pre><code>1. :class=&quot;{xxx:boolean,xxx:boolean}&quot;
+            <h4 id="class的使用"><a href="#class的使用" class="headerlink" title="class的使用"></a>class的使用</h4><pre><code>1. :class=&quot;{xxx:boolean,xxx:boolean}&quot;
 2. :class=&quot;{xxx}&quot;
 data(){
     return {
@@ -199,14 +199,47 @@ data(){
     }
 }
 4. :class&quot;[]&quot;
-</code></pre>
+</code></pre><h4 id="store"><a href="#store" class="headerlink" title="store"></a>store</h4><h5 id="action使用"><a href="#action使用" class="headerlink" title="action使用"></a>action使用</h5><p>配置 new Vuex.store({<br>    actions: {<br>        xxx(context|{commit}){</p>
+<pre><code>    }
+}
+</code></pre><p>})<br>使用1. this.$store.dispatch(‘xxx’)</p>
+<pre><code>2. import { mapActions } from &apos;vuex&apos;
+...mapActions({
+    add: &apos;xxx&apos;  // this.add()相当于 this.$store.dispatch(&apos;xxx&apos;)
+})
+</code></pre><h4 id="router"><a href="#router" class="headerlink" title="router"></a>router</h4><h5 id="router配置"><a href="#router配置" class="headerlink" title="router配置"></a>router配置</h5><p>import vuerouter from ‘vuerouter’<br>vue.use(vuerouter)<br>const routes = [<br>  { path: ‘/foo’, component: Foo },<br>  { path: ‘/bar’, component: Bar }<br>]<br>const router = new VueRouter({<br>  routes // （缩写）相当于 routes: routes<br>})<br>在vue实例用添加router</p>
+<h5 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h5><ol>
+<li><router-link :to="..."></router-link></li>
+<li>router.push(…)</li>
+</ol>
+<h4 id="添加插件"><a href="#添加插件" class="headerlink" title="添加插件"></a>添加插件</h4><h5 id="以插件方式引入router"><a href="#以插件方式引入router" class="headerlink" title="以插件方式引入router"></a>以插件方式引入router</h5><ol>
+<li>index.js文件中定义常量install（方法） vue.install的时候会执行</li>
+<li>初始化路由函数中vue.use(router)</li>
+<li>export导出install和router,router是个对象</li>
+<li>main.js中导入,vue.use使用，并在vue实例中引用router</li>
+</ol>
+<h4 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h4><h5 id="store-1"><a href="#store-1" class="headerlink" title="store"></a>store</h5><p>new Vuex.Store({<br>    state:{}<br>    mutations:{}<br>    actions:{}<br>})</p>
+<h5 id="state"><a href="#state" class="headerlink" title="state"></a>state</h5><ol>
+<li>this.$store.state.xxx</li>
+<li>import {mapState} from ‘vuex’  mapState()就是省略了this.$store，并且返回一个对象</li>
+<li>computed: {<br>  …mapState([‘isLogin’,’messageCount’])<br>}<br>isLogin就是直接用在dom中的变量</li>
+</ol>
+<h4 id="template"><a href="#template" class="headerlink" title="template"></a>template</h4><p>1.不会渲染，可抽取if for show以及事件放到template上面，减少div标签过长等情况，结构更加清晰<br>2.<template scope="xxx">配合<slot>使用，比如<slot :data="item"> 就是把item传入进template中</slot></slot></template></p>
+<h4 id="mixins"><a href="#mixins" class="headerlink" title="mixins"></a>mixins</h4><p>如果想要在一个组件中直接使用已经写好的方法或者拿去数据，则可以使用Mixin也叫混入<br>import loadMore from ‘./load-more.vue’;    export default{}<br>mixins:[loadMore]</p>
+<h4 id="定义过滤器"><a href="#定义过滤器" class="headerlink" title="定义过滤器"></a>定义过滤器</h4><ol>
+<li>创建过滤器方法，导出xxx</li>
+<li>创建插件install,vue.filter(‘xxx’,xxx)</li>
+<li>main.js vue.use</li>
+</ol>
+<h4 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h4><p>‘params.memCode’: function (val) {<br>      console.log(val);<br>    }<br>监听对象中的属性</p>
+
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-01-26T15:08:36.678Z" itemprop="dateUpdated">2018-01-26 23:08:36</time>
+    最后更新时间：<time datetime="2018-04-09T00:44:23.839Z" itemprop="dateUpdated">2018-04-09 08:44:23</time>
 </span><br>
 
 

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://okbexx.github.io/"/>
-  <updated>2018-01-30T15:26:12.333Z</updated>
+  <updated>2018-02-22T14:27:36.053Z</updated>
   <id>https://okbexx.github.io/</id>
   
   <author>
@@ -17,13 +17,27 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>css世界实用例子.md</title>
+    <link href="https://okbexx.github.io/2018/02/22/css%E4%B8%96%E7%95%8C%E5%AE%9E%E7%94%A8%E4%BE%8B%E5%AD%90-md/"/>
+    <id>https://okbexx.github.io/2018/02/22/css世界实用例子-md/</id>
+    <published>2018-02-22T14:27:36.000Z</published>
+    <updated>2018-02-22T14:27:36.053Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>css世界4-6</title>
     <link href="https://okbexx.github.io/2018/01/29/css%E4%B8%96%E7%95%8C4-6/"/>
     <id>https://okbexx.github.io/2018/01/29/css世界4-6/</id>
     <published>2018-01-29T14:08:22.000Z</published>
-    <updated>2018-01-30T15:26:12.333Z</updated>
+    <updated>2018-02-04T12:49:06.710Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="4盒尺寸四大家族"><a href="#4盒尺寸四大家族" class="headerlink" title="4盒尺寸四大家族"></a>4盒尺寸四大家族</h2><h3 id="4-1深入理解content"><a href="#4-1深入理解content" class="headerlink" title="4.1深入理解content"></a>4.1深入理解content</h3><h4 id="4-1-1content和替换元素"><a href="#4-1-1content和替换元素" class="headerlink" title="4.1.1content和替换元素"></a>4.1.1content和替换元素</h4><h5 id="1-什么是替换元素"><a href="#1-什么是替换元素" class="headerlink" title="1.什么是替换元素"></a>1.什么是替换元素</h5><p>替换元素就是通过修改属性值，呈现的内容就可以被修改的就是替换元素，例如img,select,video,iframe,textarea<br><br>替换元素有自己的一套规则，例如1.很难通过css修改其样式，2.有自己的默认尺寸，video,iframe一般为300*150，img为0，3.css规则运用在替换元素上与非替换元素可能不同，如vertical-align</p><h5 id="2-替换元素的默认display值"><a href="#2-替换元素的默认display值" class="headerlink" title="2.替换元素的默认display值"></a>2.替换元素的默认display值</h5><p>替换元素都是内联元素，但是display不一样</p><h5 id="3-替换元素的尺寸计算规则"><a href="#3-替换元素的尺寸计算规则" class="headerlink" title="3.替换元素的尺寸计算规则"></a>3.替换元素的尺寸计算规则</h5><p>替换元素的尺寸有3种：1.元素本身的尺寸，2.在标签中添加的尺寸，3.在css中添加的尺寸。优先级3&gt;2&gt;1<br><br>如果1有宽高比例，则仅设置宽度或高度，元素依然会按照原来的比例展示<br><br>开发中我们为了提高加载性能以及节约宽带费用，首屏以下的图片就会通过滚屏加载的方式异步加载，通常使用一张透明的图片占位</p><pre><code>&lt;img src=&quot;transparent.png&quot;&gt;</code></pre><p>实际上这是多余的，我们可以这样</p><pre><code>html:&lt;img&gt;css:img{visibility:hidden}img[src]{visibility:visible}</code></pre><p>这是最高效的实现方式。<br><br>我们无法改变替换元素的固有尺寸，css3中的object-fit可以改变。</p><h5 id="4-替换元素和非替换元素的距离有多远"><a href="#4-替换元素和非替换元素的距离有多远" class="headerlink" title="4.替换元素和非替换元素的距离有多远"></a>4.替换元素和非替换元素的距离有多远</h5><p>观点1：替换元素没有src就是一个类似span的东西<br><br>针对上面的代码，如果我们的javascript加载比较慢，我们的页面就很有可能出现一块一块的图片区域，纯白色，无任何信息，我们可以这样</p><pre><code>img::after{    content:attr(alt);    position: absolute; bottom: 0;    width: 100%;    background-color: rgba(0,0,0,5);    transform: translateY(100%);    transition: transform .2s}img:hover::after {    transform: translateY(0)}</code></pre><p>于是很巧妙地增强了图片还没加载时的信息展示体验<br><br>观点2：img {content:url()}的效果和<img src="">的效果一样。所以我们可以使用更改content属性把src置换掉<br><br>所以非替换元素使用content就变成替换元素，拥有替换元素的特点。</p><h4 id="4-1-2"><a href="#4-1-2" class="headerlink" title="4.1.2"></a>4.1.2</h4>]]></content>
+    <content type="html"><![CDATA[<h2 id="4盒尺寸四大家族"><a href="#4盒尺寸四大家族" class="headerlink" title="4盒尺寸四大家族"></a>4盒尺寸四大家族</h2><h3 id="4-1深入理解content"><a href="#4-1深入理解content" class="headerlink" title="4.1深入理解content"></a>4.1深入理解content</h3><h4 id="4-1-1content和替换元素"><a href="#4-1-1content和替换元素" class="headerlink" title="4.1.1content和替换元素"></a>4.1.1content和替换元素</h4><h5 id="1-什么是替换元素"><a href="#1-什么是替换元素" class="headerlink" title="1.什么是替换元素"></a>1.什么是替换元素</h5><p>替换元素就是通过修改属性值，呈现的内容就可以被修改的就是替换元素，例如img,select,video,iframe,textarea<br><br>替换元素有自己的一套规则，例如1.很难通过css修改其样式，2.有自己的默认尺寸，video,iframe一般为300*150，img为0，3.css规则运用在替换元素上与非替换元素可能不同，如vertical-align</p><h5 id="2-替换元素的默认display值"><a href="#2-替换元素的默认display值" class="headerlink" title="2.替换元素的默认display值"></a>2.替换元素的默认display值</h5><p>替换元素都是内联元素，但是display不一样</p><h5 id="3-替换元素的尺寸计算规则"><a href="#3-替换元素的尺寸计算规则" class="headerlink" title="3.替换元素的尺寸计算规则"></a>3.替换元素的尺寸计算规则</h5><p>替换元素的尺寸有3种：1.元素本身的尺寸，2.在标签中添加的尺寸，3.在css中添加的尺寸。优先级3&gt;2&gt;1<br><br>如果1有宽高比例，则仅设置宽度或高度，元素依然会按照原来的比例展示<br><br>开发中我们为了提高加载性能以及节约宽带费用，首屏以下的图片就会通过滚屏加载的方式异步加载，通常使用一张透明的图片占位</p><pre><code>&lt;img src=&quot;transparent.png&quot;&gt;</code></pre><p>实际上这是多余的，我们可以这样</p><pre><code>html:&lt;img&gt;css:img{visibility:hidden}img[src]{visibility:visible}</code></pre><p>这是最高效的实现方式。<br><br>我们无法改变替换元素的固有尺寸，css3中的object-fit可以改变。</p><h5 id="4-替换元素和非替换元素的距离有多远"><a href="#4-替换元素和非替换元素的距离有多远" class="headerlink" title="4.替换元素和非替换元素的距离有多远"></a>4.替换元素和非替换元素的距离有多远</h5><p>观点1：替换元素没有src就是一个类似span的东西<br><br>针对上面的代码，如果我们的javascript加载比较慢，我们的页面就很有可能出现一块一块的图片区域，纯白色，无任何信息，我们可以这样</p><pre><code>img::after{    content:attr(alt);    position: absolute; bottom: 0;    width: 100%;    background-color: rgba(0,0,0,5);    transform: translateY(100%);    transition: transform .2s}img:hover::after {    transform: translateY(0)}</code></pre><p>于是很巧妙地增强了图片还没加载时的信息展示体验<br><br>观点2：img {content:url()}的效果和<img src="">的效果一样。所以我们可以使用更改content属性把src置换掉<br><br>所以非替换元素使用content就变成替换元素，拥有替换元素的特点。</p><h4 id="4-1-2content内容生成器"><a href="#4-1-2content内容生成器" class="headerlink" title="4.1.2content内容生成器"></a>4.1.2content内容生成器</h4><p>暂时略</p><h3 id="4-2温和的padding属性"><a href="#4-2温和的padding属性" class="headerlink" title="4.2温和的padding属性"></a>4.2温和的padding属性</h3><p>padding属性最温和，很少出现意想不到的情况</p><h4 id="4-2-1-padding与元素的尺寸"><a href="#4-2-1-padding与元素的尺寸" class="headerlink" title="4.2.1 padding与元素的尺寸"></a>4.2.1 padding与元素的尺寸</h4><p>默认设置padding值会改变元素的尺寸，这时候大部分人的选择是使用全局box-sizing:border-box，但是如果padding值足够大，那么width也无能为力。所以尽量采用无宽度以及宽度分离准则实现才是好的解决之道<br><br>padding作用在块状元素和内联元素是不一样的。总的说就是，padding属性作用在内联元素时，对水平产生影响，对垂直方向会直接压过下面的元素padding元素。具体请看4-2-1demo<br><br>padding可以优雅得增加链接或button的点击范围。<br><br>在我们写登陆注册中间的管道符时，往往是使用符号|，但是符号并不好进行控制，此时我们可以借助内联元素以及padding解决，具体看4-2-2demo<br><br>padding还可以作用在内联元素，解决通过地址栏的hash值铀点html id的时候想距离顶部50px。因为此时如果在块级元素设置padding会影响布局，所以设置在内联元素上</p><h4 id="4-2-2-padding的百分比值"><a href="#4-2-2-padding的百分比值" class="headerlink" title="4.2.2 padding的百分比值"></a>4.2.2 padding的百分比值</h4><p>块级元素来说，padding元素的百分比值是根据宽度来算的！所以设置padding为10% 50%，即可以实现头部图片随着屏幕大小不断变化依然保持着10%的高度<br>内联元素来说，比较复杂，会断行，就是随着内联元素的换行而有不同的变化。</p><h4 id="4-2-3-标签元素内置的padding"><a href="#4-2-3-标签元素内置的padding" class="headerlink" title="4.2.3 标签元素内置的padding"></a>4.2.3 标签元素内置的padding</h4><p>许多元素都有内置padding,当元素出现不可预估的padding时，应考虑清除内置padding,重新计算。<br><br>正因有内置的行为，许多浏览器的表现形式不一样，例如button，chrome、IE、Firefix的高度都不一样，所以我们可以这样，即固定了高度，又保留了button的功能</p><pre><code> button {        position: absolute;        clip: rect(0 0 0 0);    }    label {        display: inline-block;        line-height: 20px;        padding: 10px;    }&lt;button id=&quot;btn&quot; onclick=&quot;go()&quot;&gt;&lt;/button&gt;&lt;label for=&quot;btn&quot;&gt;按钮&lt;/label&gt;&lt;script&gt;    function go() {        console.log(&apos;go&apos;)    }&lt;/script&gt;</code></pre><h4 id="4-2-4-padding与图形绘制"><a href="#4-2-4-padding与图形绘制" class="headerlink" title="4.2.4 padding与图形绘制"></a>4.2.4 padding与图形绘制</h4><p>具体看demo显示的两个效果</p><h3 id="4-3激进的margin"><a href="#4-3激进的margin" class="headerlink" title="4.3激进的margin"></a>4.3激进的margin</h3>]]></content>
     
     <summary type="html">
     
@@ -33,6 +47,8 @@
       
     
     </summary>
+    
+      <category term="book" scheme="https://okbexx.github.io/categories/book/"/>
     
     
   </entry>
@@ -65,15 +81,15 @@
     <link href="https://okbexx.github.io/2018/01/26/vue2-0%E5%B8%B8%E7%94%A8%E6%94%B6%E9%9B%86/"/>
     <id>https://okbexx.github.io/2018/01/26/vue2-0常用收集/</id>
     <published>2018-01-26T14:51:17.000Z</published>
-    <updated>2018-01-26T15:08:36.678Z</updated>
+    <updated>2018-04-09T00:44:23.839Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="class的使用"><a href="#class的使用" class="headerlink" title="class的使用"></a>class的使用</h3><pre><code>1. :class=&quot;{xxx:boolean,xxx:boolean}&quot;2. :class=&quot;{xxx}&quot;data(){    return {        xxx:{            className:boolean        }    }}3. :class&quot;[dataname,dataname]&quot;data(){    return {        dataname:&apos;classname&apos;    }}4. :class&quot;[]&quot;</code></pre>]]></content>
+    <content type="html"><![CDATA[<h4 id="class的使用"><a href="#class的使用" class="headerlink" title="class的使用"></a>class的使用</h4><pre><code>1. :class=&quot;{xxx:boolean,xxx:boolean}&quot;2. :class=&quot;{xxx}&quot;data(){    return {        xxx:{            className:boolean        }    }}3. :class&quot;[dataname,dataname]&quot;data(){    return {        dataname:&apos;classname&apos;    }}4. :class&quot;[]&quot;</code></pre><h4 id="store"><a href="#store" class="headerlink" title="store"></a>store</h4><h5 id="action使用"><a href="#action使用" class="headerlink" title="action使用"></a>action使用</h5><p>配置 new Vuex.store({<br>    actions: {<br>        xxx(context|{commit}){</p><pre><code>    }}</code></pre><p>})<br>使用1. this.$store.dispatch(‘xxx’)</p><pre><code>2. import { mapActions } from &apos;vuex&apos;...mapActions({    add: &apos;xxx&apos;  // this.add()相当于 this.$store.dispatch(&apos;xxx&apos;)})</code></pre><h4 id="router"><a href="#router" class="headerlink" title="router"></a>router</h4><h5 id="router配置"><a href="#router配置" class="headerlink" title="router配置"></a>router配置</h5><p>import vuerouter from ‘vuerouter’<br>vue.use(vuerouter)<br>const routes = [<br>  { path: ‘/foo’, component: Foo },<br>  { path: ‘/bar’, component: Bar }<br>]<br>const router = new VueRouter({<br>  routes // （缩写）相当于 routes: routes<br>})<br>在vue实例用添加router</p><h5 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h5><ol><li><router-link :to="..."></router-link></li><li>router.push(…)</li></ol><h4 id="添加插件"><a href="#添加插件" class="headerlink" title="添加插件"></a>添加插件</h4><h5 id="以插件方式引入router"><a href="#以插件方式引入router" class="headerlink" title="以插件方式引入router"></a>以插件方式引入router</h5><ol><li>index.js文件中定义常量install（方法） vue.install的时候会执行</li><li>初始化路由函数中vue.use(router)</li><li>export导出install和router,router是个对象</li><li>main.js中导入,vue.use使用，并在vue实例中引用router</li></ol><h4 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h4><h5 id="store-1"><a href="#store-1" class="headerlink" title="store"></a>store</h5><p>new Vuex.Store({<br>    state:{}<br>    mutations:{}<br>    actions:{}<br>})</p><h5 id="state"><a href="#state" class="headerlink" title="state"></a>state</h5><ol><li>this.$store.state.xxx</li><li>import {mapState} from ‘vuex’  mapState()就是省略了this.$store，并且返回一个对象</li><li>computed: {<br>  …mapState([‘isLogin’,’messageCount’])<br>}<br>isLogin就是直接用在dom中的变量</li></ol><h4 id="template"><a href="#template" class="headerlink" title="template"></a>template</h4><p>1.不会渲染，可抽取if for show以及事件放到template上面，减少div标签过长等情况，结构更加清晰<br>2.<template scope="xxx">配合<slot>使用，比如<slot :data="item"> 就是把item传入进template中</slot></slot></template></p><h4 id="mixins"><a href="#mixins" class="headerlink" title="mixins"></a>mixins</h4><p>如果想要在一个组件中直接使用已经写好的方法或者拿去数据，则可以使用Mixin也叫混入<br>import loadMore from ‘./load-more.vue’;    export default{}<br>mixins:[loadMore]</p><h4 id="定义过滤器"><a href="#定义过滤器" class="headerlink" title="定义过滤器"></a>定义过滤器</h4><ol><li>创建过滤器方法，导出xxx</li><li>创建插件install,vue.filter(‘xxx’,xxx)</li><li>main.js vue.use</li></ol><h4 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h4><p>‘params.memCode’: function (val) {<br>      console.log(val);<br>    }<br>监听对象中的属性</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;class的使用&quot;&gt;&lt;a href=&quot;#class的使用&quot; class=&quot;headerlink&quot; title=&quot;class的使用&quot;&gt;&lt;/a&gt;class的使用&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;1. :class=&amp;quot;{xxx:boolean,xxx:boole
+        &lt;h4 id=&quot;class的使用&quot;&gt;&lt;a href=&quot;#class的使用&quot; class=&quot;headerlink&quot; title=&quot;class的使用&quot;&gt;&lt;/a&gt;class的使用&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;1. :class=&amp;quot;{xxx:boolean,xxx:boole
       
     
     </summary>
@@ -86,16 +102,16 @@
     <link href="https://okbexx.github.io/2018/01/21/%E5%89%8D%E7%AB%AF%E6%B8%85%E9%9A%9C%E8%AE%B0%E5%BD%95-md/"/>
     <id>https://okbexx.github.io/2018/01/21/前端清障记录-md/</id>
     <published>2018-01-20T16:08:51.000Z</published>
-    <updated>2018-01-20T16:17:40.950Z</updated>
+    <updated>2018-03-23T03:22:46.831Z</updated>
     
-    <content type="html"><![CDATA[<p>这里记录这本人在前端学习过程中以及项目过程中所遇到比较复杂的问题（个人认为）的解决办法，如有更好办法请提出，在此感谢。</p>]]></content>
+    <content type="html"><![CDATA[<p>这里记录这本人在前端学习过程中以及项目过程中所遇到比较复杂的问题（个人认为）的解决办法，如有更好办法请提出，在此感谢。</p><h4 id="margin合并冲突"><a href="#margin合并冲突" class="headerlink" title="margin合并冲突"></a>margin合并冲突</h4><p>####水平垂直</p><h5 id="内联元素水平居中方式"><a href="#内联元素水平居中方式" class="headerlink" title="内联元素水平居中方式"></a>内联元素水平居中方式</h5><ol><li>inline-block+父元素text-align center</li><li>父flex just-content center<h5 id="内联元素垂直居中方式"><a href="#内联元素垂直居中方式" class="headerlink" title="内联元素垂直居中方式"></a>内联元素垂直居中方式</h5></li><li>父flex align-item center<h5 id="块状元素水平居中方式"><a href="#块状元素水平居中方式" class="headerlink" title="块状元素水平居中方式"></a>块状元素水平居中方式</h5></li><li>父relative子absolute left50% transform transilateX-50%</li><li>父flex just-content center<h5 id="块状元素垂直居中方式"><a href="#块状元素垂直居中方式" class="headerlink" title="块状元素垂直居中方式"></a>块状元素垂直居中方式</h5></li><li>父display table-cell vertical-align center</li><li>父relative子absolute top50% transform transilatey-50%<h5 id="内联块状元素水平垂直居中"><a href="#内联块状元素水平垂直居中" class="headerlink" title="内联块状元素水平垂直居中"></a>内联块状元素水平垂直居中</h5></li><li>父relative子absolute left50% top50% transform tranplate(-50%,-50%)</li><li>父display table-cell vertical-align text-align 子inline-block</li><li>flex+justify-content+align-items</li></ol><h4 id="多列布局"><a href="#多列布局" class="headerlink" title="多列布局"></a>多列布局</h4><ol><li>左float width marginright 右overflow hidden</li><li></li></ol><h4 id="vux初始化报错"><a href="#vux初始化报错" class="headerlink" title="vux初始化报错"></a>vux初始化报错</h4><p>npm install –global –production windows-build-tools –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>npm install node-gyp -g<br>若之前已安装node-gyp，请重装</p><h4 id="更新npm"><a href="#更新npm" class="headerlink" title="更新npm"></a>更新npm</h4><p>npm cache clean -f<br>npm install npm -g</p><h4 id="重装node-gyp"><a href="#重装node-gyp" class="headerlink" title="重装node-gyp"></a>重装node-gyp</h4><p>npm uninstall node-gyp -g<br>npm uninstall node-gyp<br>npm install node-gyp -g </p><h4 id="vue与cordova结合"><a href="#vue与cordova结合" class="headerlink" title="vue与cordova结合"></a>vue与cordova结合</h4><p>cordova在vue项目中，修改vue项目中的config文件夹index.js，使输出的内容到cordova项目中的www即可<br><br>操作步骤<br></p><ol><li>npm install(vue)</li><li>npm build(vue)</li><li>cordova build android(cordova)</li><li>as中运行</li></ol><h4 id="宽高"><a href="#宽高" class="headerlink" title="宽高"></a>宽高</h4><h5 id="DOM对象"><a href="#DOM对象" class="headerlink" title="DOM对象"></a>DOM对象</h5><p>clientwidth，clientheight（整体内容不包括border-滚动条）<br>offsetwidth, offsetheight（整体内容包括border）<br>clienttop，clientleft（边框的宽高）<br>offsetleft，offsettop（当前元素相对最近的具有定位的元素的距离）<br>scrollheight,scrollwidth（具有滚动条时的宽高）<br>scrolltop,scrollright（不包含border距离最上部的距离）<br>element.scrollHeight - element.scrollTop === element.clientHeight （用于判断是否到底）</p><h5 id="event对象"><a href="#event对象" class="headerlink" title="event对象"></a>event对象</h5><p>clientX和clientY（相对浏览器的距离，不包括滚动条）<br>screenX和screenY（相对屏幕的距离）<br>offsetX和offsetY（相对触发事件元素本身的距离）<br>pageX和pageY（相对页面的距离，包括滚动条）</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt;这里记录这本人在前端学习过程中以及项目过程中所遇到比较复杂的问题（个人认为）的解决办法，如有更好办法请提出，在此感谢。&lt;/p&gt;
-
+&lt;h4 id=&quot;margin合并冲突&quot;&gt;&lt;a href=&quot;#margin合并冲突&quot; class=&quot;headerlink&quot; title=&quot;margi
       
     
     </summary>
