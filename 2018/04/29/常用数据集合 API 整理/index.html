@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    
+    
+    
+    <title>常用数据集合 API整理 | 真的会爱上你</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="开发时总会经常遇到 Array、Object、Set、Map 这类数据结构，虽然知道有些什么 API，但是每次用总是要查查 MDN 才放心。非常浪费时间，所以这里好好整理下这些数据集合的常用 API。  Array Array.length 返回数组长度 Array.from() 方法从一个类似数组或可迭代对象中创建一个新的数组实例。传入类似数组对象及map回调方法，返回新数组。 fill()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用数据集合 API整理">
+<meta property="og:url" content="https://okbexx.github.io/2018/04/29/常用数据集合 API 整理/index.html">
+<meta property="og:site_name" content="真的会爱上你">
+<meta property="og:description" content="开发时总会经常遇到 Array、Object、Set、Map 这类数据结构，虽然知道有些什么 API，但是每次用总是要查查 MDN 才放心。非常浪费时间，所以这里好好整理下这些数据集合的常用 API。  Array Array.length 返回数组长度 Array.from() 方法从一个类似数组或可迭代对象中创建一个新的数组实例。传入类似数组对象及map回调方法，返回新数组。 fill()">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-31T05:44:36.349Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用数据集合 API整理">
+<meta name="twitter:description" content="开发时总会经常遇到 Array、Object、Set、Map 这类数据结构，虽然知道有些什么 API，但是每次用总是要查查 MDN 才放心。非常浪费时间，所以这里好好整理下这些数据集合的常用 API。  Array Array.length 返回数组长度 Array.from() 方法从一个类似数组或可迭代对象中创建一个新的数组实例。传入类似数组对象及map回调方法，返回新数组。 fill()">
+    
+        <link rel="alternate" type="application/atom+xml" title="真的会爱上你" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/web.png">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Jarl Huang</h5>
+          <a href="mailto:857085930@qq.com" title="857085930@qq.com" class="mail">857085930@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/okbexx" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">常用数据集合 API整理</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">常用数据集合 API整理</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-29T14:08:22.000Z" itemprop="datePublished" class="page-time">
+  2018-04-29
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/dev/">dev</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Array"><span class="post-toc-number">1.</span> <span class="post-toc-text">Array</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Object"><span class="post-toc-number">2.</span> <span class="post-toc-text">Object</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Set"><span class="post-toc-number">3.</span> <span class="post-toc-text">Set</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Map"><span class="post-toc-number">4.</span> <span class="post-toc-text">Map</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-常用数据集合 API 整理"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">常用数据集合 API整理</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-29 22:08:22" datetime="2018-04-29T14:08:22.000Z"  itemprop="datePublished">2018-04-29</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/dev/">dev</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>开发时总会经常遇到 Array、Object、Set、Map 这类数据结构，虽然知道有些什么 API，但是每次用总是要查查 MDN 才放心。非常浪费时间，所以这里好好整理下这些数据集合的常用 API。</p>
+</blockquote>
+<h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><ul>
+<li>Array.length 返回数组长度</li>
+<li>Array.from() 方法从一个类似数组或可迭代对象中创建一个新的数组实例。传入类似数组对象及map回调方法，返回新数组。</li>
+<li>fill() 方法用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。返回修改后的数组（原数组）。</li>
+<li>forEach() 方法对数组的每个元素执行一次提供的函数。</li>
+<li>reduce() 方法对累加器和数组中的每个元素（从左到右）应用一个函数，将其减少为单个值。</li>
+<li>includes() 方法用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回false。</li>
+<li>join() 方法将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串。</li>
+<li>keys() 方法返回一个新的Array迭代器，它包含数组中每个索引的键。</li>
+<li>map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。<br>数组操作：</li>
+<li>concat() 方法用于合并两个或多个数组。此方法不会更改现有数组，而是返回一个新数组。<br>pop() 方法从数组中删除最后一个元素，并返回该元素的值。此方法更改数组的长度。</li>
+<li>push() 方法将一个或多个元素添加到数组的末尾，并返回新数组的长度。<br>shift() 方法从数组中删除第一个元素，并返回该元素的值。此方法更改数组的长度。</li>
+<li>unshift() 方法将一个或多个元素添加到数组的开头，并返回新数组的长度。</li>
+<li>reverse() 方法将数组中元素的位置颠倒。</li>
+<li>sort() 方法用就地（ in-place ）的算法对数组的元素进行排序，并返回数组。 sort 排序不一定是稳定的。默认排序顺序是根据字符串Unicode码点。会改变原数组，返回排序后的数组。</li>
+<li>splice() 方法通过删除现有元素和/或添加新元素来更改一个数组的内容。可以用于删除也可用于插入数据。返回被删除的元素（集合）。</li>
+<li>slice() 方法返回一个从开始到结束（不包括结束）选择的数组的一部分浅拷贝到一个新数组对象。且原始数组不会被修改。截取内容的范围是 start &lt;= val &lt; end。可以使用 arr.slice() 对数组进行浅拷贝。<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3></li>
+<li>Object.create() 方法创建一个新对象，使用现有的对象来提供新创建的对象的proto。 可以通过 Object.create(null) 创建空对象。</li>
+<li>Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。</li>
+<li>Object.freeze() 方法可以冻结一个对象，冻结指的是不能向这个对象添加新的属性，不能修改其已有属性的值，不能删除已有属性，以及不能修改该对象已有属性的可枚举性、可配置性、可写性。也就是说，这个对象永远是不可变的。该方法返回被冻结的对象。</li>
+<li>Object.seal() 方法封闭一个对象，阻止添加新属性并将所有现有属性标记为不可配置。当前属性的值只要可写就可以改变。</li>
+<li>Object.keys() 方法会返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和使用for…in 循环遍历该对象时返回的顺序一致 （两者的主要区别是 一个 for-in 循环还会枚举其原型链上的属性）。<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3></li>
+<li>size 属性将会返回Set对象中元素的个数。</li>
+<li>add() 方法用来向一个 Set 对象的末尾添加一个指定的值。</li>
+<li>clear() 方法用来清空一个 Set 对象中的所有元素。</li>
+<li>delete() 方法可以从一个 Set 对象中删除指定的元素。</li>
+<li>forEach 方法根据集合中元素的顺序，对每个元素都执行提供的 callback 函数一次。</li>
+<li>has() 方法返回一个布尔值来指示对应的值value是否存在Set对象中<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3></li>
+<li>size 可访问属性返回 Map 对象的元素数量。</li>
+<li>get() 方法用来获取一个 Map 对象中指定的元素。如果找不到返回 undefined</li>
+<li>set() 方法为 Map 对象添加一个指定键（key）和值（value）的新元素。</li>
+<li>clear() 方法会移除Map对象中的所有元素。</li>
+<li>delete() 方法用于移除 Map 对象中指定的元素。</li>
+<li>forEach() ?方法将会以插入顺序对 Map 对象中的每一个键值对执行一次参数中提供的回调函数。</li>
+<li>has() 方法返回一个布尔值，用来表明 map 中是否存在指定元素。</li>
+</ul>
+<p>最后<br>先就这些啦~整理出来以免每次用到的时候都去查 MDN （我都查烦了），这种常用的整理出来记在脑子里比较好。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-05-31T05:44:36.349Z" itemprop="dateUpdated">2018-05-31 13:44:36</time>
+</span><br>
+
+
+        
+        愿天下有情人终成眷属
+        
+    </div>
+    <footer>
+        <a href="https://okbexx.github.io">
+            <img src="/img/logo.jpg" alt="Jarl Huang">
+            Jarl Huang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://okbexx.github.io/2018/04/29/常用数据集合 API 整理/&title=《常用数据集合 API整理》 — 真的会爱上你&pic=https://okbexx.github.io/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://okbexx.github.io/2018/04/29/常用数据集合 API 整理/&title=《常用数据集合 API整理》 — 真的会爱上你&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://okbexx.github.io/2018/04/29/常用数据集合 API 整理/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《常用数据集合 API整理》 — 真的会爱上你&url=https://okbexx.github.io/2018/04/29/常用数据集合 API 整理/&via=https://okbexx.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://okbexx.github.io/2018/04/29/常用数据集合 API 整理/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Jarl Huang &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://okbexx.github.io/2018/04/29/常用数据集合 API 整理/&title=《常用数据集合 API整理》 — 真的会爱上你&pic=https://okbexx.github.io/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://okbexx.github.io/2018/04/29/常用数据集合 API 整理/&title=《常用数据集合 API整理》 — 真的会爱上你&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://okbexx.github.io/2018/04/29/常用数据集合 API 整理/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《常用数据集合 API整理》 — 真的会爱上你&url=https://okbexx.github.io/2018/04/29/常用数据集合 API 整理/&via=https://okbexx.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://okbexx.github.io/2018/04/29/常用数据集合 API 整理/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACs0lEQVR42u3aQW7jMBAEQP//09nrAom13TNk4AVKJyGGZBYDkHTPvF7x9fXX9e7T56dOXa8bFx4eHt5i6O9eN/v0+4C+P9WOs/1GPDw8vHu85HXtQJ8nIt9+3r0n2qLw8PDwPoCX3LeLe34exsPDw/t/ec/L9/OA9iQ8PDy8T+BtBpf/JZ+U5wm9krXg4eHhXagifc79lfoeHh4e3rqqngcBp/oXNpvBD2PAw8PDu8Br49fk6JyXwTbBRDFOPDw8vKO8TbvVJpJI4tc8zng7ZXh4eHjXeMny3S73+UBnIXI0cXh4eHgXeG1xqw0akgNxO/T6X4KHh4d3gZeEqs8Lejsds4ihDUHw8PDw7vHygtapklj+9zYo+WE8eHh4eNd4bQSQA/IB5XFGsdng4eHhHeVtylrJszPqpr3gtfkFgIeHh7fmrcpOi5h138SAh4eHd5v3jGm/ZrY9zA7Q/5hEPDw8vGu8fKBtrJBvLW3ZbNi5gIeHh7fmzeLaTUtBfnBvD/dFTxkeHh7emjcr6rcBQRvjnuqkwsPDwzvL2wS1m8JVHli0EUmx4+Hh4eGNeHnNqA0a7j1b95Th4eHhXeDlS39yv4liN0/h4eHh/Q6vXaBnhajZUTiJOepdDg8PD2/NS87aeUgxOy5vGq2iSAUPDw/vGu9soWt2NM+naZWv4OHh4R3lzdoF2uV7drhPMKusBQ8PD2/Ey8PZ/UF503SVTBMeHh7eDd5XebXF/vaInAcN0XaFh4eHd4HXLrjtQj9rPtjc56EwHh4e3oa3GVYe4OaltTySiN6Gh4eHd413qlSfR67txjOLgPHw8PA+gZc3HOTbTztBxaaFh4eH9wG8tk3qVOA723Lw8PDw7vFmi3XOSIpneTxRbwx4eHh4R3mzH/yz4/Vsic+n70CvFh4eHt7T9QfO0wMntfB9MwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

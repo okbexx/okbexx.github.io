@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://okbexx.github.io/"/>
-  <updated>2018-02-22T14:27:36.053Z</updated>
+  <updated>2018-05-31T05:44:36.349Z</updated>
   <id>https://okbexx.github.io/</id>
   
   <author>
@@ -17,127 +17,27 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>css世界实用例子.md</title>
-    <link href="https://okbexx.github.io/2018/02/22/css%E4%B8%96%E7%95%8C%E5%AE%9E%E7%94%A8%E4%BE%8B%E5%AD%90-md/"/>
-    <id>https://okbexx.github.io/2018/02/22/css世界实用例子-md/</id>
-    <published>2018-02-22T14:27:36.000Z</published>
-    <updated>2018-02-22T14:27:36.053Z</updated>
+    <title>常用数据集合 API整理</title>
+    <link href="https://okbexx.github.io/2018/04/29/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88%20API%20%E6%95%B4%E7%90%86/"/>
+    <id>https://okbexx.github.io/2018/04/29/常用数据集合 API 整理/</id>
+    <published>2018-04-29T14:08:22.000Z</published>
+    <updated>2018-05-31T05:44:36.349Z</updated>
     
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>css世界4-6</title>
-    <link href="https://okbexx.github.io/2018/01/29/css%E4%B8%96%E7%95%8C4-6/"/>
-    <id>https://okbexx.github.io/2018/01/29/css世界4-6/</id>
-    <published>2018-01-29T14:08:22.000Z</published>
-    <updated>2018-02-04T12:49:06.710Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="4盒尺寸四大家族"><a href="#4盒尺寸四大家族" class="headerlink" title="4盒尺寸四大家族"></a>4盒尺寸四大家族</h2><h3 id="4-1深入理解content"><a href="#4-1深入理解content" class="headerlink" title="4.1深入理解content"></a>4.1深入理解content</h3><h4 id="4-1-1content和替换元素"><a href="#4-1-1content和替换元素" class="headerlink" title="4.1.1content和替换元素"></a>4.1.1content和替换元素</h4><h5 id="1-什么是替换元素"><a href="#1-什么是替换元素" class="headerlink" title="1.什么是替换元素"></a>1.什么是替换元素</h5><p>替换元素就是通过修改属性值，呈现的内容就可以被修改的就是替换元素，例如img,select,video,iframe,textarea<br><br>替换元素有自己的一套规则，例如1.很难通过css修改其样式，2.有自己的默认尺寸，video,iframe一般为300*150，img为0，3.css规则运用在替换元素上与非替换元素可能不同，如vertical-align</p><h5 id="2-替换元素的默认display值"><a href="#2-替换元素的默认display值" class="headerlink" title="2.替换元素的默认display值"></a>2.替换元素的默认display值</h5><p>替换元素都是内联元素，但是display不一样</p><h5 id="3-替换元素的尺寸计算规则"><a href="#3-替换元素的尺寸计算规则" class="headerlink" title="3.替换元素的尺寸计算规则"></a>3.替换元素的尺寸计算规则</h5><p>替换元素的尺寸有3种：1.元素本身的尺寸，2.在标签中添加的尺寸，3.在css中添加的尺寸。优先级3&gt;2&gt;1<br><br>如果1有宽高比例，则仅设置宽度或高度，元素依然会按照原来的比例展示<br><br>开发中我们为了提高加载性能以及节约宽带费用，首屏以下的图片就会通过滚屏加载的方式异步加载，通常使用一张透明的图片占位</p><pre><code>&lt;img src=&quot;transparent.png&quot;&gt;</code></pre><p>实际上这是多余的，我们可以这样</p><pre><code>html:&lt;img&gt;css:img{visibility:hidden}img[src]{visibility:visible}</code></pre><p>这是最高效的实现方式。<br><br>我们无法改变替换元素的固有尺寸，css3中的object-fit可以改变。</p><h5 id="4-替换元素和非替换元素的距离有多远"><a href="#4-替换元素和非替换元素的距离有多远" class="headerlink" title="4.替换元素和非替换元素的距离有多远"></a>4.替换元素和非替换元素的距离有多远</h5><p>观点1：替换元素没有src就是一个类似span的东西<br><br>针对上面的代码，如果我们的javascript加载比较慢，我们的页面就很有可能出现一块一块的图片区域，纯白色，无任何信息，我们可以这样</p><pre><code>img::after{    content:attr(alt);    position: absolute; bottom: 0;    width: 100%;    background-color: rgba(0,0,0,5);    transform: translateY(100%);    transition: transform .2s}img:hover::after {    transform: translateY(0)}</code></pre><p>于是很巧妙地增强了图片还没加载时的信息展示体验<br><br>观点2：img {content:url()}的效果和<img src="">的效果一样。所以我们可以使用更改content属性把src置换掉<br><br>所以非替换元素使用content就变成替换元素，拥有替换元素的特点。</p><h4 id="4-1-2content内容生成器"><a href="#4-1-2content内容生成器" class="headerlink" title="4.1.2content内容生成器"></a>4.1.2content内容生成器</h4><p>暂时略</p><h3 id="4-2温和的padding属性"><a href="#4-2温和的padding属性" class="headerlink" title="4.2温和的padding属性"></a>4.2温和的padding属性</h3><p>padding属性最温和，很少出现意想不到的情况</p><h4 id="4-2-1-padding与元素的尺寸"><a href="#4-2-1-padding与元素的尺寸" class="headerlink" title="4.2.1 padding与元素的尺寸"></a>4.2.1 padding与元素的尺寸</h4><p>默认设置padding值会改变元素的尺寸，这时候大部分人的选择是使用全局box-sizing:border-box，但是如果padding值足够大，那么width也无能为力。所以尽量采用无宽度以及宽度分离准则实现才是好的解决之道<br><br>padding作用在块状元素和内联元素是不一样的。总的说就是，padding属性作用在内联元素时，对水平产生影响，对垂直方向会直接压过下面的元素padding元素。具体请看4-2-1demo<br><br>padding可以优雅得增加链接或button的点击范围。<br><br>在我们写登陆注册中间的管道符时，往往是使用符号|，但是符号并不好进行控制，此时我们可以借助内联元素以及padding解决，具体看4-2-2demo<br><br>padding还可以作用在内联元素，解决通过地址栏的hash值铀点html id的时候想距离顶部50px。因为此时如果在块级元素设置padding会影响布局，所以设置在内联元素上</p><h4 id="4-2-2-padding的百分比值"><a href="#4-2-2-padding的百分比值" class="headerlink" title="4.2.2 padding的百分比值"></a>4.2.2 padding的百分比值</h4><p>块级元素来说，padding元素的百分比值是根据宽度来算的！所以设置padding为10% 50%，即可以实现头部图片随着屏幕大小不断变化依然保持着10%的高度<br>内联元素来说，比较复杂，会断行，就是随着内联元素的换行而有不同的变化。</p><h4 id="4-2-3-标签元素内置的padding"><a href="#4-2-3-标签元素内置的padding" class="headerlink" title="4.2.3 标签元素内置的padding"></a>4.2.3 标签元素内置的padding</h4><p>许多元素都有内置padding,当元素出现不可预估的padding时，应考虑清除内置padding,重新计算。<br><br>正因有内置的行为，许多浏览器的表现形式不一样，例如button，chrome、IE、Firefix的高度都不一样，所以我们可以这样，即固定了高度，又保留了button的功能</p><pre><code> button {        position: absolute;        clip: rect(0 0 0 0);    }    label {        display: inline-block;        line-height: 20px;        padding: 10px;    }&lt;button id=&quot;btn&quot; onclick=&quot;go()&quot;&gt;&lt;/button&gt;&lt;label for=&quot;btn&quot;&gt;按钮&lt;/label&gt;&lt;script&gt;    function go() {        console.log(&apos;go&apos;)    }&lt;/script&gt;</code></pre><h4 id="4-2-4-padding与图形绘制"><a href="#4-2-4-padding与图形绘制" class="headerlink" title="4.2.4 padding与图形绘制"></a>4.2.4 padding与图形绘制</h4><p>具体看demo显示的两个效果</p><h3 id="4-3激进的margin"><a href="#4-3激进的margin" class="headerlink" title="4.3激进的margin"></a>4.3激进的margin</h3>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>开发时总会经常遇到 Array、Object、Set、Map 这类数据结构，虽然知道有些什么 API，但是每次用总是要查查 MDN 才放心。非常浪费时间，所以这里好好整理下这些数据集合的常用 API。</p></blockquote><h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><ul><li>Array.length 返回数组长度</li><li>Array.from() 方法从一个类似数组或可迭代对象中创建一个新的数组实例。传入类似数组对象及map回调方法，返回新数组。</li><li>fill() 方法用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。返回修改后的数组（原数组）。</li><li>forEach() 方法对数组的每个元素执行一次提供的函数。</li><li>reduce() 方法对累加器和数组中的每个元素（从左到右）应用一个函数，将其减少为单个值。</li><li>includes() 方法用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回false。</li><li>join() 方法将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串。</li><li>keys() 方法返回一个新的Array迭代器，它包含数组中每个索引的键。</li><li>map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。<br>数组操作：</li><li>concat() 方法用于合并两个或多个数组。此方法不会更改现有数组，而是返回一个新数组。<br>pop() 方法从数组中删除最后一个元素，并返回该元素的值。此方法更改数组的长度。</li><li>push() 方法将一个或多个元素添加到数组的末尾，并返回新数组的长度。<br>shift() 方法从数组中删除第一个元素，并返回该元素的值。此方法更改数组的长度。</li><li>unshift() 方法将一个或多个元素添加到数组的开头，并返回新数组的长度。</li><li>reverse() 方法将数组中元素的位置颠倒。</li><li>sort() 方法用就地（ in-place ）的算法对数组的元素进行排序，并返回数组。 sort 排序不一定是稳定的。默认排序顺序是根据字符串Unicode码点。会改变原数组，返回排序后的数组。</li><li>splice() 方法通过删除现有元素和/或添加新元素来更改一个数组的内容。可以用于删除也可用于插入数据。返回被删除的元素（集合）。</li><li>slice() 方法返回一个从开始到结束（不包括结束）选择的数组的一部分浅拷贝到一个新数组对象。且原始数组不会被修改。截取内容的范围是 start &lt;= val &lt; end。可以使用 arr.slice() 对数组进行浅拷贝。<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3></li><li>Object.create() 方法创建一个新对象，使用现有的对象来提供新创建的对象的proto。 可以通过 Object.create(null) 创建空对象。</li><li>Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。</li><li>Object.freeze() 方法可以冻结一个对象，冻结指的是不能向这个对象添加新的属性，不能修改其已有属性的值，不能删除已有属性，以及不能修改该对象已有属性的可枚举性、可配置性、可写性。也就是说，这个对象永远是不可变的。该方法返回被冻结的对象。</li><li>Object.seal() 方法封闭一个对象，阻止添加新属性并将所有现有属性标记为不可配置。当前属性的值只要可写就可以改变。</li><li>Object.keys() 方法会返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和使用for…in 循环遍历该对象时返回的顺序一致 （两者的主要区别是 一个 for-in 循环还会枚举其原型链上的属性）。<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3></li><li>size 属性将会返回Set对象中元素的个数。</li><li>add() 方法用来向一个 Set 对象的末尾添加一个指定的值。</li><li>clear() 方法用来清空一个 Set 对象中的所有元素。</li><li>delete() 方法可以从一个 Set 对象中删除指定的元素。</li><li>forEach 方法根据集合中元素的顺序，对每个元素都执行提供的 callback 函数一次。</li><li>has() 方法返回一个布尔值来指示对应的值value是否存在Set对象中<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3></li><li>size 可访问属性返回 Map 对象的元素数量。</li><li>get() 方法用来获取一个 Map 对象中指定的元素。如果找不到返回 undefined</li><li>set() 方法为 Map 对象添加一个指定键（key）和值（value）的新元素。</li><li>clear() 方法会移除Map对象中的所有元素。</li><li>delete() 方法用于移除 Map 对象中指定的元素。</li><li>forEach() ?方法将会以插入顺序对 Map 对象中的每一个键值对执行一次参数中提供的回调函数。</li><li>has() 方法返回一个布尔值，用来表明 map 中是否存在指定元素。</li></ul><p>最后<br>先就这些啦~整理出来以免每次用到的时候都去查 MDN （我都查烦了），这种常用的整理出来记在脑子里比较好。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;4盒尺寸四大家族&quot;&gt;&lt;a href=&quot;#4盒尺寸四大家族&quot; class=&quot;headerlink&quot; title=&quot;4盒尺寸四大家族&quot;&gt;&lt;/a&gt;4盒尺寸四大家族&lt;/h2&gt;&lt;h3 id=&quot;4-1深入理解content&quot;&gt;&lt;a href=&quot;#4-1深入理解content&quot;
+        &lt;blockquote&gt;
+&lt;p&gt;开发时总会经常遇到 Array、Object、Set、Map 这类数据结构，虽然知道有些什么 API，但是每次用总是要查查 MDN 才放心。非常浪费时间，所以这里好好整理下这些数据集合的常用 API。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 i
       
     
     </summary>
     
-      <category term="book" scheme="https://okbexx.github.io/categories/book/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>css世界 1-3</title>
-    <link href="https://okbexx.github.io/2018/01/26/css%E4%B8%96%E7%95%8C1-3/"/>
-    <id>https://okbexx.github.io/2018/01/26/css世界1-3/</id>
-    <published>2018-01-26T14:51:54.000Z</published>
-    <updated>2018-01-30T15:29:01.975Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1概述"><a href="#1概述" class="headerlink" title="1概述"></a>1概述<br></h2><h3 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h3><p>在css世界中，html是魔法石，选择器是选择法器，css属性是魔法师，css各种属性值就是魔法师的魔法技能,浏览器就是王国</p><p>总结：魔法师（css）使用选择法器（选择器）对着魔法石（html）使用魔法技能（css属性值），从而构建出王国样貌里的一小部分。众多魔法师一起合作，便能构建出王国最终的样子。</p><h3 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h3><p>css世界的诞生就是为图文信息展示服务的</p><h3 id="1-3"><a href="#1-3" class="headerlink" title="1.3"></a>1.3</h3><p>SVG的强项图形,然而在以前网站的主要功能都是图片和文字信息的展示，所以SVG被CSS压制了10年，到最近技术得到了发展，网站需要更加复杂和丰富多彩的展示，所以SVG又重新火起来<br><br>总结：CSS为什么在图文展示那么强？因为流的存在<br></p><h4 id="1-3-1"><a href="#1-3-1" class="headerlink" title="1.3.1"></a>1.3.1</h4><p>流就是css世界中引导元素排列和定位的一条看不见的“水流”，例如，水会自动铺满，div会铺满，木块（inline-block）会随着水位升高在左侧依次排列</p><h4 id="1-3-2"><a href="#1-3-2" class="headerlink" title="1.3.2"></a>1.3.2</h4><p>如果只用流的特性，那么css世界只会呈现W3C那样的文档网页， 所以我们在进行特殊布局时要破坏流</p><h4 id="1-3-3"><a href="#1-3-3" class="headerlink" title="1.3.3"></a>1.3.3</h4><p>流体布局，就是利用流的特性进行布局</p><p>###1.4<br>CSS世界的开启从IE8开启</p><p>###1.5<br>略</p><h3 id="1-6"><a href="#1-6" class="headerlink" title="1.6"></a>1.6</h3><p>CSS3的来到，让移动端崛起，视觉表现长足进步，但本书围绕CSS2，并不会太深入CSS3</p><h2 id="2需提前了解的术语和概念"><a href="#2需提前了解的术语和概念" class="headerlink" title="2需提前了解的术语和概念"></a>2需提前了解的术语和概念</h2><h3 id="2-1-需了解的术语"><a href="#2-1-需了解的术语" class="headerlink" title="2.1 需了解的术语"></a>2.1 需了解的术语</h3><pre><code>.vocabulary{    height: 99px;    color: transparent;}</code></pre><p>1.属性-&gt; height,color</p><p>2.值-&gt; 99px </p><p>3.关键字-&gt;transparent,常见的还有solid,inherit，所有属性都可以使用的称为泛关键字，如inherit</p><p>4.变量-&gt;内容较少，不详述，如CSS3中的currentColor，有兴趣可自行了解</p><p>5.长度单位-&gt; px</p><p>6.功能符号-&gt; 如rgba(),url(),jsla()</p><p>7.属性值，可以理解为多个值+功能符+关键字</p><p>8.声明-&gt;height: 99px;</p><p>9.声明快-&gt;{这里}</p><p>10.规则或规则集-&gt;上述代码块就是规则集</p><p>11.选择器-&gt;(类选择器.xxx，ID选择器#xxx，属性选择器[attribution]，伪类选择器:firstchild，伪元素选择器::before)<a href="http://www.alloyteam.com/2016/05/summary-of-pseudo-classes-and-pseudo-elements/" target="_blank" rel="noopener">伪类选择器和伪元素选择器的区别</a></p><p>12.关系选择器-&gt;空格、&gt;、~、</p><p>13.@规则</p><h3 id="2-2"><a href="#2-2" class="headerlink" title="2.2"></a>2.2</h3><p>当某个浏览器出现和其他浏览器不一样的行为或样式表现的时候，称为未定义行为</p><h2 id="3流、元素与基本尺寸"><a href="#3流、元素与基本尺寸" class="headerlink" title="3流、元素与基本尺寸"></a>3流、元素与基本尺寸</h2><h3 id="3-1-块级元素"><a href="#3-1-块级元素" class="headerlink" title="3.1 块级元素"></a>3.1 块级元素</h3><p>块级元素与display：block不是一个概念，如li默认的display:list-item,table默认的display:table，但是他们都是块级元素，因为它们符合块级元素的特征:水平流上只能单独显示，多个块级元素则要换行<br><br>这里请查看3-1-1demo了解块级元素在浮动元素中的应用</p><h4 id="3-1-1"><a href="#3-1-1" class="headerlink" title="3.1.1 "></a>3.1.1 <br></h4><p>盒子容器：值为inline-block的元素右外在的内联盒子和内在的块级盒子组成<br></p><h4 id="3-1-2"><a href="#3-1-2" class="headerlink" title="3.1.2 "></a>3.1.2 <br></h4><h4 id="3-1-3"><a href="#3-1-3" class="headerlink" title="3.1.3 "></a>3.1.3 <br></h4><p>width/height作用在内在盒子</p><h3 id="3-2"><a href="#3-2" class="headerlink" title="3.2"></a>3.2<br></h3><h4 id="3-2-1"><a href="#3-2-1" class="headerlink" title="3.2.1"></a>3.2.1<br></h4><p>width:auto有4种表现<br><br>（1）.充分利用空间，如div宽度默认100%父容器<br>（2）.inline-block的收缩到合适<br>（3）.收缩到最小，中文能断则断<br>（4）.父容器设置了宽度，但本身width为auto,当父元素设置了内容不换行后，本身内容会直接无视父级元素的限制 具体看3-2-2demo</p><p>外部尺寸就是width/heigth设置在外在盒子，不然的话大小始终是100%父容器，内部尺寸就是如果不设置大小的话大小由内容大小决定</p><h5 id="1-外部尺寸与流体特性"><a href="#1-外部尺寸与流体特性" class="headerlink" title="1.外部尺寸与流体特性"></a>1.外部尺寸与流体特性</h5><p>（1）正常流宽度<br>外部尺寸也就是大小由外在盒子决定，例如div，其它都是由内在盒子决定<br><br>本来a是width:auto，宽度会借助流的特性在父元素展示，但设置width:100%，意味着本身宽度与父容器一样，此时再加上padding就会马上大于父容器的宽度，从而突破破容器的限制，具体看3-2-3demo</p><p>(2) 格式化宽度<br><br>absolute fixed<br>在进行定位时，同时设置left、right属性时，宽度会自动调整</p><h5 id="2-内部尺寸与流体特性"><a href="#2-内部尺寸与流体特性" class="headerlink" title="2.内部尺寸与流体特性"></a>2.内部尺寸与流体特性<br></h5><p>（1）包裹性<br><br>内部尺寸的元素，就是内容多大，这个元素就多大，内容在超过父容器宽度时会自动换行，也造成内部尺寸的大小受父容器的限制，其实不然，如果内容设置不换行，内部尺寸的元素大小还是不受父容器限制<br><br>包裹性应用<br><br>文字少的时候文字居中显示，多的时候换行靠左。因为P设置了inline-block，所以最大宽度不会超过容器，而当文字会自动换行，所以会看起来靠左。具体看demo</p><p>（2）首选最小宽度<br><br>上面例子中，当容器宽度为0时，p的宽度为文字的宽度，这就是最小宽度<br>最小宽度应用3-2-6<br></p><p>（3）最大宽度<br>内部尺寸元素的最大宽度由不换行的内联元素决定</p><h4 id="3-2-2-width值作用的细节"><a href="#3-2-2-width值作用的细节" class="headerlink" title="3.2.2 width值作用的细节"></a>3.2.2 width值作用的细节</h4><p>width和height值设置在content box上的，而在content box外还有padding box,border box</p><h4 id="3-2-3-略"><a href="#3-2-3-略" class="headerlink" title="3.2.3 略"></a>3.2.3 略</h4><h4 id="3-2-4-改变width-height作用细节的box-sizing"><a href="#3-2-4-改变width-height作用细节的box-sizing" class="headerlink" title="3.2.4 改变width/height作用细节的box-sizing"></a>3.2.4 改变width/height作用细节的box-sizing</h4><h4 id="3-2-6-关于height-100"><a href="#3-2-6-关于height-100" class="headerlink" title="3.2.6 关于height:100%"></a>3.2.6 关于height:100%</h4><p>如果父容器没有设置高度，那么子元素设置height:100%是无效的，就算父容器塞满了东西并展现出高度，这时应该<br></p><pre><code>html,body{    height:100%}</code></pre><p>便可以解决,另一种方式是设置absolute，但此时100%是根据父元素的padding box计算的，而没有设置absolute的100%是根据父元素的content box计算，具体看demo</p><h3 id="3-3-minWidth-maxWidth"><a href="#3-3-minWidth-maxWidth" class="headerlink" title="3.3 minWidth/maxWidth"></a>3.3 minWidth/maxWidth</h3><h4 id="3-3-1-为流体而生的min-width-max-width"><a href="#3-3-1-为流体而生的min-width-max-width" class="headerlink" title="3.3.1 为流体而生的min-width/max-width"></a>3.3.1 为流体而生的min-width/max-width<br></h4><p>场景：在不知道图片大小是否超过用户屏幕时，使用maxwidth:100%,再设置height:auto，那么图片宽度最大为屏幕宽度，而高度会根据原有比例自动缩放。</p><h4 id="3-3-2-与众不同的初始值"><a href="#3-3-2-与众不同的初始值" class="headerlink" title="3.3.2 与众不同的初始值"></a>3.3.2 与众不同的初始值<br></h4><p>max-width/max-height的初始值为none，min-width/max-height的初始值为auto</p><h4 id="3-3-3-超越-important"><a href="#3-3-3-超越-important" class="headerlink" title="3.3.3 超越!important"></a>3.3.3 超越!important<br></h4><ol><li>max-width会覆盖width，就算width使用了!important</li><li>min-width的值比max-width的值还大时，这时候min-width会活下来，这就是超越最大</li></ol><h4 id="3-3-4-maxheight的应用"><a href="#3-3-4-maxheight的应用" class="headerlink" title="3.3.4 maxheight的应用"></a>3.3.4 maxheight的应用<br></h4><p>在过渡效果中<br></p><pre><code>.element{    height:0;    overflow:hidden;    transition:height .25s}.element.active{    height:auto}</code></pre><p>这样是没有过渡效果的，这时应该应用max-height</p><pre><code>.element{    max-height:0;    overflow:hidden;    transition:height .25s}.element.active{    max-height:666px;}</code></pre><h3 id="3-4-内联元素"><a href="#3-4-内联元素" class="headerlink" title="3.4 内联元素"></a>3.4 内联元素<br></h3><p>外在盒子表现为内联盒子的都是内联元素，如inline-block,inline<br></p><pre><code>&lt;p&gt;这是一行普通的文字，这里有个&lt;em&gt;em&lt;/em&gt;标签。&lt;/p&gt;</code></pre><p>上面一段Html,有下面几个概念：<br><br>(1) 内容区域-&gt;包裹文字的区域，就是你用鼠标把文字括起来的区域<br>(2) 内联盒子-&gt;每一个外在盒子表现为inline的元素<br>(3) 行框盒子-&gt;多个内联盒子组成行框盒子<br>(4) 包含盒子-&gt;上面一整段html<br></p><p>每个行框盒子前面都有一个占据一定高度的空白节点，称之为幽灵节点</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;1概述&quot;&gt;&lt;a href=&quot;#1概述&quot; class=&quot;headerlink&quot; title=&quot;1概述&quot;&gt;&lt;/a&gt;1概述&lt;br&gt;&lt;/h2&gt;&lt;h3 id=&quot;1-1&quot;&gt;&lt;a href=&quot;#1-1&quot; class=&quot;headerlink&quot; title=&quot;1.1&quot;&gt;&lt;/a&gt;1.
-      
-    
-    </summary>
-    
-      <category term="book" scheme="https://okbexx.github.io/categories/book/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>vue2.0常用收集</title>
-    <link href="https://okbexx.github.io/2018/01/26/vue2-0%E5%B8%B8%E7%94%A8%E6%94%B6%E9%9B%86/"/>
-    <id>https://okbexx.github.io/2018/01/26/vue2-0常用收集/</id>
-    <published>2018-01-26T14:51:17.000Z</published>
-    <updated>2018-04-09T00:44:23.839Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="class的使用"><a href="#class的使用" class="headerlink" title="class的使用"></a>class的使用</h4><pre><code>1. :class=&quot;{xxx:boolean,xxx:boolean}&quot;2. :class=&quot;{xxx}&quot;data(){    return {        xxx:{            className:boolean        }    }}3. :class&quot;[dataname,dataname]&quot;data(){    return {        dataname:&apos;classname&apos;    }}4. :class&quot;[]&quot;</code></pre><h4 id="store"><a href="#store" class="headerlink" title="store"></a>store</h4><h5 id="action使用"><a href="#action使用" class="headerlink" title="action使用"></a>action使用</h5><p>配置 new Vuex.store({<br>    actions: {<br>        xxx(context|{commit}){</p><pre><code>    }}</code></pre><p>})<br>使用1. this.$store.dispatch(‘xxx’)</p><pre><code>2. import { mapActions } from &apos;vuex&apos;...mapActions({    add: &apos;xxx&apos;  // this.add()相当于 this.$store.dispatch(&apos;xxx&apos;)})</code></pre><h4 id="router"><a href="#router" class="headerlink" title="router"></a>router</h4><h5 id="router配置"><a href="#router配置" class="headerlink" title="router配置"></a>router配置</h5><p>import vuerouter from ‘vuerouter’<br>vue.use(vuerouter)<br>const routes = [<br>  { path: ‘/foo’, component: Foo },<br>  { path: ‘/bar’, component: Bar }<br>]<br>const router = new VueRouter({<br>  routes // （缩写）相当于 routes: routes<br>})<br>在vue实例用添加router</p><h5 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h5><ol><li><router-link :to="..."></router-link></li><li>router.push(…)</li></ol><h4 id="添加插件"><a href="#添加插件" class="headerlink" title="添加插件"></a>添加插件</h4><h5 id="以插件方式引入router"><a href="#以插件方式引入router" class="headerlink" title="以插件方式引入router"></a>以插件方式引入router</h5><ol><li>index.js文件中定义常量install（方法） vue.install的时候会执行</li><li>初始化路由函数中vue.use(router)</li><li>export导出install和router,router是个对象</li><li>main.js中导入,vue.use使用，并在vue实例中引用router</li></ol><h4 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h4><h5 id="store-1"><a href="#store-1" class="headerlink" title="store"></a>store</h5><p>new Vuex.Store({<br>    state:{}<br>    mutations:{}<br>    actions:{}<br>})</p><h5 id="state"><a href="#state" class="headerlink" title="state"></a>state</h5><ol><li>this.$store.state.xxx</li><li>import {mapState} from ‘vuex’  mapState()就是省略了this.$store，并且返回一个对象</li><li>computed: {<br>  …mapState([‘isLogin’,’messageCount’])<br>}<br>isLogin就是直接用在dom中的变量</li></ol><h4 id="template"><a href="#template" class="headerlink" title="template"></a>template</h4><p>1.不会渲染，可抽取if for show以及事件放到template上面，减少div标签过长等情况，结构更加清晰<br>2.<template scope="xxx">配合<slot>使用，比如<slot :data="item"> 就是把item传入进template中</slot></slot></template></p><h4 id="mixins"><a href="#mixins" class="headerlink" title="mixins"></a>mixins</h4><p>如果想要在一个组件中直接使用已经写好的方法或者拿去数据，则可以使用Mixin也叫混入<br>import loadMore from ‘./load-more.vue’;    export default{}<br>mixins:[loadMore]</p><h4 id="定义过滤器"><a href="#定义过滤器" class="headerlink" title="定义过滤器"></a>定义过滤器</h4><ol><li>创建过滤器方法，导出xxx</li><li>创建插件install,vue.filter(‘xxx’,xxx)</li><li>main.js vue.use</li></ol><h4 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h4><p>‘params.memCode’: function (val) {<br>      console.log(val);<br>    }<br>监听对象中的属性</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;class的使用&quot;&gt;&lt;a href=&quot;#class的使用&quot; class=&quot;headerlink&quot; title=&quot;class的使用&quot;&gt;&lt;/a&gt;class的使用&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;1. :class=&amp;quot;{xxx:boolean,xxx:boole
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>前端清障记录 长期更新</title>
-    <link href="https://okbexx.github.io/2018/01/21/%E5%89%8D%E7%AB%AF%E6%B8%85%E9%9A%9C%E8%AE%B0%E5%BD%95-md/"/>
-    <id>https://okbexx.github.io/2018/01/21/前端清障记录-md/</id>
-    <published>2018-01-20T16:08:51.000Z</published>
-    <updated>2018-03-23T03:22:46.831Z</updated>
-    
-    <content type="html"><![CDATA[<p>这里记录这本人在前端学习过程中以及项目过程中所遇到比较复杂的问题（个人认为）的解决办法，如有更好办法请提出，在此感谢。</p><h4 id="margin合并冲突"><a href="#margin合并冲突" class="headerlink" title="margin合并冲突"></a>margin合并冲突</h4><p>####水平垂直</p><h5 id="内联元素水平居中方式"><a href="#内联元素水平居中方式" class="headerlink" title="内联元素水平居中方式"></a>内联元素水平居中方式</h5><ol><li>inline-block+父元素text-align center</li><li>父flex just-content center<h5 id="内联元素垂直居中方式"><a href="#内联元素垂直居中方式" class="headerlink" title="内联元素垂直居中方式"></a>内联元素垂直居中方式</h5></li><li>父flex align-item center<h5 id="块状元素水平居中方式"><a href="#块状元素水平居中方式" class="headerlink" title="块状元素水平居中方式"></a>块状元素水平居中方式</h5></li><li>父relative子absolute left50% transform transilateX-50%</li><li>父flex just-content center<h5 id="块状元素垂直居中方式"><a href="#块状元素垂直居中方式" class="headerlink" title="块状元素垂直居中方式"></a>块状元素垂直居中方式</h5></li><li>父display table-cell vertical-align center</li><li>父relative子absolute top50% transform transilatey-50%<h5 id="内联块状元素水平垂直居中"><a href="#内联块状元素水平垂直居中" class="headerlink" title="内联块状元素水平垂直居中"></a>内联块状元素水平垂直居中</h5></li><li>父relative子absolute left50% top50% transform tranplate(-50%,-50%)</li><li>父display table-cell vertical-align text-align 子inline-block</li><li>flex+justify-content+align-items</li></ol><h4 id="多列布局"><a href="#多列布局" class="headerlink" title="多列布局"></a>多列布局</h4><ol><li>左float width marginright 右overflow hidden</li><li></li></ol><h4 id="vux初始化报错"><a href="#vux初始化报错" class="headerlink" title="vux初始化报错"></a>vux初始化报错</h4><p>npm install –global –production windows-build-tools –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br>npm install node-gyp -g<br>若之前已安装node-gyp，请重装</p><h4 id="更新npm"><a href="#更新npm" class="headerlink" title="更新npm"></a>更新npm</h4><p>npm cache clean -f<br>npm install npm -g</p><h4 id="重装node-gyp"><a href="#重装node-gyp" class="headerlink" title="重装node-gyp"></a>重装node-gyp</h4><p>npm uninstall node-gyp -g<br>npm uninstall node-gyp<br>npm install node-gyp -g </p><h4 id="vue与cordova结合"><a href="#vue与cordova结合" class="headerlink" title="vue与cordova结合"></a>vue与cordova结合</h4><p>cordova在vue项目中，修改vue项目中的config文件夹index.js，使输出的内容到cordova项目中的www即可<br><br>操作步骤<br></p><ol><li>npm install(vue)</li><li>npm build(vue)</li><li>cordova build android(cordova)</li><li>as中运行</li></ol><h4 id="宽高"><a href="#宽高" class="headerlink" title="宽高"></a>宽高</h4><h5 id="DOM对象"><a href="#DOM对象" class="headerlink" title="DOM对象"></a>DOM对象</h5><p>clientwidth，clientheight（整体内容不包括border-滚动条）<br>offsetwidth, offsetheight（整体内容包括border）<br>clienttop，clientleft（边框的宽高）<br>offsetleft，offsettop（当前元素相对最近的具有定位的元素的距离）<br>scrollheight,scrollwidth（具有滚动条时的宽高）<br>scrolltop,scrollright（不包含border距离最上部的距离）<br>element.scrollHeight - element.scrollTop === element.clientHeight （用于判断是否到底）</p><h5 id="event对象"><a href="#event对象" class="headerlink" title="event对象"></a>event对象</h5><p>clientX和clientY（相对浏览器的距离，不包括滚动条）<br>screenX和screenY（相对屏幕的距离）<br>offsetX和offsetY（相对触发事件元素本身的距离）<br>pageX和pageY（相对页面的距离，包括滚动条）</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;这里记录这本人在前端学习过程中以及项目过程中所遇到比较复杂的问题（个人认为）的解决办法，如有更好办法请提出，在此感谢。&lt;/p&gt;
-&lt;h4 id=&quot;margin合并冲突&quot;&gt;&lt;a href=&quot;#margin合并冲突&quot; class=&quot;headerlink&quot; title=&quot;margi
-      
-    
-    </summary>
-    
-      <category term="front" scheme="https://okbexx.github.io/categories/front/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello</title>
-    <link href="https://okbexx.github.io/2018/01/02/hello-world/"/>
-    <id>https://okbexx.github.io/2018/01/02/hello-world/</id>
-    <published>2018-01-02T15:26:27.019Z</published>
-    <updated>2018-07-13T12:46:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
+      <category term="dev" scheme="https://okbexx.github.io/categories/dev/"/>
     
     
   </entry>
