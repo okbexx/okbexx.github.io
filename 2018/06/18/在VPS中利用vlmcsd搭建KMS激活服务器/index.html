@@ -38,13 +38,10 @@ ga('send', 'pageview');
 <meta property="og:site_name" content="真的会爱上你">
 <meta property="og:description" content="如今我们经常会使用 KMS 对我们的 Windows/Office 进行激活，不过市面上流通着不少良莠不齐的 KMS 激活软件。其实，我们完全可以利用手中的闲置 VPS 资源，利用 vlmcsd 搭建KMS 激活服务器。声明仅 VOL 版本的 Windows/Office 支持此 KMS 激活，请先确认自己安装的非 Retail 零售版。  搭建服务器首先需要一台 VPS，在上面搭建 vlmcs">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://i.loli.net/2018/06/18/5b268a17629be.png">
-<meta property="og:image" content="https://i.loli.net/2018/06/18/5b268a73549c1.png">
-<meta property="og:updated_time" content="2018-06-18T03:51:17.765Z">
+<meta property="og:updated_time" content="2018-06-18T04:38:59.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在VPS中利用vlmcsd搭建KMS激活服务器">
 <meta name="twitter:description" content="如今我们经常会使用 KMS 对我们的 Windows/Office 进行激活，不过市面上流通着不少良莠不齐的 KMS 激活软件。其实，我们完全可以利用手中的闲置 VPS 资源，利用 vlmcsd 搭建KMS 激活服务器。声明仅 VOL 版本的 Windows/Office 支持此 KMS 激活，请先确认自己安装的非 Retail 零售版。  搭建服务器首先需要一台 VPS，在上面搭建 vlmcs">
-<meta name="twitter:image" content="https://i.loli.net/2018/06/18/5b268a17629be.png">
     
         <link rel="alternate" type="application/atom+xml" title="真的会爱上你" href="/atom.xml">
     
@@ -165,7 +162,7 @@ ga('send', 'pageview');
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#搭建服务器"><span class="post-toc-number">1.</span> <span class="post-toc-text">搭建服务器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#本地测试"><span class="post-toc-number">2.</span> <span class="post-toc-text">本地测试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#激活"><span class="post-toc-number">3.</span> <span class="post-toc-text">激活</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题外话"><span class="post-toc-number">4.</span> <span class="post-toc-text">题外话</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#搭建服务器"><span class="post-toc-number">1.</span> <span class="post-toc-text">搭建服务器</span></a></li></ol>
         </nav>
     </aside>
     
@@ -208,64 +205,26 @@ ga('send', 'pageview');
 </li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod u+x vlmcsd-x64-musl-static</span><br><span class="line">./vlmcsd-x64-musl-static</span><br></pre></td></tr></table></figure>
-<p>​       至此，已经部署完毕</p>
+<p>​    至此，已经部署完毕</p>
 <ol>
 <li><p>如果你的 VPS 开启了 iptables ，记得开启 1688 端口的 tcp 传输：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT 5 -p tcp -m state --state NEW -m tcp --dport 1688 -j ACCEPT</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>开机自启</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/rc.local</span><br><span class="line">cd ~/binaries/Linux/intel/static/ &amp;&amp; ./vlmcsd-x64-musl-static</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>-I INPUT 5 -p tcp -m state --state NEW -m tcp --dport 1688 -j ACCEPT ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">5. 开机自启</span><br></pre></td></tr></table></figure>
+<p> vi /etc/rc.local<br> cd ~/binaries/Linux/intel/static/ &amp;&amp; ./vlmcsd-x64-musl-static</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">### 本地测试</span><br><span class="line">本地测试这里仅以本地为 Windows 环境为例</span><br><span class="line"></span><br><span class="line">1. 下载 https://github.com/Wind4/vlmcsd/releases ，并解压</span><br><span class="line"></span><br><span class="line">2. 进入\binaries\Windows\intel 目录，开启 PowerShell 或者其他终端</span><br><span class="line"></span><br><span class="line">3. 根据你本地的 Windows 为 x86 或 x64，输入如下命令：</span><br></pre></td></tr></table></figure>
+<p>./vlmcs-Windows-x86.exe -v -l 3 你的VPS的IP或者绑定的域名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">或</span><br></pre></td></tr></table></figure>
+<p>./vlmcs-Windows-x64.exe -v -l 3 你的VPS的IP或者绑定的域名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">​       其中 -l 3表示发送 Windows 10 Enterprise 2016 LTSB 的激活请求，具体版本对应列表可以通过 ./vlmcs-	Windows-x64.exe -x 查看</span><br><span class="line"></span><br><span class="line">​       如果显示如下，那么就搭建成功了</span><br><span class="line"></span><br><span class="line">![kms.png](https://i.loli.net/2018/06/18/5b268a17629be.png)</span><br><span class="line"></span><br><span class="line">### 激活</span><br><span class="line">* 激活 Windows</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    以管理员身份打开命令提示符，然执行下列命令：</span><br></pre></td></tr></table></figure>
+<p> cd /d “%SystemRoot%\system32”<br> slmgr /skms 你的VPS的IP或者绑定的域名<br> slmgr /ato<br> slmgr /xpr</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">![win.png](https://i.loli.net/2018/06/18/5b268a73549c1.png)</span><br><span class="line">* 激活 Office</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    以管理员身份打开命令提示符，进入软件安装目录，然后执行下列命令：</span><br><span class="line"></span><br><span class="line">    这里以 Office 2013 为例：</span><br><span class="line"></span><br><span class="line">    进入32位版本安装目录：``` cd /d &quot;%ProgramFiles(x86)%\Microsoft Office\Office15</span><br></pre></td></tr></table></figure>
+<p> 进入64位版本安装目录：<figure class="highlight plain"><figcaption><span>/d "%ProgramFiles%\Microsoft Office\Office15 ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后执行下列命令</span><br></pre></td></tr></table></figure></p>
+<p> cscript ospp.vbs /sethst:你的VPS的IP或者绑定的域名<br> cscript ospp.vbs /act<br> cscript ospp.vbs /dstatus</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">### 题外话</span><br><span class="line">​	Windows VOL 版本可以从 [http://msdn.itellyou.cn/](http://msdn.itellyou.cn/) 这里下载</span><br><span class="line"></span><br><span class="line">​	Office VOL 版本可以从 [https://landian.la/click/OfficeToolPlus.html](https://landian.la/click/OfficeToolPlus.html) 这里下载</span><br><span class="line"></span><br><span class="line">​	VOL 版本的镜像一般内置 GVLK key，用于 KMS 激活。如果你		   手动输过其他 key，那么这个内置的 key 就会被替换掉，这个时候如果你想用 KMS，那么就需要把 GVLK key 输回去。首先，</span><br><span class="line">到 [](https://technet.microsoft.com/en-us/library/jj612867.aspx) 获取你对应版本的 key</span><br><span class="line"></span><br><span class="line">​	如果不知道自己的系统是什么版本，可以运行以下命令查看系统版本：</span><br></pre></td></tr></table></figure>
+<p>wmic os get caption</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">得到对应key之后，使用管理员权限运行cmd执行安装key：</span><br></pre></td></tr></table></figure>
+<p>slmgr /ipk xxxxx-xxxxx-xxxxx-xxxxx<br>```<br>​    然后跟上面说的一样设置 KMS 服务器地址，激活。</p>
 </li>
 </ol>
-<h3 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h3><p>本地测试这里仅以本地为 Windows 环境为例</p>
-<ol>
-<li><p>下载 <a href="https://github.com/Wind4/vlmcsd/releases" target="_blank" rel="noopener">https://github.com/Wind4/vlmcsd/releases</a> ，并解压</p>
-</li>
-<li><p>进入\binaries\Windows\intel 目录，开启 PowerShell 或者其他终端</p>
-</li>
-<li><p>根据你本地的 Windows 为 x86 或 x64，输入如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./vlmcs-Windows-x86.exe -v -l 3 你的VPS的IP或者绑定的域名</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./vlmcs-Windows-x64.exe -v -l 3 你的VPS的IP或者绑定的域名</span><br></pre></td></tr></table></figure></p>
-<p>​       其中 -l 3表示发送 Windows 10 Enterprise 2016 LTSB 的激活请求，具体版本对应列表可以通过 ./vlmcs-    Windows-x64.exe -x 查看</p>
-<p>​       如果显示如下，那么就搭建成功了</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://i.loli.net/2018/06/18/5b268a17629be.png" alt="kms.png" title="">
-                </div>
-                <div class="image-caption">kms.png</div>
-            </figure>
-<h3 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h3><ul>
-<li>激活 Windows</li>
-</ul>
-<pre><code>以管理员身份打开命令提示符，然执行下列命令：
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /d &quot;%SystemRoot%\system32&quot;</span><br><span class="line">slmgr /skms 你的VPS的IP或者绑定的域名</span><br><span class="line">slmgr /ato</span><br><span class="line">slmgr /xpr</span><br></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://i.loli.net/2018/06/18/5b268a73549c1.png" alt="win.png" title="">
-                </div>
-                <div class="image-caption">win.png</div>
-            </figure>
-<ul>
-<li>激活 Office</li>
-</ul>
-<pre><code>以管理员身份打开命令提示符，进入软件安装目录，然后执行下列命令：
-
-这里以 Office 2013 为例：
-
-进入32位版本安装目录：<figure class="highlight plain"><figcaption><span>/d "%ProgramFiles(x86)%\Microsoft Office\Office15 ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">进入64位版本安装目录：``` cd /d &quot;%ProgramFiles%\Microsoft Office\Office15</span><br></pre></td></tr></table></figure>
-
-然后执行下列命令
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cscript ospp.vbs /sethst:你的VPS的IP或者绑定的域名</span><br><span class="line">cscript ospp.vbs /act</span><br><span class="line">cscript ospp.vbs /dstatus</span><br></pre></td></tr></table></figure>
-</code></pre><h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>​    Windows VOL 版本可以从 <a href="http://msdn.itellyou.cn/" target="_blank" rel="noopener">http://msdn.itellyou.cn/</a> 这里下载</p>
-<p>​    Office VOL 版本可以从 <a href="https://landian.la/click/OfficeToolPlus.html" target="_blank" rel="noopener">https://landian.la/click/OfficeToolPlus.html</a> 这里下载</p>
-<p>​    VOL 版本的镜像一般内置 GVLK key，用于 KMS 激活。如果你           手动输过其他 key，那么这个内置的 key 就会被替换掉，这个时候如果你想用 KMS，那么就需要把 GVLK key 输回去。首先，<br>到 <a href="https://technet.microsoft.com/en-us/library/jj612867.aspx" target="_blank" rel="noopener"></a> 获取你对应版本的 key</p>
-<p>​    如果不知道自己的系统是什么版本，可以运行以下命令查看系统版本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic os get caption</span><br></pre></td></tr></table></figure></p>
-<p>得到对应key之后，使用管理员权限运行cmd执行安装key：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slmgr /ipk xxxxx-xxxxx-xxxxx-xxxxx</span><br></pre></td></tr></table></figure></p>
-<p>​    然后跟上面说的一样设置 KMS 服务器地址，激活。</p>
 <p>KMS 方式激活的有效期只有180天，每隔一段时间系统会自动请求 KMS 服务器续期，只要你的服务器正常，续期就没问题<br>参考：</p>
 <p><a href="https://luodaoyi.com/kms.html" target="_blank" rel="noopener">https://luodaoyi.com/kms.html</a><br><a href="https://yorkchou.com/vlmcsd.html" target="_blank" rel="noopener">https://yorkchou.com/vlmcsd.html</a></p>
 
@@ -275,7 +234,7 @@ ga('send', 'pageview');
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-06-18T03:51:17.765Z" itemprop="dateUpdated">2018-06-18 11:51:17</time>
+    最后更新时间：<time datetime="2018-06-18T04:38:59.171Z" itemprop="dateUpdated">2018-06-18 12:38:59</time>
 </span><br>
 
 
