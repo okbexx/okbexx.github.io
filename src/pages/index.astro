@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('blog');
+const posts = entries.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+<BaseLayout title="Jarl — AI 超级个人的活标本">
+  <section style="padding: 60px 0 40px;">
+    <p style="color: var(--blue); font-size: 15px; font-weight: 500; margin-bottom: 16px; letter-spacing: 2px;">AI 超级个人 · 知识操作系统</p>
+    <h1 style="font-size: 48px; font-weight: 900; line-height: 1.2; margin-bottom: 20px;">
+      一个人 + AI 工具栈<br>
+      <span style="background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">= 团队级产出</span>
+    </h1>
+    <p style="font-size: 18px; color: var(--text-secondary); max-width: 560px; line-height: 1.7;">
+      我叫 Jarl。我在用 AI 搭建自己的知识操作系统，把一个人的知识变成可运转的系统。
+    </p>
+  </section>
+
+  <section style="padding: 40px 0;">
+    <h2 style="font-size: 14px; font-weight: 700; color: var(--text-secondary); letter-spacing: 3px; margin-bottom: 24px; text-transform: uppercase;">核心方法论</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 12px;">📌 对象模型</div>
+        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+          知识不是一堆笔记，而是 7 种对象：来源、项目、概念、实体、决策、约束、输出。每种对象有不同的命运。
+        </p>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--purple); margin-bottom: 12px;">🔄 生命周期</div>
+        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+          每条知识从 raw 到 archived，有清晰的晋升路径。不是所有内容都值得走完全程。
+        </p>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--orange); margin-bottom: 12px;">⚖️ 最短路径</div>
+        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+          满足质量要求的最短路径。低风险直接落地，高风险才升级流程。不追求完美，追求够用。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 40px 0;">
+    <h2 style="font-size: 14px; font-weight: 700; color: var(--text-secondary); letter-spacing: 3px; margin-bottom: 24px; text-transform: uppercase;">最新文章</h2>
+    <ul class="blog-list">
+      {posts.slice(0, 5).map((entry) => (
+        <li>
+          <a href={`/blog/${entry.id}`} class="blog-item">
+            <div class="blog-item-title">{entry.data.title}</div>
+            <div class="blog-item-desc">{entry.data.description}</div>
+            <div class="blog-item-meta">
+              <span>{entry.data.date}</span>
+              {entry.data.tags?.map((tag: string) => (
+                <span class="blog-item-tag">{tag}</span>
+              ))}
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <a href="/blog" style="display: inline-block; margin-top: 24px; font-size: 15px; font-weight: 500;">
+      查看全部文章 →
+    </a>
+  </section>
+</BaseLayout>

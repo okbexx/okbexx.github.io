@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+const entries = await getCollection('blog');
+const sorted = entries.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+<BaseLayout title="博客">
+  <section style="padding: 40px 0;">
+    <h1 style="font-size: 36px; font-weight: 900; margin-bottom: 12px;">博客</h1>
+    <p style="color: var(--text-secondary); font-size: 16px; margin-bottom: 40px;">
+      知识管理 · AI 协作 · 超级个体的实践
+    </p>
+    <ul class="blog-list">
+      {sorted.map((entry) => (
+        <li>
+          <a href={`/blog/${entry.id}`} class="blog-item">
+            <div class="blog-item-title">{entry.data.title}</div>
+            <div class="blog-item-desc">{entry.data.description}</div>
+            <div class="blog-item-meta">
+              <span>{entry.data.date}</span>
+              {entry.data.tags?.map((tag: string) => (
+                <span class="blog-item-tag">{tag}</span>
+              ))}
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
