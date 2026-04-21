@@ -198,6 +198,38 @@ const { title, description = '蒸馏塔 Distill — 知识不是存进去的，�
       border-radius: 12px;
       margin: 20px 0;
     }
+    .prose table {
+      width: 100%;
+      margin: 24px 0;
+      border-collapse: collapse;
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .prose thead {
+      background: rgba(56,189,248,0.08);
+    }
+    .prose th,
+    .prose td {
+      padding: 14px 18px;
+      text-align: left;
+      font-size: 15px;
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+    }
+    .prose th {
+      color: var(--text);
+      font-weight: 700;
+    }
+    .prose td {
+      color: var(--text-secondary);
+    }
+    .prose tbody tr:last-child td {
+      border-bottom: none;
+    }
 
     /* blog list */
     .blog-list { list-style: none; }
