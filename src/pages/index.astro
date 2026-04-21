@@ -5,42 +5,60 @@ import { getCollection } from 'astro:content';
 const entries = await getCollection('blog');
 const posts = entries.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
-<BaseLayout title="Distill — 知识蒸馏系统">
+<BaseLayout title="Jarl — 用 AI 做超级个体">
+  <!-- Hero -->
   <section style="padding: 60px 0 40px;">
-    <p style="color: var(--blue); font-size: 15px; font-weight: 500; margin-bottom: 16px; letter-spacing: 2px;">AI 超级个人 · 知识蒸馏系统</p>
+    <p style="color: var(--blue); font-size: 15px; font-weight: 500; margin-bottom: 16px; letter-spacing: 2px;">AI 超级个人 · 工程师 · 内容创作者</p>
     <h1 style="font-size: 48px; font-weight: 900; line-height: 1.2; margin-bottom: 20px;">
-      知识不是存进去的<br>
-      <span style="background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">是蒸馏出来的</span>
+      一个人 + AI<br>
+      <span style="background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">跑出团队级产出</span>
     </h1>
     <p style="font-size: 18px; color: var(--text-secondary); max-width: 560px; line-height: 1.7;">
-      我叫 Jarl。我用 AI 搭建了一个知识蒸馏塔——把碎片信息层层提炼，变成可复用的知识。
+      我叫 Jarl。我在探索一个人如何通过 AI 工具栈和系统设计，获得接近一个团队的产出能力。
     </p>
   </section>
 
+  <!-- Projects -->
   <section style="padding: 40px 0;">
-    <h2 style="font-size: 14px; font-weight: 700; color: var(--text-secondary); letter-spacing: 3px; margin-bottom: 24px; text-transform: uppercase;">蒸馏塔工作原理</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
-      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px;">
-        <div style="font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 12px;">🧪 原料层 · 对象模型</div>
+    <h2 style="font-size: 14px; font-weight: 700; color: var(--text-secondary); letter-spacing: 3px; margin-bottom: 24px; text-transform: uppercase;">我在做什么</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+
+      <a href="/distill" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.2s; text-decoration: none;">
+        <div style="font-size: 28px; margin-bottom: 12px;">🧪</div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px;">Distill · 知识蒸馏塔</div>
         <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
-          知识不是一堆笔记，而是 7 种对象：来源、项目、概念、实体、决策、约束、输出。不同原料进不同的格子。
+          一套真实的知识蒸馏系统。碎片信息从塔底进入，经过对象分类、层层晋升、淘汰废液，变成可复用的知识精华。不是方法论，是我每天都在跑的操作系统。
         </p>
-      </div>
-      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px;">
-        <div style="font-size: 14px; font-weight: 700; color: var(--purple); margin-bottom: 12px;">🔥 蒸馏层 · 生命周期</div>
+      </a>
+
+      <a href="/blog" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.2s; text-decoration: none;">
+        <div style="font-size: 28px; margin-bottom: 12px;">🤖</div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px;">AI Agent 工作流</div>
         <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
-          每条知识从 raw 到 archived，层层晋升。不是所有原料都要蒸馏到最纯——看你需要什么纯度。
+          多 Agent 并行协作的实践。Codex 写代码、Hermes 管知识、TrendRadar 采信息——一个人指挥一支 AI 团队，关键是分工边界怎么定。
         </p>
-      </div>
-      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px;">
-        <div style="font-size: 14px; font-weight: 700; color: var(--orange); margin-bottom: 12px;">⚗️ 冷凝层 · 最短路径</div>
+      </a>
+
+      <a href="/blog" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.2s; text-decoration: none;">
+        <div style="font-size: 28px; margin-bottom: 12px;">⚡</div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px;">超级个体实践</div>
         <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
-          满足质量要求的最短路径。低风险直接出料，高风险才升级蒸馏。不追求完美，追求够用。
+          超级个体的本质不是一个人干十个人的活，而是通过系统设计获得杠杆。这是我的真实工作流、踩过的坑、和提炼出的方法。
         </p>
-      </div>
+      </a>
+
+      <a href="/blog" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.2s; text-decoration: none;">
+        <div style="font-size: 28px; margin-bottom: 12px;">✍️</div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px;">内容创作</div>
+        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+          把实践过程变成可传播的内容。小红书图文 + 博客长文，不教方法论，只展示真实工作流。AI 超级个人的活标本。
+        </p>
+      </a>
+
     </div>
   </section>
 
+  <!-- Blog -->
   <section style="padding: 40px 0;">
     <h2 style="font-size: 14px; font-weight: 700; color: var(--text-secondary); letter-spacing: 3px; margin-bottom: 24px; text-transform: uppercase;">最新文章</h2>
     <ul class="blog-list">
