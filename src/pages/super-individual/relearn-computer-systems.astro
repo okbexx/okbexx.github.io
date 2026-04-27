@@ -1,0 +1,393 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="用 AI 协作重学计算机系统"
+  description="Build Your Own X · 每日学习实验。把复杂系统拆成一天一个主题，借助 AI 协作持续产出 README 与学习卡。"
+>
+  <section class="hero-section">
+    <div class="hero-badge">超级个体实践 · 持续更新专题</div>
+    <h1>用 AI 协作重学计算机系统</h1>
+    <p class="hero-subtitle">Build Your Own X · 每日学习实验</p>
+    <p class="hero-description">
+      我把复杂系统拆成“一天一个主题”的长期学习项目：每天选一个系统主题，借助 AI 协作生成
+      README、学习卡和可公开展示的学习成果。目标不是快速刷项目，而是把系统理解、表达能力和个人工作流一起练出来。
+    </p>
+    <div class="hero-actions">
+      <a class="primary-button" href="https://github.com/okbexx/build-your-own-x-learning" target="_blank" rel="noreferrer">查看 GitHub 仓库</a>
+      <a class="secondary-button" href="#featured-preview">看精选预览</a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-label">WHY</div>
+    <h2>为什么做这个实验</h2>
+    <div class="copy-grid">
+      <div class="copy-card">
+        <h3>把抽象知识变成可执行理解</h3>
+        <p>
+          平时学操作系统、网络、数据库，容易停留在“知道名词”的阶段。只有逼自己去解释一个系统怎么工作、为什么这么设计、边界在哪，理解才会真正变深。
+        </p>
+      </div>
+      <div class="copy-card">
+        <h3>验证 AI 协作是否能放大学习效率</h3>
+        <p>
+          这不是单纯让 AI 帮我写总结，而是测试：当 AI 负责组织、草拟、制图和整理时，我能不能把更多精力放在判断、校正和提炼上。
+        </p>
+      </div>
+      <div class="copy-card">
+        <h3>沉淀一套可持续的个人学习流水线</h3>
+        <p>
+          每天一个主题、统一产物结构、持续更新进度。这样做出来的不是零散笔记，而是一套能长期积累的公开作品专题。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-label">METHOD</div>
+    <h2>我的方法</h2>
+    <div class="method-grid">
+      <div class="method-step">
+        <span class="step-index">01</span>
+        <h3>选一个系统主题</h3>
+        <p>从 build-your-own-x 中挑一个可独立讲清楚的主题，例如 Web Server、Web Browser、Network Stack。</p>
+      </div>
+      <div class="method-step">
+        <span class="step-index">02</span>
+        <h3>让 AI 辅助搭骨架</h3>
+        <p>让 AI 帮我整理资料、组织结构、起草 README 和学习卡内容，但不把判断权交出去。</p>
+      </div>
+      <div class="method-step">
+        <span class="step-index">03</span>
+        <h3>按原理重新校正</h3>
+        <p>重点检查“这是什么、怎么用、核心原理、适用场景与边界”是否讲透，避免只停留在工具介绍层。</p>
+      </div>
+      <div class="method-step">
+        <span class="step-index">04</span>
+        <h3>产出公开可展示成果</h3>
+        <p>每个主题至少沉淀 README 和一张学习卡，让这次学习能被复用、被展示、也能回头复盘。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="featured-preview" class="content-section">
+    <div class="section-label">FEATURED</div>
+    <h2>精选预览</h2>
+    <div class="featured-panel">
+      <div class="featured-copy">
+        <div class="eyebrow">Day 09 · Network Stack</div>
+        <h3>从分层到 TCP 可靠性，把网络通信重新拆开看清楚</h3>
+        <p>
+          这张卡系统梳理了网络栈的核心概念：分层模型、封装与解封装、MAC / IP / 端口、路由与转发，以及 TCP 的可靠性机制。
+        </p>
+        <ul>
+          <li>适合作为专题页中的高信息密度代表作</li>
+          <li>统一暗色科技风，和站点视觉一致</li>
+          <li>点击可查看原始仓库中的完整学习产物</li>
+        </ul>
+        <a class="inline-link" href="https://github.com/okbexx/build-your-own-x-learning/tree/main/day-09-network-stack" target="_blank" rel="noreferrer">查看 Day 09 目录 →</a>
+      </div>
+      <div class="featured-image-shell">
+        <img src="/build-your-own-x/day-09-network-stack-learning-card.png" alt="Day 09 Network Stack 学习卡预览" />
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-label">PROGRESS</div>
+    <h2>当前进度</h2>
+    <div class="progress-grid">
+      <a class="progress-card" href="https://github.com/okbexx/build-your-own-x-learning/tree/main/day-07-web-server" target="_blank" rel="noreferrer">
+        <div class="progress-day">Day 07</div>
+        <h3>Web Server</h3>
+        <p>从请求处理、路由、连接模型出发，理解一个服务端最小可用闭环。</p>
+        <span>已完成</span>
+      </a>
+      <a class="progress-card" href="https://github.com/okbexx/build-your-own-x-learning/tree/main/day-08-web-browser" target="_blank" rel="noreferrer">
+        <div class="progress-day">Day 08</div>
+        <h3>Web Browser</h3>
+        <p>把浏览器拆成解析、渲染、资源加载几个核心环节重新理解。</p>
+        <span>已完成</span>
+      </a>
+      <a class="progress-card" href="https://github.com/okbexx/build-your-own-x-learning/tree/main/day-09-network-stack" target="_blank" rel="noreferrer">
+        <div class="progress-day">Day 09</div>
+        <h3>Network Stack</h3>
+        <p>从分层模型到 TCP 可靠性，这张卡系统梳理了网络栈的核心概念与数据传输路径。</p>
+        <span>已完成</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="content-section repo-section">
+    <div class="section-label">REPO</div>
+    <h2>完整项目入口</h2>
+    <p>
+      如果你想看完整学习轨迹、每日 README、原始学习卡和后续更新，可以直接进入 GitHub 仓库。这个专题页负责展示方法与代表作，仓库负责承载持续更新的完整记录。
+    </p>
+    <a class="primary-button" href="https://github.com/okbexx/build-your-own-x-learning" target="_blank" rel="noreferrer">打开 build-your-own-x-learning</a>
+  </section>
+
+  <style>
+    .hero-section {
+      padding: 56px 0 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .hero-badge,
+    .section-label,
+    .eyebrow {
+      width: fit-content;
+      padding: 6px 12px;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.08);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .hero-section h1 {
+      font-size: 52px;
+      line-height: 1.12;
+      letter-spacing: -1.4px;
+      max-width: 760px;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: var(--purple);
+      font-weight: 700;
+    }
+
+    .hero-description,
+    .repo-section p {
+      max-width: 760px;
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .primary-button,
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .primary-button {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(167, 139, 250, 0.18));
+      border: 1px solid rgba(56, 189, 248, 0.34);
+      color: var(--text);
+    }
+
+    .secondary-button {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .primary-button:hover,
+    .secondary-button:hover,
+    .progress-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .content-section {
+      padding: 36px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .content-section h2 {
+      font-size: 30px;
+      line-height: 1.25;
+      letter-spacing: -0.6px;
+    }
+
+    .copy-grid,
+    .method-grid,
+    .progress-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .copy-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .method-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .progress-grid {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .copy-card,
+    .method-step,
+    .progress-card,
+    .featured-panel,
+    .repo-section {
+      background: linear-gradient(180deg, rgba(22, 27, 34, 0.98), rgba(13, 17, 23, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+    }
+
+    .copy-card,
+    .method-step {
+      padding: 24px;
+    }
+
+    .copy-card h3,
+    .method-step h3,
+    .progress-card h3,
+    .featured-copy h3 {
+      font-size: 20px;
+      line-height: 1.4;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .copy-card p,
+    .method-step p,
+    .progress-card p,
+    .featured-copy p,
+    .featured-copy li,
+    .repo-section p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .step-index,
+    .progress-day {
+      display: inline-flex;
+      margin-bottom: 14px;
+      color: var(--orange);
+      font-size: 13px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.8px;
+    }
+
+    .featured-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 24px;
+      padding: 24px;
+      align-items: start;
+    }
+
+    .featured-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .featured-copy ul {
+      padding-left: 20px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .inline-link {
+      font-size: 15px;
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    .featured-image-shell {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(56, 189, 248, 0.16);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .featured-image-shell img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .progress-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 22px;
+      text-decoration: none;
+    }
+
+    .progress-card span {
+      width: fit-content;
+      margin-top: auto;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(52, 211, 153, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.24);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .repo-section {
+      padding: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-section h1 {
+        font-size: 40px;
+      }
+
+      .featured-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-section {
+        padding-top: 36px;
+      }
+
+      .hero-section h1 {
+        font-size: 32px;
+      }
+
+      .hero-subtitle {
+        font-size: 18px;
+      }
+
+      .content-section h2 {
+        font-size: 26px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .primary-button,
+      .secondary-button {
+        width: 100%;
+      }
+    }
+  </style>
+</BaseLayout>
