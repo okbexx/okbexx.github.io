@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>真正决定 AI 协作上限的，不是多 Agent，而是 harness — Jarl</title><meta name="description" content="社区已经开始往 harness、SDD、multi-agent automation 走了。我越来越觉得，AI 协作真正的关键不是堆更多 Agent，而是给 Agent 设计一层可控的工作系统：目标、边界、上下文、验证和沉淀。"><meta name="author" content="Jarl"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta property="article:author" content="Jarl"><style>@import"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap";:root{--bg: #0D1117;--bg-card: #161B22;--bg-card-hover: #1C2128;--border: rgba(139,148,158,.12);--text: #E6EDF3;--text-secondary: #8B949E;--blue: #38BDF8;--orange: #F97316;--purple: #A78BFA;--green: #34D399;--font-sans: "Noto Sans SC", -apple-system, sans-serif;--font-mono: "JetBrains Mono", monospace}*{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}a{color:var(--blue);text-decoration:none;transition:color .2s}a:hover{color:var(--purple)}body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(56,189,248,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}.nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;max-width:900px;margin:0 auto;padding:32px 24px}.nav-brand{font-size:20px;font-weight:900;color:var(--text);letter-spacing:-.5px}.nav-brand span{color:var(--blue)}.nav-links{display:flex;gap:32px;list-style:none}.nav-links a{font-size:15px;font-weight:500;color:var(--text-secondary);transition:color .2s}.nav-links a:hover{color:var(--text)}.main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 24px 80px}.footer{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:40px 24px;border-top:1px solid var(--border);text-align:center;color:var(--text-secondary);font-size:14px}.footer a{color:var(--text-secondary)}.footer a:hover{color:var(--blue)}.prose{max-width:700px;margin:0 auto}.prose h1{font-size:36px;font-weight:900;line-height:1.3;margin:60px 0 20px}.prose h2{font-size:26px;font-weight:700;line-height:1.4;margin:48px 0 16px;color:var(--blue)}.prose h3{font-size:20px;font-weight:700;margin:36px 0 12px}.prose p{margin:16px 0;font-size:17px;line-height:1.8;color:var(--text)}.prose ul,.prose ol{margin:16px 0;padding-left:24px}.prose li{margin:8px 0;font-size:17px;line-height:1.7}.prose strong{color:var(--orange);font-weight:700}.prose code{font-family:var(--font-mono);background:#38bdf814;padding:2px 8px;border-radius:4px;font-size:15px;color:var(--blue)}.prose pre{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin:20px 0;overflow-x:auto}.prose pre code{background:none;padding:0;color:var(--text)}.prose blockquote{border-left:4px solid var(--purple);background:#a78bfa0f;padding:16px 24px;margin:20px 0;border-radius:0 8px 8px 0}.prose blockquote p{color:var(--text-secondary)}.prose hr{border:none;border-top:1px solid var(--border);margin:40px 0}.prose img{max-width:100%;border-radius:12px;margin:20px 0}.prose table{width:100%;margin:24px 0;border-collapse:collapse;table-layout:fixed;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}.prose thead{background:#38bdf814}.prose th,.prose td{padding:14px 18px;text-align:left;font-size:15px;line-height:1.6;border-bottom:1px solid var(--border)}.prose th{color:var(--text);font-weight:700}.prose td{color:var(--text-secondary)}.prose tbody tr:last-child td{border-bottom:none}.blog-list{list-style:none}.blog-item{display:block;padding:28px 0;border-bottom:1px solid var(--border)}.blog-item:last-child{border-bottom:none}.blog-item-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px;transition:color .2s}a:hover .blog-item-title{color:var(--blue)}.blog-item-desc{font-size:15px;color:var(--text-secondary);line-height:1.6;margin-bottom:8px}.blog-item-meta{font-size:13px;color:var(--text-secondary);display:flex;gap:16px}.blog-item-tag{background:#38bdf814;color:var(--blue);padding:2px 10px;border-radius:100px;font-size:12px;font-weight:500}.article-meta{display:flex;gap:16px;align-items:center;color:var(--text-secondary);font-size:14px;margin-bottom:40px}
+</style></head> <body> <nav class="nav"> <a href="/" class="nav-brand">Jarl<span>.</span>dev</a> <ul class="nav-links"> <li><a href="/">首页</a></li> <li><a href="/blog">博客</a></li> <li><a href="/about">关于</a></li> </ul> </nav> <main class="main">  <article class="prose" style="padding: 40px 0;"> <h1 style="margin-top:0;">真正决定 AI 协作上限的，不是多 Agent，而是 harness</h1> <div class="article-meta"> <span>2026-04-24</span> <span class="blog-item-tag">AI协作</span><span class="blog-item-tag">Harness</span><span class="blog-item-tag">Agent工作流</span><span class="blog-item-tag">自动化</span><span class="blog-item-tag">系统设计</span> </div> <h1 id="真正决定-ai-协作上限的不是多-agent而是-harness">真正决定 AI 协作上限的，不是多 Agent，而是 harness</h1>
+<p>这两年，AI 协作讨论的重心已经变了。</p>
+<p>以前大家更关心的是：</p>
+<ul>
+<li>模型够不够强</li>
+<li>Agent 能不能自己调用工具</li>
+<li>能不能一口气做完整任务</li>
+<li>能不能替人多干一点活</li>
+</ul>
+<p>但现在社区明显在往更深一层走。<br>
+大家讨论的不再只是“怎么让一个 Agent 动起来”，而是：</p>
+<ul>
+<li>harness</li>
+<li>SDD</li>
+<li>multi-agent</li>
+<li>自动化工作流</li>
+<li>spec / plan / review</li>
+<li>compound engineering</li>
+</ul>
+<p>这说明一件事：<br>
+<strong>问题已经不是 Agent 会不会干活，而是它怎么稳定地工作。</strong></p>
+<p>我自己这段时间越用越觉得，AI 协作真正的分水岭，不是你有几个 Agent，也不是你把链路堆得多自动化，而是你有没有一层 <strong>harness</strong>。</p>
+<blockquote>
+<p>Agent 是能力单元。<br>
+harness 才是工作系统。</p>
+</blockquote>
+<h2 id="什么是-harness">什么是 harness</h2>
+<p>我不想用概念词堆这个定义。</p>
+<p>如果说得更实一点，<strong>harness 就是模型之外那一整层让 Agent 变得可工作的东西</strong>：</p>
+<ul>
+<li>任务怎么进入系统</li>
+<li>目标怎么定义</li>
+<li>边界怎么约束</li>
+<li>上下文怎么提供</li>
+<li>工具怎么调用</li>
+<li>过程怎么观察</li>
+<li>结果怎么验证</li>
+<li>经验怎么沉淀</li>
+</ul>
+<p>也可以说得更直接一点：</p>
+<blockquote>
+<p>harness 就是给 Agent 套上的工作壳。<br>
+没有这层壳，它会动；有了这层壳，它才开始能工作。</p>
+</blockquote>
+<p>很多人会把注意力放在模型本身：哪个模型更强，哪个 Agent 更聪明。<br>
+但真实工作里，你很快会发现，<strong>模型能力只是底盘，能不能进入生产流，主要看外面那层壳。</strong></p>
+<h2 id="为什么多-agent-不是答案">为什么多 Agent 不是答案</h2>
+<p>“一个 Agent 不够，那我上多个 Agent。”<br>
+这条路很自然，所以社区现在会有越来越多 multi-agent 的东西。</p>
+<p>问题是，<strong>多 Agent 不会自动变强，只会自动放大系统本身的优点和缺点。</strong></p>
+<p>如果这套系统里已经有这些问题：</p>
+<ul>
+<li>目标没说清楚</li>
+<li>边界没卡住</li>
+<li>上下文不完整</li>
+<li>验证标准模糊</li>
+<li>结果没人兜底</li>
+<li>经验不会沉淀</li>
+</ul>
+<p>那你加一个 Agent，是一个 Agent 跑偏；<br>
+你加三个 Agent，就是三个 Agent 一起把偏差放大。</p>
+<p>所以我现在越来越不相信一种很表层的理解：</p>
+<blockquote>
+<p>“多 Agent = AI 团队 = 更强产出”</p>
+</blockquote>
+<p>真实情况更像是：</p>
+<blockquote>
+<p>没有 harness 的多 Agent，不是团队，是噪声放大器。</p>
+</blockquote>
+<h2 id="我为什么开始重视-harness">我为什么开始重视 harness</h2>
+<p>我不是因为看了几个前沿词，才开始讲 harness。<br>
+恰恰相反，是因为我在真实工作里不断撞墙，才越来越觉得这个东西重要。</p>
+<p>我前面也接触过一些更重的工作流。<br>
+spec、plan、分步执行、review、自动化链路，这些我都不是没见过。</p>
+<p>这些方法不是没价值。<br>
+问题是，真实工作里我越来越在意的不是“这个流程看起来有多完整”，而是下面这些更硬的问题：</p>
+<ul>
+<li>它能不能减少返工？</li>
+<li>它能不能降低跑偏概率？</li>
+<li>它能不能让我中途插手？</li>
+<li>它能不能让问题更早暴露？</li>
+<li>它能不能把这次经验变成下次的起点？</li>
+</ul>
+<p>因为真实工作里最贵的，从来不是多花几分钟讨论。<br>
+真正贵的是：</p>
+<blockquote>
+<p>系统看起来已经跑起来了，但其实一路在偏。</p>
+</blockquote>
+<p>spec 写得很完整，也可能从第 3 步开始偏。<br>
+plan 做得很漂亮，也不代表上下文真的对齐了。<br>
+多 Agent 并行跑起来很热闹，也不代表最终返工更少。</p>
+<p>我后来越来越接受一个很朴素的判断：</p>
+<blockquote>
+<p>AI 协作里最值钱的，不是“自动化得很满”，<br>
+而是“偏得更少，错得更早，收得回来”。</p>
+</blockquote>
+<p>而这件事，本质上就是 harness 在解决。</p>
+<h2 id="agent-只是能力harness-才决定上限">Agent 只是能力，harness 才决定上限</h2>
+<p>单看 Agent，你获得的是一种能力：</p>
+<ul>
+<li>能写</li>
+<li>能查</li>
+<li>能总结</li>
+<li>能调用工具</li>
+<li>能执行一段任务</li>
+</ul>
+<p>但真实工作不是一串能力拼图。<br>
+真实工作是一个会被打断、会被修正、会因为上下文缺失而跑偏、还要持续推进的系统。</p>
+<p>也就是说，<strong>能力本身不稀缺，协作结构才稀缺。</strong></p>
+<p>今天很多人对 AI 协作的关注点，还停留在：</p>
+<ul>
+<li>怎么让 Agent 更聪明</li>
+<li>怎么让它一次做更多</li>
+<li>怎么让它更自动</li>
+</ul>
+<p>但对我来说，真正决定一套系统上限的问题已经变成：</p>
+<ul>
+<li>它是不是知道自己在解决什么问题？</li>
+<li>它是不是知道哪些东西不能碰？</li>
+<li>它有没有足够但不过载的上下文？</li>
+<li>它做完之后，我能不能快速验证？</li>
+<li>它踩过的坑，下一次会不会白踩？</li>
+</ul>
+<p>这些问题都不是 Agent 本身回答的。<br>
+这些问题是 harness 回答的。</p>
+<h2 id="我现在怎么理解够用的-harness">我现在怎么理解“够用的 harness”</h2>
+<p>我现在反而不太想把 harness 神秘化。</p>
+<p>在我看来，一个 <strong>够用的 harness</strong>，至少要解决 5 件事：</p>
+<h3 id="1-目标明确">1. 目标明确</h3>
+<p>这次任务到底要完成什么？</p>
+<p>不是“优化一下”“改一改”这种模糊表述，<br>
+而是明确终点：什么算完成，什么不算完成。</p>
+<h3 id="2-边界明确">2. 边界明确</h3>
+<p>什么要做，什么不要做，什么留给后面？</p>
+<p>很多 AI 协作跑偏，不是因为模型能力不够，而是因为范围没有被说清楚。<br>
+边界不清，系统就会默认扩张。默认扩张，最后就一定返工。</p>
+<h3 id="3-上下文受控">3. 上下文受控</h3>
+<p>不是上下文越多越好，而是要刚好够。</p>
+<p>给太少，它会瞎猜。<br>
+给太多，它会混乱。<br>
+好的 harness 不是把所有资料都塞进去，而是<strong>只给当前任务真正需要的那部分信息</strong>。</p>
+<h3 id="4-验证闭环存在">4. 验证闭环存在</h3>
+<p>它做完之后，怎么知道它做对了？</p>
+<p>这是我越来越重视的一点。<br>
+很多自动化工作流只解决了“怎么生成”，没有真正解决“怎么验证”。<br>
+结果就是：看起来产出很多，实际上不敢放心接。</p>
+<h3 id="5-结果能沉淀">5. 结果能沉淀</h3>
+<p>这次踩的坑，下次还会不会再踩？</p>
+<p>如果每次协作都只是一次性对话，那再高级也只是临时劳务。<br>
+真正有复利的系统，一定能把这次的判断、边界、约束、经验，变成下一次协作的起点。</p>
+<h2 id="为什么我不迷信更重的一层">为什么我不迷信更重的一层</h2>
+<p>说到这里，很多人会自然地往下推一步：</p>
+<p>既然 harness 这么重要，是不是越重越好？<br>
+越完整越好？<br>
+越自动越好？</p>
+<p>我的答案是：<strong>不一定。</strong></p>
+<p>我现在不再把 SDD 当主开发方法，不是因为这些方向没价值。<br>
+恰恰相反，我越来越承认它们背后的问题意识是对的：<br>
+AI 协作确实需要结构、需要约束、需要编排、需要复盘。</p>
+<p>但在我当前的真实工作里，我更在意的是另一件事：</p>
+<blockquote>
+<p>这套东西能不能稳定地降低返工，而不是只是看起来更高级。</p>
+</blockquote>
+<p>如果一个更重的流程带来的是：</p>
+<ul>
+<li>更高的 token 成本</li>
+<li>更长的链路</li>
+<li>更高的偏航概率</li>
+<li>更复杂的修正成本</li>
+</ul>
+<p>那它就未必比一个更轻但更可控的 harness 更好。</p>
+<p>所以我现在越来越接受一种更现实的判断：</p>
+<ul>
+<li>先讨论清楚，本身就是 harness</li>
+<li>明确边界，本身就是 harness</li>
+<li>控制上下文，本身就是 harness</li>
+<li>建立验证，本身就是 harness</li>
+<li>让经验沉淀下来，本身就是 harness</li>
+</ul>
+<p>不一定非得上到一个特别重、特别全自动、特别“社区前沿”的形态，才叫 harness。<br>
+对真实工作来说，<strong>可控比炫酷更重要，连续性比完整口号更重要。</strong></p>
+<h2 id="我的结论">我的结论</h2>
+<p>社区往 harness、multi-agent、自动化工作流走，我觉得方向是对的。<br>
+因为大家终于开始面对一个更真实的问题：</p>
+<blockquote>
+<p>AI 协作真正难的，不是让 Agent 动起来，<br>
+而是让 Agent 在一个可控的系统里稳定地产生价值。</p>
+</blockquote>
+<p>所以如果今天再让我重新概括这件事，我会这样说：</p>
+<ol>
+<li><strong>Agent 是能力单元，不是工作系统</strong></li>
+<li><strong>多 Agent 不会自动变强，只会放大系统质量</strong></li>
+<li><strong>真正决定 AI 协作上限的，是 harness</strong></li>
+<li><strong>harness 的核心不是更重，而是更可控</strong></li>
+<li><strong>真实工作的关键，不是自动化有多满，而是返工有多少</strong></li>
+</ol>
+<p>我现在更关心的，不是再找一个更强的 Agent。<br>
+而是继续把这层工作系统设计得更好一点。</p>
+<blockquote>
+<p>AI 协作真正的问题，从来不是“让 Agent 动起来”，<br>
+而是“让 Agent 在可控的系统里稳定地产生价值”。</p>
+</blockquote> </article> <div style="padding: 40px 0; border-top: 1px solid var(--border); margin-top: 40px;"> <a href="/blog" style="font-size: 15px; font-weight: 500;">← 返回博客</a> </div>  </main> <footer class="footer"> <p>© 2026 Jarl.dev — 一个人的 AI 工作流</p> <p style="margin-top:8px;"> <a href="https://github.com/okbexx" target="_blank">GitHub</a>
+·
+<a href="https://x.com/okbexx" target="_blank">X / Twitter</a> </p> </footer> </body></html>

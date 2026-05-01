@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>知识偏移与架构腐化：AI 加速的不只是产出，还有衰退 — Jarl</title><meta name="description" content="AI 不只加速了正确变更的产生，也加速了不合理变更的进入速度。代码腐化的速度，正在被悄悄拉高。"><meta name="author" content="Jarl"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta property="article:author" content="Jarl"><style>@import"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap";:root{--bg: #0D1117;--bg-card: #161B22;--bg-card-hover: #1C2128;--border: rgba(139,148,158,.12);--text: #E6EDF3;--text-secondary: #8B949E;--blue: #38BDF8;--orange: #F97316;--purple: #A78BFA;--green: #34D399;--font-sans: "Noto Sans SC", -apple-system, sans-serif;--font-mono: "JetBrains Mono", monospace}*{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}a{color:var(--blue);text-decoration:none;transition:color .2s}a:hover{color:var(--purple)}body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(56,189,248,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}.nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;max-width:900px;margin:0 auto;padding:32px 24px}.nav-brand{font-size:20px;font-weight:900;color:var(--text);letter-spacing:-.5px}.nav-brand span{color:var(--blue)}.nav-links{display:flex;gap:32px;list-style:none}.nav-links a{font-size:15px;font-weight:500;color:var(--text-secondary);transition:color .2s}.nav-links a:hover{color:var(--text)}.main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 24px 80px}.footer{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:40px 24px;border-top:1px solid var(--border);text-align:center;color:var(--text-secondary);font-size:14px}.footer a{color:var(--text-secondary)}.footer a:hover{color:var(--blue)}.prose{max-width:700px;margin:0 auto}.prose h1{font-size:36px;font-weight:900;line-height:1.3;margin:60px 0 20px}.prose h2{font-size:26px;font-weight:700;line-height:1.4;margin:48px 0 16px;color:var(--blue)}.prose h3{font-size:20px;font-weight:700;margin:36px 0 12px}.prose p{margin:16px 0;font-size:17px;line-height:1.8;color:var(--text)}.prose ul,.prose ol{margin:16px 0;padding-left:24px}.prose li{margin:8px 0;font-size:17px;line-height:1.7}.prose strong{color:var(--orange);font-weight:700}.prose code{font-family:var(--font-mono);background:#38bdf814;padding:2px 8px;border-radius:4px;font-size:15px;color:var(--blue)}.prose pre{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin:20px 0;overflow-x:auto}.prose pre code{background:none;padding:0;color:var(--text)}.prose blockquote{border-left:4px solid var(--purple);background:#a78bfa0f;padding:16px 24px;margin:20px 0;border-radius:0 8px 8px 0}.prose blockquote p{color:var(--text-secondary)}.prose hr{border:none;border-top:1px solid var(--border);margin:40px 0}.prose img{max-width:100%;border-radius:12px;margin:20px 0}.prose table{width:100%;margin:24px 0;border-collapse:collapse;table-layout:fixed;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}.prose thead{background:#38bdf814}.prose th,.prose td{padding:14px 18px;text-align:left;font-size:15px;line-height:1.6;border-bottom:1px solid var(--border)}.prose th{color:var(--text);font-weight:700}.prose td{color:var(--text-secondary)}.prose tbody tr:last-child td{border-bottom:none}.blog-list{list-style:none}.blog-item{display:block;padding:28px 0;border-bottom:1px solid var(--border)}.blog-item:last-child{border-bottom:none}.blog-item-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px;transition:color .2s}a:hover .blog-item-title{color:var(--blue)}.blog-item-desc{font-size:15px;color:var(--text-secondary);line-height:1.6;margin-bottom:8px}.blog-item-meta{font-size:13px;color:var(--text-secondary);display:flex;gap:16px}.blog-item-tag{background:#38bdf814;color:var(--blue);padding:2px 10px;border-radius:100px;font-size:12px;font-weight:500}.article-meta{display:flex;gap:16px;align-items:center;color:var(--text-secondary);font-size:14px;margin-bottom:40px}
+</style></head> <body> <nav class="nav"> <a href="/" class="nav-brand">Jarl<span>.</span>dev</a> <ul class="nav-links"> <li><a href="/">首页</a></li> <li><a href="/blog">博客</a></li> <li><a href="/about">关于</a></li> </ul> </nav> <main class="main">  <article class="prose" style="padding: 40px 0;"> <h1 style="margin-top:0;">知识偏移与架构腐化：AI 加速的不只是产出，还有衰退</h1> <div class="article-meta"> <span>2026-04-30</span> <span class="blog-item-tag">AI协作</span><span class="blog-item-tag">架构腐化</span><span class="blog-item-tag">知识管理</span><span class="blog-item-tag">团队协作</span><span class="blog-item-tag">harness</span> </div> <h1 id="知识偏移与架构腐化ai-加速的不只是产出还有衰退">知识偏移与架构腐化：AI 加速的不只是产出，还有衰退</h1>
+<h2 id="我今天不讲什么">我今天不讲什么</h2>
+<p>不讲架构方法论。不讲代码规范。不讲 Code Review 最佳实践。</p>
+<p>只讲一个我在真实项目里越来越强烈的感受：<strong>代码腐化的速度，正在被 AI 悄悄拉高。</strong></p>
+<h2 id="从一个很常见的场景说起">从一个很常见的场景说起</h2>
+<p>你有没有过这种经历——</p>
+<p>接手一个项目，打开代码，发现有些模块你完全看不懂。不是技术太难，而是你看不懂当初为什么这么写。逻辑不通、命名不一致、职责混在一起，但你问了一圈，写这段代码的人已经不记得了，甚至已经不在团队了。</p>
+<p>这不是代码质量问题。这是<strong>知识偏移</strong>。</p>
+<p>每个人对系统的理解都在各自的方向上漂移。今天你改 A 模块，明天他改 B 模块，各自带着自己的上下文和理解往前走。改着改着，两个人的心智模型就不一样了。</p>
+<p>谁也没有做错什么。但代码已经变成了一种谁也读不全面的东西。</p>
+<blockquote>
+<p>知识偏移不是某次失误，而是一种必然发生的熵增。</p>
+</blockquote>
+<h2 id="ai-是怎么放大这个问题的">AI 是怎么放大这个问题的</h2>
+<p>很多人觉得 AI 加速了开发，是好事。确实是好事。但有一条副作用被严重低估了：</p>
+<p><strong>AI 不只加速了正确变更的产生，也加速了不合理变更的进入速度。</strong></p>
+<p>以前，一个人写一段”能跑但不对”的代码，至少要经过他自己的思考、调试、犹豫。时间成本天然形成了一道缓冲。</p>
+<p>现在，一个 Agent 十秒就能生成一段”能跑但经不起推敲”的代码。而这段代码看起来完整、有注释、甚至有测试——它的问题不是太粗糙，而是<strong>方向偏了但看起来很体面</strong>。</p>
+<blockquote>
+<p>以前的知识偏移，是一个人一天偏一点。
+现在的知识偏移，是一个 Agent 一次偏一大截。</p>
+</blockquote>
+<p>而且这个问题在团队里会被叠加放大——</p>
+<ul>
+<li>A 在用 Codex 写后端接口</li>
+<li>B 在用 Claude Code 调前端页面</li>
+<li>各自的 Agent 各自带着各自的上下文</li>
+<li>谁也不知道对方那边的理解已经偏到哪里去了</li>
+</ul>
+<p>表面上，每个人都在高速产出。实际上，系统的知识一致性正在以更快的速度被稀释。</p>
+<h2 id="我撞上这个问题的真实经历">我撞上这个问题的真实经历</h2>
+<p>我在一个迁移项目里同时用 Claude Code 和 Codex——左边写后端 Java 排障，右边调前端 Vue/TS。</p>
+<p>单个 Agent 的产出质量都不差。但当我要把两边的结果拼起来的时候，我发现一个问题：</p>
+<p><strong>两边对”这个接口应该怎么设计”的理解不一样。</strong></p>
+<p>不是谁理解错了。而是各自的上下文不同——Agent A 读到的是后端老代码和数据库结构，Agent B 读到的是前端组件和接口文档。两个上下文都没有错，但合在一起就是歪的。</p>
+<p>这种偏移，单看任何一侧都看不出来。只有当你要把系统集成起来的时候，才会突然发现：怎么拼不上？</p>
+<blockquote>
+<p>单个 Agent 的偏差不可怕，可怕的是偏差在系统中沉默地积累。</p>
+</blockquote>
+<h2 id="带实习生的比喻">“带实习生”的比喻</h2>
+<p>有一次我在日报里写了一句话：</p>
+<blockquote>
+<p>AI 越强，人越像在同时带越来越多、能力也越来越强的实习生。</p>
+</blockquote>
+<p>这个比喻后来被我反复想起，因为它确实描述了一种很真实的体感。</p>
+<p>一个实习生，能力强、干劲足、写代码快。但你不会让他独立负责核心架构决策——不是因为他能力不够，而是因为他还没有充分理解系统的上下文。</p>
+<p>Agent 也一样。它能快速实现一个功能，但它对系统的理解是局部的、片面的、基于当前会话的。你让它自己跑，它跑得很快。但它跑的方向对不对，它不知道。</p>
+<p>一个实习生偏了，你 code review 能拦住。三个实习生同时偏了，你还能拦住。但如果五六个 Agent 同时在不同方向上偏——你的 review 带宽还够吗？</p>
+<blockquote>
+<p>人的管理带宽是有限的。AI 的产出带宽已经超出了大多数人的管理带宽。</p>
+</blockquote>
+<h2 id="知识偏移怎么变成架构腐化">知识偏移怎么变成架构腐化</h2>
+<p>知识偏移不是一天发生的。它是这么一步步走到架构腐化的：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>理解不一致</span></span>
+<span class="line"><span>  → 命名风格分化</span></span>
+<span class="line"><span>    → 职责边界模糊</span></span>
+<span class="line"><span>      → 补丁叠补丁</span></span>
+<span class="line"><span>        → 谁也看不懂全貌</span></span>
+<span class="line"><span>          → 只敢加不敢改</span></span>
+<span class="line"><span>            → 架构腐化</span></span></code></pre>
+<p>以前这个过程可能要走一两年。AI 把它压缩到了几个月甚至几周。</p>
+<p>不是 Agent 写的代码质量差。恰恰相反，Agent 写的局部代码可能很漂亮。问题是，当很多”局部漂亮”的东西以不同的理解拼在一起，整体就开始失控。</p>
+<blockquote>
+<p>架构腐化的本质，不是代码变差了，而是代码的可理解性崩了。</p>
+</blockquote>
+<h2 id="那-harness-能做什么">那 harness 能做什么</h2>
+<p>我之前写过一篇文章，说决定 AI 协作上限的是 harness，不是多 Agent。这篇算是那个判断的延伸。</p>
+<p>harness 解决的不是”Agent 会不会写代码”，而是”Agent 的行为能不能被看见、被约束、被修正”。</p>
+<p>具体到知识偏移这个问题，我越来越觉得有几件事是 harness 必须做到的：</p>
+<h3 id="1-让上下文对齐变得可见">1. 让上下文对齐变得可见</h3>
+<p>现在大多数 Agent 的上下文是隐式的——它读了什么、理解了什么、默认了什么，你不知道。</p>
+<p>一个够用的 harness，应该让 Agent 的关键假设暴露出来。不是要求它输出”我的假设是……”这种机械格式，而是在协作过程中，把那些影响方向判断的前提显性化。</p>
+<blockquote>
+<p>你不需要看到所有上下文，你需要看到那些”一旦错了就全偏了”的上下文。</p>
+</blockquote>
+<h3 id="2-让偏差在局部被发现">2. 让偏差在局部被发现</h3>
+<p>知识偏移最怕的不是偏，而是偏了很久才发现。</p>
+<p>所以 harness 里必须有验证闭环——不是做完才验证，而是<strong>做一步验一步</strong>。</p>
+<p>我现在的工作习惯是：Agent 产出之后，先不急着往下推，而是在当前节点就确认方向。哪怕只是跑一遍测试、看一眼页面、对一次接口字段。这些小验证的成本很低，但拦截偏差的效率极高。</p>
+<blockquote>
+<p>小闭环转得越快，全局偏差积累得越慢。</p>
+</blockquote>
+<h3 id="3-让经验能沉淀而不是每次清零">3. 让经验能沉淀而不是每次清零</h3>
+<p>知识偏移的一个重要原因是：上一次的偏移没有被记录。</p>
+<p>Agent A 在这个项目上踩过的坑，Agent B 完全不知道。两个人的 Agent 各自带着空白的理解重新开始。这不是 Agent 的问题，是系统的缺陷。</p>
+<p>所以我在自己的知识库里做了一件事：把每一次协作的关键判断、约束、踩坑经验都落成稳定对象。下次不管哪个 Agent 来接手，都能读到前面的经验。</p>
+<blockquote>
+<p>不沉淀的协作，不管多高效，都只是一次性劳务。</p>
+</blockquote>
+<h2 id="这不是-agent-的问题是系统的问题">这不是 Agent 的问题，是系统的问题</h2>
+<p>我想把这篇的重点收清楚。</p>
+<p>Agent 的能力会越来越强，这一点没有悬念。但 Agent 能力越强，知识偏移和架构腐化的风险就越高——因为它产出得更快、覆盖得更广、偏得更不容易被发现。</p>
+<p>所以真正要解决的，不是”怎么让 Agent 不犯错”，而是：</p>
+<blockquote>
+<p>怎么建一个系统，让偏差更容易被看见、被拦截、被修正、被记住。</p>
+</blockquote>
+<p>这件事，既不是模型的事，也不是工具的事。它是一个系统设计问题。</p>
+<p>我现在越来越觉得，<strong>AI 时代最稀缺的能力，不是写代码，也不是 prompt 工程，而是系统性的上下文管理能力</strong>——知道什么需要对齐、什么需要暴露、什么需要验证、什么需要沉淀。</p>
+<p>代码是 Agent 写的，但系统是人设计的。</p>
+<blockquote>
+<p>你不是在带 Agent 写代码，你是在设计一个 Agent 能在里面稳定工作的系统。</p>
+</blockquote>
+<h2 id="如果只记一件事">如果只记一件事</h2>
+<p>知识偏移是团队开发里必然发生的熵增。AI 不会自动解决这个问题，只会加速它。</p>
+<p>你能做的，不是追求零偏移，而是建一套让偏移更容易被发现的系统：</p>
+<ul>
+<li>关键假设显性化</li>
+<li>小步验证常态化</li>
+<li>经验沉淀结构化</li>
+</ul>
+<blockquote>
+<p>不怕偏，怕的是偏了很久才知道。</p>
+</blockquote> </article> <div style="padding: 40px 0; border-top: 1px solid var(--border); margin-top: 40px;"> <a href="/blog" style="font-size: 15px; font-weight: 500;">← 返回博客</a> </div>  </main> <footer class="footer"> <p>© 2026 Jarl.dev — 一个人的 AI 工作流</p> <p style="margin-top:8px;"> <a href="https://github.com/okbexx" target="_blank">GitHub</a>
+·
+<a href="https://x.com/okbexx" target="_blank">X / Twitter</a> </p> </footer> </body></html>

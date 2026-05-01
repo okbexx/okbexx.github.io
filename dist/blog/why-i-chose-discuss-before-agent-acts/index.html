@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>为什么我最后选择了「先讨论，再让 Agent 动手」 — Jarl</title><meta name="description" content="试过 superpowers、openspec 这类重工作流之后，我最终收敛到一种更适合真实工作的协作方式：先讨论清楚，再让 Agent 动手。这不是方法论宣言，而是返工太疼之后的真实选择。"><meta name="author" content="Jarl"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta property="article:author" content="Jarl"><style>@import"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap";:root{--bg: #0D1117;--bg-card: #161B22;--bg-card-hover: #1C2128;--border: rgba(139,148,158,.12);--text: #E6EDF3;--text-secondary: #8B949E;--blue: #38BDF8;--orange: #F97316;--purple: #A78BFA;--green: #34D399;--font-sans: "Noto Sans SC", -apple-system, sans-serif;--font-mono: "JetBrains Mono", monospace}*{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}a{color:var(--blue);text-decoration:none;transition:color .2s}a:hover{color:var(--purple)}body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(56,189,248,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}.nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;max-width:900px;margin:0 auto;padding:32px 24px}.nav-brand{font-size:20px;font-weight:900;color:var(--text);letter-spacing:-.5px}.nav-brand span{color:var(--blue)}.nav-links{display:flex;gap:32px;list-style:none}.nav-links a{font-size:15px;font-weight:500;color:var(--text-secondary);transition:color .2s}.nav-links a:hover{color:var(--text)}.main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 24px 80px}.footer{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:40px 24px;border-top:1px solid var(--border);text-align:center;color:var(--text-secondary);font-size:14px}.footer a{color:var(--text-secondary)}.footer a:hover{color:var(--blue)}.prose{max-width:700px;margin:0 auto}.prose h1{font-size:36px;font-weight:900;line-height:1.3;margin:60px 0 20px}.prose h2{font-size:26px;font-weight:700;line-height:1.4;margin:48px 0 16px;color:var(--blue)}.prose h3{font-size:20px;font-weight:700;margin:36px 0 12px}.prose p{margin:16px 0;font-size:17px;line-height:1.8;color:var(--text)}.prose ul,.prose ol{margin:16px 0;padding-left:24px}.prose li{margin:8px 0;font-size:17px;line-height:1.7}.prose strong{color:var(--orange);font-weight:700}.prose code{font-family:var(--font-mono);background:#38bdf814;padding:2px 8px;border-radius:4px;font-size:15px;color:var(--blue)}.prose pre{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin:20px 0;overflow-x:auto}.prose pre code{background:none;padding:0;color:var(--text)}.prose blockquote{border-left:4px solid var(--purple);background:#a78bfa0f;padding:16px 24px;margin:20px 0;border-radius:0 8px 8px 0}.prose blockquote p{color:var(--text-secondary)}.prose hr{border:none;border-top:1px solid var(--border);margin:40px 0}.prose img{max-width:100%;border-radius:12px;margin:20px 0}.prose table{width:100%;margin:24px 0;border-collapse:collapse;table-layout:fixed;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}.prose thead{background:#38bdf814}.prose th,.prose td{padding:14px 18px;text-align:left;font-size:15px;line-height:1.6;border-bottom:1px solid var(--border)}.prose th{color:var(--text);font-weight:700}.prose td{color:var(--text-secondary)}.prose tbody tr:last-child td{border-bottom:none}.blog-list{list-style:none}.blog-item{display:block;padding:28px 0;border-bottom:1px solid var(--border)}.blog-item:last-child{border-bottom:none}.blog-item-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px;transition:color .2s}a:hover .blog-item-title{color:var(--blue)}.blog-item-desc{font-size:15px;color:var(--text-secondary);line-height:1.6;margin-bottom:8px}.blog-item-meta{font-size:13px;color:var(--text-secondary);display:flex;gap:16px}.blog-item-tag{background:#38bdf814;color:var(--blue);padding:2px 10px;border-radius:100px;font-size:12px;font-weight:500}.article-meta{display:flex;gap:16px;align-items:center;color:var(--text-secondary);font-size:14px;margin-bottom:40px}
+</style></head> <body> <nav class="nav"> <a href="/" class="nav-brand">Jarl<span>.</span>dev</a> <ul class="nav-links"> <li><a href="/">首页</a></li> <li><a href="/blog">博客</a></li> <li><a href="/about">关于</a></li> </ul> </nav> <main class="main">  <article class="prose" style="padding: 40px 0;"> <h1 style="margin-top:0;">为什么我最后选择了「先讨论，再让 Agent 动手」</h1> <div class="article-meta"> <span>2026-04-21</span> <span class="blog-item-tag">AI编程</span><span class="blog-item-tag">Codex</span><span class="blog-item-tag">Agent协作</span><span class="blog-item-tag">工作流</span> </div> <h2 id="我今天不讲什么">我今天不讲什么</h2>
+<p>不讲安装教程。不讲模型横评。不讲工具大全。</p>
+<p>只讲一件事：我在真实工作里，试过几种方式之后，最后留下了什么。</p>
+<h2 id="问题意识从哪来">问题意识从哪来</h2>
+<p>我不是天然就反对重工作流的。我用过 superpowers、openspec 这类工具，它们确实能帮你把任务结构化，让 Agent 按步骤走。</p>
+<p>但在真实工作里，我撞上了一个问题：<strong>工作流一旦跑偏，成本非常高。</strong></p>
+<p>不是”多改几次”这么简单。偏一点可能影响接口设计、数据结构、上下游对接。而且这类工作流本身就会消耗大量 token。spec、plan、分步执行，每一步都在吃 token，再加上跑偏后的修正，消耗会翻倍。</p>
+<blockquote>
+<p>问题不是工作流不高级，而是它们在真实工作里还没有很好解决跑偏的问题。</p>
+</blockquote>
+<h2 id="为什么我没有把重工作流当主方法">为什么我没有把重工作流当主方法</h2>
+<p>demo 里跑偏了，改一下就好。真实项目里跑偏了，后面一串东西都要跟着调。尤其是跨文件、跨模块的任务，偏航的影响会被放大。越复杂的工作流，偏航的概率和代价都更高。</p>
+<p>重工作流本身的 token 消耗也是现实成本。对个人开发者来说，这是不得不算的账。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>理想情况</th><th>真实工作现场</th></tr></thead><tbody><tr><td>流程</td><td>按步骤走，每步都对</td><td>第 3 步开始偏，后面全歪</td></tr><tr><td>成本</td><td>一次完成</td><td>多次修正 + 重跑</td></tr><tr><td>token</td><td>计划内消耗</td><td>计划内 × 2~3 倍</td></tr></tbody></table>
+<h2 id="我现在的方法先讨论再执行">我现在的方法：先讨论，再执行</h2>
+<p>以前我的做法是：写好 prompt → 丢给 Agent → 看结果 → 修。</p>
+<p>现在变成了：<strong>先和 Agent 讨论清楚 → 确认方向 → 再执行。</strong></p>
+<p>具体来说，动手之前我会先做四件事：</p>
+<ol>
+<li><strong>先讲目标</strong> —— 这次任务到底要达成什么？终点在哪？</li>
+<li><strong>先讲边界</strong> —— 什么要做，什么不要做，什么留给后面？</li>
+<li><strong>先讲假设</strong> —— 我默认了什么前提？这些前提靠不靠谱？</li>
+<li><strong>再让 Agent 动手</strong> —— 前面三个都聊清楚了，再开始写代码。</li>
+</ol>
+<blockquote>
+<p>我现在越来越觉得，Agent 最重要的能力不是会不会写，而是动手之前能不能先对齐。</p>
+</blockquote>
+<h2 id="为什么先讨论不是慢而是稳">为什么”先讨论”不是慢，而是稳</h2>
+<p>表面上看，先讨论多花了几分钟，好像拖慢了节奏。</p>
+<p>但实际体感是：多花 3 分钟对齐，少花 30 分钟返工。大部分返工不是模型能力不够，而是前面没对齐。尤其在跨文件、跨模块的任务里，这个差距会被放大。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>不对齐直接干</th><th>先对齐再干</th></tr></thead><tbody><tr><td>第 1 轮</td><td>出结果，但方向可能偏</td><td>多聊几句</td></tr><tr><td>第 2 轮</td><td>发现偏了，开始修</td><td>出结果，方向基本对</td></tr><tr><td>第 3 轮</td><td>还在修</td><td>已经在推进下一步了</td></tr><tr><td>总耗时</td><td>看起来快，实际慢</td><td>看起来慢，实际快</td></tr></tbody></table>
+<blockquote>
+<p>真正贵的不是多聊几句，而是没聊明白就直接开干。</p>
+</blockquote>
+<h2 id="我怎么理解-agent-的价值">我怎么理解 Agent 的价值</h2>
+<p>Agent 对我来说不只是代码生成器。</p>
+<ol>
+<li><strong>帮我澄清</strong> —— 有时候我自己都没想清楚，和 Agent 讨论的过程中反而理清了思路。</li>
+<li><strong>帮我拆解</strong> —— 把一个大任务拆成可执行的步骤，这个过程本身就有价值。</li>
+<li><strong>帮我执行</strong> —— 对齐之后，Agent 的执行效率和准确度都会更高。</li>
+<li><strong>前提是先对齐</strong> —— 如果没有前面的讨论，Agent 就只是一个更快的打字机。</li>
+</ol>
+<blockquote>
+<p>Agent 不只是替我写代码，而是一个需要先对齐、再协作的工作搭子。</p>
+</blockquote>
+<h2 id="为什么-codex-更容易进入我的工作流">为什么 Codex 更容易进入我的工作流</h2>
+<p>Claude Code 我有订阅，也实际用过。模型能力没问题。</p>
+<p>但我撞上的真实问题是：<strong>额度太少。</strong> 一个大任务还没做完，额度就见底了。在真实工作里，做到一半断掉，这种体验很伤。不是模型不行，是撑不住完整任务。</p>
+<p>Codex 对我更合适的原因很实际：有独立的 App，不需要额外折腾环境；能撑住一个完整任务，不用做到一半停下来。它更自然地进入了我的日常工作流。</p>
+<blockquote>
+<p>工具好不好，不只是看能力上限，还要看它能不能撑住真实工作的连续性。</p>
+</blockquote>
+<h2 id="codex-已经开始接管我的电脑">Codex 已经开始接管我的电脑</h2>
+<p>我越来越离不开 Codex，不是因为它只会写代码。它已经开始帮我处理很多系统问题——进程、端口、性能、链路排查这类事。</p>
+<p>遇到问题时，我不是自己先一通乱查，而是先把现象和上下文讲清楚，再让 Codex 去排。它不是盲查，而是带着目标去查。</p>
+<p>从系统排障开始，我慢慢发现它已经不只是代码助手。它能进入我的整个工作环境，操作我不熟悉的工具、处理我不想花时间学的流程。查进程、查端口、查链路、甚至直接操作 GUI 应用。</p>
+<p>我越来越觉得：<strong>Codex 已经开始接管我的电脑了。</strong></p>
+<blockquote>
+<p>它从帮我查进程、排链路开始，慢慢进入了我的整个工作环境。到现在我越来越觉得，它已经开始接管我的电脑了。这个体感和”让 AI 写段代码”完全不一样。</p>
+</blockquote>
+<h2 id="我的结论">我的结论</h2>
+<p>我越来越不相信”流程越完整越好”，我更相信”先讨论清楚，再让 Agent 动手”。</p>
+<p>三个要点：</p>
+<ol>
+<li>我试过重工作流，但真实工作里跑偏成本太高</li>
+<li>“先讨论再执行”不是慢，而是更稳</li>
+<li>Codex 能撑住完整任务，更容易进入真实工作流</li>
+</ol>
+<blockquote>
+<p>AI 编程最怕的不是不会写，而是还没对齐就直接开干。</p>
+</blockquote> </article> <div style="padding: 40px 0; border-top: 1px solid var(--border); margin-top: 40px;"> <a href="/blog" style="font-size: 15px; font-weight: 500;">← 返回博客</a> </div>  </main> <footer class="footer"> <p>© 2026 Jarl.dev — 一个人的 AI 工作流</p> <p style="margin-top:8px;"> <a href="https://github.com/okbexx" target="_blank">GitHub</a>
+·
+<a href="https://x.com/okbexx" target="_blank">X / Twitter</a> </p> </footer> </body></html>
