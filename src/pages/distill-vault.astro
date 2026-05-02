@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="distill-vault — Graph-powered knowledge base runtime"
+  description="distill-vault：把你的 Obsidian 知识库变成可查询的知识图谱。"
+>
+  <article class="prose" style="padding: 32px 0 48px; max-width: 820px;">
+    <section
+      style="background: linear-gradient(135deg, rgba(56,189,248,0.12), rgba(167,139,250,0.08) 45%, rgba(249,115,22,0.08)); border: 1px solid var(--border); border-radius: 20px; padding: 32px; box-shadow: 0 0 0 1px rgba(56,189,248,0.04), 0 24px 80px rgba(0,0,0,0.28);"
+    >
+      <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(56,189,248,0.2); background: rgba(56,189,248,0.08); font-size: 13px; color: var(--blue); font-family: var(--font-mono);">
+        DISTILL PROJECT / KNOWLEDGE GRAPH RUNTIME
+      </div>
+
+      <h1 style="margin: 18px 0 12px; font-size: 44px; line-height: 1.15;">
+        distill-vault
+      </h1>
+
+      <p style="font-size: 20px; color: var(--text); margin: 0 0 10px; line-height: 1.7;">
+        Graph-powered knowledge base runtime for Obsidian-compatible vaults
+      </p>
+      <p style="font-size: 18px; color: var(--text-secondary); margin: 0;">
+        把你的 Obsidian 知识库变成可查询的知识图谱
+      </p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;">
+        <a
+          href="https://github.com/okbexx/distill-vault"
+          target="_blank"
+          style="display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border-radius: 12px; background: var(--blue); color: #0D1117; font-weight: 700; border: 1px solid rgba(56,189,248,0.35);"
+        >
+          查看 GitHub 仓库
+        </a>
+        <a
+          href="#quick-start"
+          style="display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border-radius: 12px; background: rgba(167,139,250,0.08); color: var(--text); font-weight: 600; border: 1px solid rgba(167,139,250,0.22);"
+        >
+          Quick Start
+        </a>
+      </div>
+    </section>
+
+    <section style="margin-top: 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 18px;">
+        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Objects</div>
+        <div style="font-size: 28px; font-weight: 900; color: var(--blue); margin-top: 6px;">234</div>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 18px;">
+        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Edges</div>
+        <div style="font-size: 28px; font-weight: 900; color: var(--orange); margin-top: 6px;">1295</div>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 18px;">
+        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Communities</div>
+        <div style="font-size: 28px; font-weight: 900; color: var(--purple); margin-top: 6px;">55</div>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 18px;">
+        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Modularity</div>
+        <div style="font-size: 28px; font-weight: 900; color: var(--green); margin-top: 6px;">0.544</div>
+      </div>
+    </section>
+
+    <h2>为什么是 distill-vault</h2>
+    <p>
+      distill-vault 不是另一个笔记应用，而是一层运行时：读取兼容 Obsidian 的 vault，建立对象、关系、社区和查询能力，让你的知识库从静态文件系统升级成可搜索、可分析、可视化的图谱系统。
+    </p>
+    <p>
+      它服务的是 Distill 的核心目标：把日常积累的碎片知识，转成可被 AI 和人共同操作的结构化资产。
+    </p>
+
+    <h2>核心功能模块</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px;">
+      <div style="background: linear-gradient(180deg, rgba(56,189,248,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(56,189,248,0.18); border-radius: 16px; padding: 20px;">
+        <h3 style="margin-top: 0;">知识图谱引擎 (KuzuDB)</h3>
+        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+          将 vault 中的笔记、概念、项目、实体与链接关系落入图数据库，建立可遍历的知识结构。
+        </p>
+      </div>
+      <div style="background: linear-gradient(180deg, rgba(249,115,22,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(249,115,22,0.18); border-radius: 16px; padding: 20px;">
+        <h3 style="margin-top: 0;">混合搜索引擎 (BM25 + Semantic)</h3>
+        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+          结合关键词检索与语义召回，在精确命中和模糊理解之间取得平衡，适合真实知识库查询。
+        </p>
+      </div>
+      <div style="background: linear-gradient(180deg, rgba(167,139,250,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(167,139,250,0.18); border-radius: 16px; padding: 20px;">
+        <h3 style="margin-top: 0;">社区发现 (Community Detection)</h3>
+        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+          自动识别知识图谱中的聚类结构，找出自然形成的主题社区、工作域和概念群落。
+        </p>
+      </div>
+      <div style="background: linear-gradient(180deg, rgba(52,211,153,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(52,211,153,0.18); border-radius: 16px; padding: 20px;">
+        <h3 style="margin-top: 0;">影响分析 (Impact Analysis)</h3>
+        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+          从一个对象出发追踪上下游依赖，帮助你判断某条知识、决策或约束改动后会波及哪里。
+        </p>
+      </div>
+      <div style="background: linear-gradient(180deg, rgba(56,189,248,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(56,189,248,0.18); border-radius: 16px; padding: 20px;">
+        <h3 style="margin-top: 0;">MCP 集成 (16 Tools)</h3>
+        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+          通过 MCP 暴露查询、上下文、影响分析等能力，让 Agent 直接把 vault 当作运行时知识后端。
+        </p>
+      </div>
+      <div style="background: linear-gradient(180deg, rgba(249,115,22,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(249,115,22,0.18); border-radius: 16px; padding: 20px;">
+        <h3 style="margin-top: 0;">Web 可视化 (Sigma.js)</h3>
+        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+          通过交互式图谱视图观察节点、关系与社区，让抽象知识结构变成可探索的界面。
+        </p>
+      </div>
+    </div>
+
+    <h2>架构图</h2>
+    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; overflow-x: auto;">
+      <pre style="margin: 0; background: transparent; border: none; padding: 0;"><code>[ Obsidian Vault / Markdown Files ]
+                │
+                ▼
+      [ Parser + Object Extraction ]
+                │
+      ┌─────────┴─────────┐
+      ▼                   ▼
+[ Embeddings ]      [ KuzuDB Graph ]
+      │                   │
+      └──────┬────────────┘
+             ▼
+ [ Hybrid Search + Community Detection ]
+             │
+      ┌──────┼───────────────┐
+      ▼      ▼               ▼
+ [ MCP ] [ Impact ] [ Sigma.js Web UI ]</code></pre>
+    </div>
+
+    <h2 id="quick-start">Quick Start</h2>
+    <p>
+      下面是一个面向仓库体验的最短启动路径：克隆、安装、索引、启动可视化界面。
+    </p>
+    <pre><code>git clone https://github.com/okbexx/distill-vault.git
+cd distill-vault
+pnpm install
+pnpm build:index
+pnpm dev</code></pre>
+
+    <h2>实测数据</h2>
+    <p>
+      当前图谱运行结果已经验证了这个方向的可行性：<strong>234 objects</strong>、<strong>1295 edges</strong>、<strong>55 communities</strong>、<strong>0.544 modularity</strong>。
+    </p>
+    <p>
+      这意味着 vault 不只是“能查”，而且已经具备足够清晰的结构分化，可以支持社区识别、影响分析和 Agent 查询等更高阶操作。
+    </p>
+
+    <blockquote>
+      <p>
+        distill-vault 的目标不是替代 Obsidian，而是给 Obsidian 增加一层图计算与 Agent 可调用的知识运行时。
+      </p>
+    </blockquote>
+  </article>
+</BaseLayout>
