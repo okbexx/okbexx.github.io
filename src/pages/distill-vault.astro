@@ -168,7 +168,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h2>架构图</h2>
     <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; overflow-x: auto;">
       <pre style="margin: 0; background: transparent; border: none; padding: 0;"><code>                    ┌──────────────────────────────────┐
-                    │          CLI / Web / MCP          │
+                    │       CLI / Web / MCP / Skill     │
                     └────────────┬─────────────────────┘
                                  │
                     ┌────────────▼─────────────────────┐
@@ -191,18 +191,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     │  └────────┘    └────────────────┘  │
                     └───────────┬───────────────────────┘
                                 │
-          ┌──────────┬──────────┼──────────┬──────────┐
-          │          │          │          │          │
-     ┌────▼────┐ ┌──▼───┐ ┌───▼────┐ ┌───▼───┐ ┌───▼────┐
-     │ Hybrid  │ │Community│ │Impact  │ │Rename │ │MCP     │
-     │ Search  │ │Detect │ │Analysis│ │Graph  │ │Server  │
-     │BM25+TF  │ │Label  │ │BFS     │ │Smart  │ │16 Tools│
-     └─────────┘ └──────┘ └────────┘ └───────┘ └────────┘</code></pre>
+          ┌──────────┬──────────┼──────────┬──────────┬──────────┐
+          │          │          │          │          │          │
+     ┌────▼────┐ ┌──▼───┐ ┌───▼────┐ ┌───▼───┐ ┌───▼────┐ ┌───▼────────────┐
+     │ Hybrid  │ │Comm- │ │Impact  │ │Rename │ │MCP     │ │Skill System v6 │
+     │ Search  │ │unity │ │Analysis│ │Graph  │ │Server  │ │┌─────┐┌──────┐ │
+     │BM25+TF  │ │Label │ │BFS     │ │Smart  │ │16 Tools│ ││Spec ││Render│ │
+     └─────────┘ └──────┘ └────────┘ └───────┘ └────────┘ │└─────┘└──────┘ │
+                                                             │  ┌─┐┌─┐┌─┐   │
+                                                             │  │H││C││C│   │
+                                                             │  │e││o││l│   │
+                                                             │  │r││d││a│   │
+                                                             │  │m││e││u│   │
+                                                             │  │e││x││d│   │
+                                                             │  │s││  ││e│   │
+                                                             │  └─┘└─┘└─┘   │
+                                                             └───────────────┘</code></pre>
     </div>
 
     <h2 id="quick-start">Quick Start</h2>
     <p>
-      下面是最短启动路径：安装、索引、搜索、启动可视化界面。
+      下面是最短启动路径：安装、索引、搜索、skill 分发、启动可视化界面。
     </p>
     <pre><code># 克隆并安装
 git clone https://github.com/okbexx/distill-vault.git
@@ -226,6 +235,27 @@ distill lint --fix
 
 # 增量检查（staleness）
 distill run --incremental
+
+# ── Skill 分发（v6 新增）──
+
+# 查看可用 skill
+distill skill list
+
+# 渲染 skill 为目标平台格式
+distill skill export my-skill --to hermes
+distill skill export my-skill --to codex
+distill skill export my-skill --to claude
+
+# 一键安装到所有平台
+distill skill install my-skill --to all
+
+# 跨平台诊断
+distill skill doctor
+
+# 检测 drift 并一键修复
+distill skill reconcile my-skill --to all
+
+# ── 可视化 & MCP ──
 
 # 启动 Web UI（Sigma.js 图谱可视化）
 distill web --port 8420
