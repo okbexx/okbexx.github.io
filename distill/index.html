@@ -17,13 +17,15 @@
 AI 做整理，你做判断。
 </p> <p>
 在我的系统里，AI 自动完成：新建来源对象、更新索引、补充双向链接、生成日报、健康检查。我只需要做价值判断、高影响决策的确认、系统级规则的变更。
-</p> <div style="background: linear-gradient(135deg, rgba(56,189,248,0.08), rgba(167,139,250,0.08)); border: 1px solid rgba(56,189,248,0.2); border-radius: 16px; padding: 24px; margin: 24px 0;"> <div style="font-size: 12px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 10px;">Runtime Layer</div> <h3 style="margin: 0 0 10px;">distill-vault：把蒸馏塔变成可运行的知识图谱底盘</h3> <p style="margin: 0 0 14px; color: var(--text-secondary); line-height: 1.7;">
+</p> <div style="background: linear-gradient(135deg, rgba(56,189,248,0.08), rgba(167,139,250,0.08)); border: 1px solid rgba(56,189,248,0.2); border-radius: 16px; padding: 24px; margin: 24px 0;"> <div style="font-size: 12px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 10px;">Runtime Layer · v6</div> <h3 style="margin: 0 0 10px;">distill-vault：把蒸馏塔变成可运行的知识图谱底盘 + 多平台 Skill 分发</h3> <p style="margin: 0 0 14px; color: var(--text-secondary); line-height: 1.7;">
 Distill 讲的是知识系统的方法与结构，<strong>distill-vault</strong> 则是把这套结构真正跑起来的运行时：对象索引、图数据库、混合搜索、MCP、健康检查与自动化钩子都落成了可用产品。
-</p> <p style="margin: 0 0 16px; color: var(--text-secondary); line-height: 1.7;">
-这轮收口后，它已经能正确理解 Obsidian 的真实使用场景：pseudo-link、附件型链接、系统文档、运行时说明不会再把健康检查噪音拉满。
-</p> <a href="/distill-vault" style="display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 12px; background: var(--blue); color: #0D1117; font-weight: 700; text-decoration: none; border: 1px solid rgba(56,189,248,0.35);">
+</p> <p style="margin: 0 0 14px; color: var(--text-secondary); line-height: 1.7;">
+v6 新增<strong>平台差异化 Skill Renderer</strong>：一个 canonical spec 自动产出 Hermes（YAML frontmatter）、Codex（纯 instruction）、Claude（@-metadata）三种格式。<code>install --to all</code> / <code>reconcile --to all</code> 一键三端同步。不是三份手写文档，是一个源头三种格式。
+</p> <div style="display: flex; gap: 10px; flex-wrap: wrap;"> <a href="/distill-vault" style="display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 12px; background: var(--blue); color: #0D1117; font-weight: 700; text-decoration: none; border: 1px solid rgba(56,189,248,0.35);">
 查看 distill-vault 产品页
-</a> </div> <h2>⚔️ Technical Knockout · 开源项目全量分析</h2> <p>
+</a> <span style="display: inline-flex; align-items: center; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(52,211,153,0.3); background: rgba(52,211,153,0.08); font-size: 13px; color: var(--green); font-weight: 600;">
+97/97 tests passed
+</span> </div> </div> <h2>⚔️ Technical Knockout · 开源项目全量分析</h2> <p>
 知识蒸馏在技术选型上的具体实践。每次遇到值得研究的开源项目，我执行一套<strong>全量五层分析</strong>：定位 → 架构 → 质量 → 社区 → 选型，最终产出可直接落地的采用建议。
 </p> <p>
 同类项目持续横向对比，积累自己的选型数据库，而不是每次都从零开始。
