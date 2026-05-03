@@ -102,9 +102,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
       </div>
       <div style="background: linear-gradient(180deg, rgba(249,115,22,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(249,115,22,0.18); border-radius: 16px; padding: 20px;">
-        <h3 style="margin-top: 0;">Git 自动化钩子 ⚠️</h3>
+        <h3 style="margin-top: 0;">Git 自动化钩子 · ✅ Stable</h3>
         <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-          <code>distill hook install</code> 一键安装 pre-commit / post-commit / post-merge 钩子；<code>distill commit</code> 一键完成 lint → add → commit → pipeline → push。<strong style="color: var(--orange);">Hooks 默认不安装，需手动 opt-in</strong>；出问题时 <code>distill hook uninstall</code> 一键清除。
+          <code>distill hook install</code> 一键安装 pre-commit / post-commit / post-merge 钩子；<code>distill commit</code> 一键完成 lint → add → commit → pipeline → push。<strong style="color: var(--orange);">Hooks 默认不安装，需手动 opt-in</strong>；pre-commit 仅阻断 <strong>staged error-level issues</strong>，warning 只提示不拦截；出问题时 <code>distill hook uninstall</code> 一键清除。
         </p>
       </div>
       <div style="background: linear-gradient(180deg, rgba(167,139,250,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(167,139,250,0.18); border-radius: 16px; padding: 20px;">
