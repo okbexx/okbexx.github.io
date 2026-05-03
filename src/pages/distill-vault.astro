@@ -45,19 +45,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section style="margin-top: 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
       <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 18px;">
         <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Objects</div>
-        <div style="font-size: 28px; font-weight: 900; color: var(--blue); margin-top: 6px;">234</div>
+        <div style="font-size: 28px; font-weight: 900; color: var(--blue); margin-top: 6px;">274</div>
       </div>
       <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 18px;">
-        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Edges</div>
-        <div style="font-size: 28px; font-weight: 900; color: var(--orange); margin-top: 6px;">1295</div>
+        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Markdown Files</div>
+        <div style="font-size: 28px; font-weight: 900; color: var(--orange); margin-top: 6px;">342</div>
       </div>
       <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 18px;">
-        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Communities</div>
-        <div style="font-size: 28px; font-weight: 900; color: var(--purple); margin-top: 6px;">55</div>
+        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Pipeline</div>
+        <div style="font-size: 28px; font-weight: 900; color: var(--green); margin-top: 6px;">0.70s</div>
       </div>
       <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 18px;">
-        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Modularity</div>
-        <div style="font-size: 28px; font-weight: 900; color: var(--green); margin-top: 6px;">0.544</div>
+        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Search</div>
+        <div style="font-size: 28px; font-weight: 900; color: var(--purple); margin-top: 6px;">0.66s</div>
       </div>
     </section>
 
@@ -211,8 +211,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <h2 id="quick-start">Quick Start</h2>
 
-    <h3 style="color: var(--blue);">直接试用（无需 clone）</h3>
-    <pre><code>pip install distill-vault
+    <h3 style="color: var(--blue);">快速上手</h3>
+    <pre><code>git clone https://github.com/okbexx/distill-vault.git
+cd distill-vault
+pip install -e .
 cd ~/my-obsidian-vault
 distill status            # vault 概览
 distill run               # 构建图谱（首次）
@@ -220,12 +222,8 @@ distill search "知识管理" --mode hybrid
 distill lint --fix        # 检查并自动修复
 distill health            # 完整健康报告</code></pre>
 
-    <h3 style="color: var(--purple);">从源码（贡献者）</h3>
-    <p>
-      下面是最短启动路径：安装、索引、搜索、skill 分发、启动可视化界面。
-    </p>
-    <pre><code># 克隆并安装
-git clone https://github.com/okbexx/distill-vault.git
+    <h3 style="color: var(--purple);">从源码开发（贡献者）</h3>
+    <pre><code>git clone https://github.com/okbexx/distill-vault.git
 cd distill-vault
 pip install -e ".[dev]"
 python -m pytest tests/ -q -n 4    # 验证 97/97 测试通过
@@ -344,10 +342,10 @@ python -m distill.mcp_server --vault ~/my-vault</code></pre>
     <h2>实测数据</h2>
     <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 16px;">
       <div style="background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(167,139,250,0.04)); border: 1px solid rgba(56,189,248,0.16); border-radius: 16px; padding: 22px; text-align: center;">
-        <div style="font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Graph Stats</div>
+        <div style="font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Real Vault Benchmark</div>
         <div style="font-size: 18px; font-weight: 700; color: var(--text); margin-top: 8px; line-height: 1.6;">
-          <span style="color: var(--blue);">234</span> objects · <span style="color: var(--orange);">1295</span> edges<br>
-          <span style="color: var(--purple);">55</span> communities · <span style="color: var(--green);">0.544</span> modularity
+          <span style="color: var(--blue);">342</span> md files · <span style="color: var(--blue);">274</span> objects<br>
+          Pipeline: <span style="color: var(--green);">0.70s</span> · Search: <span style="color: var(--green);">0.66s</span>
         </div>
       </div>
       <div style="background: linear-gradient(135deg, rgba(249,115,22,0.06), rgba(249,115,22,0.02)); border: 1px solid rgba(249,115,22,0.16); border-radius: 16px; padding: 22px; text-align: center;">
@@ -356,11 +354,10 @@ python -m distill.mcp_server --vault ~/my-vault</code></pre>
         <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">全部通过 · 覆盖 pipeline / skill / CLI / platform renderers</div>
       </div>
       <div style="background: linear-gradient(135deg, rgba(167,139,250,0.06), rgba(56,189,248,0.03)); border: 1px solid rgba(167,139,250,0.16); border-radius: 16px; padding: 22px; text-align: center;">
-        <div style="font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Skill System</div>
+        <div style="font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">CI</div>
         <div style="font-size: 18px; font-weight: 700; color: var(--text); margin-top: 8px; line-height: 1.6;">
-          <span style="color: var(--purple);">3</span> platform renderers<br>
-          <span style="color: var(--blue);">6</span> lifecycle commands<br>
-          <code>--to all</code> batch ops
+          GitHub Actions<br>
+          Python <span style="color: var(--purple);">3.10</span> / <span style="color: var(--purple);">3.11</span> / <span style="color: var(--purple);">3.12</span>
         </div>
       </div>
     </div>
