@@ -84,9 +84,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
       </div>
       <div style="background: linear-gradient(180deg, rgba(167,139,250,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(167,139,250,0.18); border-radius: 16px; padding: 20px;">
-        <h3 style="margin-top: 0;">BM25 + Semantic 混合搜索</h3>
+        <h3 style="margin-top: 0;">BM25 + TF-IDF 混合搜索</h3>
         <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-          关键词、TF-IDF cosine、RRF-fused hybrid 三种模式，精确命中和模糊理解之间自由切换，适合真实知识库查询。
+          BM25 关键词、TF-IDF cosine、RRF-fused hybrid 三种模式，精确命中和模糊理解之间自由切换。当前不含 embedding / 向量搜索，适合结构化知识库查询。
         </p>
       </div>
       <div style="background: linear-gradient(180deg, rgba(52,211,153,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(52,211,153,0.18); border-radius: 16px; padding: 20px;">
@@ -102,9 +102,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
       </div>
       <div style="background: linear-gradient(180deg, rgba(249,115,22,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(249,115,22,0.18); border-radius: 16px; padding: 20px;">
-        <h3 style="margin-top: 0;">Git 自动化钩子</h3>
+        <h3 style="margin-top: 0;">Git 自动化钩子 ⚠️</h3>
         <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-          <code>distill hook install</code> 一键安装 pre-commit / post-commit / post-merge 钩子；<code>distill commit</code> 一键完成 lint → add → commit → pipeline → push。
+          <code>distill hook install</code> 一键安装 pre-commit / post-commit / post-merge 钩子；<code>distill commit</code> 一键完成 lint → add → commit → pipeline → push。<strong style="color: var(--orange);">Hooks 默认不安装，需手动 opt-in</strong>；出问题时 <code>distill hook uninstall</code> 一键清除。
         </p>
       </div>
       <div style="background: linear-gradient(180deg, rgba(167,139,250,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(167,139,250,0.18); border-radius: 16px; padding: 20px;">
@@ -210,13 +210,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
 
     <h2 id="quick-start">Quick Start</h2>
+
+    <h3 style="color: var(--blue);">直接试用（无需 clone）</h3>
+    <pre><code>pip install distill-vault
+cd ~/my-obsidian-vault
+distill status            # vault 概览
+distill run               # 构建图谱（首次）
+distill search "知识管理" --mode hybrid
+distill lint --fix        # 检查并自动修复
+distill health            # 完整健康报告</code></pre>
+
+    <h3 style="color: var(--purple);">从源码（贡献者）</h3>
     <p>
       下面是最短启动路径：安装、索引、搜索、skill 分发、启动可视化界面。
     </p>
     <pre><code># 克隆并安装
 git clone https://github.com/okbexx/distill-vault.git
 cd distill-vault
-pip install -e .
+pip install -e ".[dev]"
+python -m pytest tests/ -q -n 4    # 验证 97/97 测试通过
 
 # 进入你的 Obsidian vault
 cd ~/my-vault
@@ -311,7 +323,7 @@ python -m distill.mcp_server --vault ~/my-vault</code></pre>
         <tbody style="color: var(--text-secondary);">
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">vault_status</td><td style="padding: 8px 12px;">Vault overview & graph stats</td></tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">vault_staleness</td><td style="padding: 8px 12px;">Check if index is stale</td></tr>
-          <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">search</td><td style="padding: 8px 12px;">Hybrid search (BM25 + semantic)</td></tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">search</td><td style="padding: 8px 12px;">Hybrid search (BM25 + TF-IDF + RRF)</td></tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">cypher_query</td><td style="padding: 8px 12px;">Run Cypher queries on the graph</td></tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">object_context</td><td style="padding: 8px 12px;">360° view of an object (in/out refs)</td></tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">list_objects</td><td style="padding: 8px 12px;">List/filter vault objects</td></tr>
@@ -350,6 +362,31 @@ python -m distill.mcp_server --vault ~/my-vault</code></pre>
           <span style="color: var(--blue);">6</span> lifecycle commands<br>
           <code>--to all</code> batch ops
         </div>
+      </div>
+    </div>
+
+    <h2>边界与限制</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px;">
+      <div style="background: var(--bg-card); border: 1px solid rgba(249,115,22,0.22); border-radius: 16px; padding: 20px;">
+        <div style="font-size: 11px; color: var(--orange); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 8px;">Limitations</div>
+        <ul style="margin: 0; padding-left: 18px; color: var(--text-secondary); font-size: 14px; line-height: 1.8;">
+          <li>搜索基于 BM25 + TF-IDF cosine，不含 embedding / 向量搜索</li>
+          <li>单 vault 模式，不支持多 vault 联邦查询</li>
+          <li>KuzuDB 嵌入式，非 client-server 架构</li>
+          <li>推荐规模：1,000–5,000 markdown 文件</li>
+          <li>仅兼容 Obsidian 格式（wikilink + frontmatter）</li>
+          <li>Watch mode 实验性功能，需 <code>watchdog</code></li>
+        </ul>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid rgba(56,189,248,0.22); border-radius: 16px; padding: 20px;">
+        <div style="font-size: 11px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 8px;">Non-goals</div>
+        <ul style="margin: 0; padding-left: 18px; color: var(--text-secondary); font-size: 14px; line-height: 1.8;">
+          <li>不替代 Obsidian 或任何编辑器</li>
+          <li>不是通用图数据库</li>
+          <li>不替代 Obsidian 插件生态</li>
+          <li>不含内置 LLM / AI 调用</li>
+          <li>不支持实时同步到图谱</li>
+        </ul>
       </div>
     </div>
 
