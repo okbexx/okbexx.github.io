@@ -120,6 +120,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
+    <h2>这轮产品收口解决了什么</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px;">
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
+        <h3 style="margin-top: 0;">Obsidian 真实场景降噪</h3>
+        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+          pseudo-link（如 <code>GitHub:</code>、<code>站点:</code>）、兼容层引用以及 <code>.html</code> / 图片 / 文档等附件型链接，不再被误报成 broken object link。健康检查开始反映真实问题，而不是编辑器正常用法。
+        </p>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
+        <h3 style="margin-top: 0;">Orphan 语义分层</h3>
+        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+          orphan 不再一锅端。现在会区分 <code>true_orphan</code> 和 <code>system_doc</code>，系统规范、运行时说明、AGENTS / CLAUDE / SKILL 文档被当作信息提示，而不是脏数据。
+        </p>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
+        <h3 style="margin-top: 0;">Frontmatter 检查收敛</h3>
+        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+          frontmatter 完整性检查默认只压对象层文件，不再把系统 / 运维 / 输出类 markdown 都当知识卡片硬性要求；需要更严格时再通过 <code>lint.frontmatter_required_globs</code> 显式配置。
+        </p>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
+        <h3 style="margin-top: 0;">跨入口口径统一</h3>
+        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+          index、lint、pipeline、health report 现在共享同一套链接解析和 orphan 语义。产品关注点从“有没有输出”升级成“不同入口看到的是不是同一个知识现实”。
+        </p>
+      </div>
+    </div>
+
     <h2>架构图</h2>
     <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; overflow-x: auto;">
       <pre style="margin: 0; background: transparent; border: none; padding: 0;"><code>                    ┌──────────────────────────────────┐
@@ -256,7 +284,7 @@ python -m distill.mcp_server --vault ~/my-vault</code></pre>
       这意味着 vault 不只是"能查"，而且已经具备足够清晰的结构分化，可以支持社区识别、影响分析和 Agent 查询等更高阶操作。
     </p>
     <p>
-      42/42 单元测试全部通过（包含 hooks、commit、config、init、pipeline）。
+      当前核心回归子集为 33/33 通过，覆盖 broken-link filters、orphan buckets、pipeline/index 对齐、relation prefixes、frontmatter scope 与 system-doc info 级别等产品语义。
     </p>
 
     <blockquote>

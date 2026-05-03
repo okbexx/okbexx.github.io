@@ -6,52 +6,105 @@ distill-vault
 </h1> <p style="font-size: 20px; color: var(--text); margin: 0 0 10px; line-height: 1.7;">
 Graph-powered knowledge base runtime for Obsidian-compatible vaults
 </p> <p style="font-size: 18px; color: var(--text-secondary); margin: 0;">
-把你的 Obsidian 知识库变成可查询的知识图谱
+把你的 Obsidian 知识库变成可查询、可分析、可视化的知识图谱
 </p> <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;"> <a href="https://github.com/okbexx/distill-vault" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border-radius: 12px; background: var(--blue); color: #0D1117; font-weight: 700; border: 1px solid rgba(56,189,248,0.35);">
 查看 GitHub 仓库
 </a> <a href="#quick-start" style="display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border-radius: 12px; background: rgba(167,139,250,0.08); color: var(--text); font-weight: 600; border: 1px solid rgba(167,139,250,0.22);">
 Quick Start
 </a> </div> </section> <section style="margin-top: 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;"> <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 18px;"> <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Objects</div> <div style="font-size: 28px; font-weight: 900; color: var(--blue); margin-top: 6px;">234</div> </div> <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 18px;"> <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Edges</div> <div style="font-size: 28px; font-weight: 900; color: var(--orange); margin-top: 6px;">1295</div> </div> <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 18px;"> <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Communities</div> <div style="font-size: 28px; font-weight: 900; color: var(--purple); margin-top: 6px;">55</div> </div> <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 18px;"> <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Modularity</div> <div style="font-size: 28px; font-weight: 900; color: var(--green); margin-top: 6px;">0.544</div> </div> </section> <h2>为什么是 distill-vault</h2> <p>
-distill-vault 不是另一个笔记应用，而是一层运行时：读取兼容 Obsidian 的 vault，建立对象、关系、社区和查询能力，让你的知识库从静态文件系统升级成可搜索、可分析、可视化的图谱系统。
+distill-vault 不是另一个笔记应用，而是一层<strong>知识运行时</strong>：读取兼容 Obsidian 的 vault，建立对象、关系、社区和查询能力，让你的知识库从静态文件系统升级成可搜索、可分析、可视化的图谱系统。
 </p> <p>
 它服务的是 Distill 的核心目标：把日常积累的碎片知识，转成可被 AI 和人共同操作的结构化资产。
-</p> <h2>核心功能模块</h2> <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px;"> <div style="background: linear-gradient(180deg, rgba(56,189,248,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(56,189,248,0.18); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">知识图谱引擎 (KuzuDB)</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-将 vault 中的笔记、概念、项目、实体与链接关系落入图数据库，建立可遍历的知识结构。
-</p> </div> <div style="background: linear-gradient(180deg, rgba(249,115,22,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(249,115,22,0.18); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">混合搜索引擎 (BM25 + Semantic)</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-结合关键词检索与语义召回，在精确命中和模糊理解之间取得平衡，适合真实知识库查询。
-</p> </div> <div style="background: linear-gradient(180deg, rgba(167,139,250,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(167,139,250,0.18); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">社区发现 (Community Detection)</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-自动识别知识图谱中的聚类结构，找出自然形成的主题社区、工作域和概念群落。
-</p> </div> <div style="background: linear-gradient(180deg, rgba(52,211,153,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(52,211,153,0.18); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">影响分析 (Impact Analysis)</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-从一个对象出发追踪上下游依赖，帮助你判断某条知识、决策或约束改动后会波及哪里。
-</p> </div> <div style="background: linear-gradient(180deg, rgba(56,189,248,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(56,189,248,0.18); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">MCP 集成 (16 Tools)</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-通过 MCP 暴露查询、上下文、影响分析等能力，让 Agent 直接把 vault 当作运行时知识后端。
-</p> </div> <div style="background: linear-gradient(180deg, rgba(249,115,22,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(249,115,22,0.18); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">Web 可视化 (Sigma.js)</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-通过交互式图谱视图观察节点、关系与社区，让抽象知识结构变成可探索的界面。
-</p> </div> </div> <h2>架构图</h2> <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; overflow-x: auto;"> <pre style="margin: 0; background: transparent; border: none; padding: 0;"><code>[ Obsidian Vault / Markdown Files ]
-                │
-                ▼
-      [ Parser + Object Extraction ]
-                │
-      ┌─────────┴─────────┐
-      ▼                   ▼
-[ Embeddings ]      [ KuzuDB Graph ]
-      │                   │
-      └──────┬────────────┘
-             ▼
- [ Hybrid Search + Community Detection ]
-             │
-      ┌──────┼───────────────┐
-      ▼      ▼               ▼
- [ MCP ] [ Impact ] [ Sigma.js Web UI ]</code></pre> </div> <h2 id="quick-start">Quick Start</h2> <p>
-下面是一个面向仓库体验的最短启动路径：克隆、安装、索引、启动可视化界面。
-</p> <pre><code>git clone https://github.com/okbexx/distill-vault.git
+</p> <h2>核心能力</h2> <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px;"> <div style="background: linear-gradient(180deg, rgba(56,189,248,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(56,189,248,0.18); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">6-Phase Pipeline DAG</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+Scan → Parse → Graph → Analyze → Promote → Export。Kahn 拓扑排序 + 增量执行（内容哈希 checkpoint）+ Worker Pool 并行解析，让大规模 vault 也能秒级重建索引。
+</p> </div> <div style="background: linear-gradient(180deg, rgba(249,115,22,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(249,115,22,0.18); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">KuzuDB 知识图谱</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+Object 节点 + wikilink / frontmatter 边，落入原生图数据库。支持 Cypher 查询、社区发现、影响分析，不是模拟图，是真图结构。
+</p> </div> <div style="background: linear-gradient(180deg, rgba(167,139,250,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(167,139,250,0.18); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">BM25 + Semantic 混合搜索</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+关键词、TF-IDF cosine、RRF-fused hybrid 三种模式，精确命中和模糊理解之间自由切换，适合真实知识库查询。
+</p> </div> <div style="background: linear-gradient(180deg, rgba(52,211,153,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(52,211,153,0.18); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">社区发现 & 影响分析</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+Label-propagation 聚类自动识别主题社区；BFS 上下游风险传播分析，判断一条知识改动后会波及哪里（LOW → CRITICAL）。
+</p> </div> <div style="background: linear-gradient(180deg, rgba(56,189,248,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(56,189,248,0.18); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">MCP 集成（16 Tools）</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+通过 JSON-RPC 2.0 暴露 16 个工具，Claude、Cursor、Hermes 等 Agent 直接把 vault 当作运行时知识后端查询、分析、修改。
+</p> </div> <div style="background: linear-gradient(180deg, rgba(249,115,22,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(249,115,22,0.18); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">Git 自动化钩子</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;"> <code>distill hook install</code> 一键安装 pre-commit / post-commit / post-merge 钩子；<code>distill commit</code> 一键完成 lint → add → commit → pipeline → push。
+</p> </div> <div style="background: linear-gradient(180deg, rgba(167,139,250,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(167,139,250,0.18); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">Lint & Auto-Fix</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+自动检测断链、缺失 frontmatter、类型推断错误，支持 <code>--fix</code> 自动修复，让 vault 长期保持健康结构。
+</p> </div> <div style="background: linear-gradient(180deg, rgba(52,211,153,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(52,211,153,0.18); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">Web 可视化（Sigma.js）</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+交互式图谱视图观察节点、关系与社区，暗色科技风界面，让抽象知识结构变成可探索的可视化界面。
+</p> </div> </div> <h2>这轮产品收口解决了什么</h2> <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px;"> <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">Obsidian 真实场景降噪</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+pseudo-link（如 <code>GitHub:</code>、<code>站点:</code>）、兼容层引用以及 <code>.html</code> / 图片 / 文档等附件型链接，不再被误报成 broken object link。健康检查开始反映真实问题，而不是编辑器正常用法。
+</p> </div> <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">Orphan 语义分层</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+orphan 不再一锅端。现在会区分 <code>true_orphan</code> 和 <code>system_doc</code>，系统规范、运行时说明、AGENTS / CLAUDE / SKILL 文档被当作信息提示，而不是脏数据。
+</p> </div> <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">Frontmatter 检查收敛</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+frontmatter 完整性检查默认只压对象层文件，不再把系统 / 运维 / 输出类 markdown 都当知识卡片硬性要求；需要更严格时再通过 <code>lint.frontmatter_required_globs</code> 显式配置。
+</p> </div> <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;"> <h3 style="margin-top: 0;">跨入口口径统一</h3> <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+index、lint、pipeline、health report 现在共享同一套链接解析和 orphan 语义。产品关注点从“有没有输出”升级成“不同入口看到的是不是同一个知识现实”。
+</p> </div> </div> <h2>架构图</h2> <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; overflow-x: auto;"> <pre style="margin: 0; background: transparent; border: none; padding: 0;"><code>                    ┌──────────────────────────────────┐
+                    │          CLI / Web / MCP          │
+                    └────────────┬─────────────────────┘
+                                 │
+                    ┌────────────▼─────────────────────┐
+                    │        Pipeline DAG Engine        │
+                    │  (Kahn's Topo Sort + Incremental) │
+                    └────────────┬─────────────────────┘
+                                 │
+          ┌──────────┬───────────┼───────────┬──────────┐
+          │          │           │           │          │
+     ┌────▼───┐ ┌───▼───┐ ┌────▼───┐ ┌────▼───┐ ┌───▼────┐
+     │  Scan  │ │ Parse │ │ Graph  │ │Analyze │ │Export  │
+     │+ Hash  │ │+ Pool │ │KuzuDB  │ │+Linter │ │+Report │
+     └────────┘ └───────┘ └────┬───┘ └────────┘ └────────┘
+                                │
+                    ┌───────────▼───────────────────────┐
+                    │         KuzuDB Knowledge Graph     │
+                    │  ┌────────┐    ┌────────────────┐  │
+                    │  │ Object │◄──►│     Links      │  │
+                    │  │ Nodes  │    │ (wikilink/fm)  │  │
+                    │  └────────┘    └────────────────┘  │
+                    └───────────┬───────────────────────┘
+                                │
+          ┌──────────┬──────────┼──────────┬──────────┐
+          │          │          │          │          │
+     ┌────▼────┐ ┌──▼───┐ ┌───▼────┐ ┌───▼───┐ ┌───▼────┐
+     │ Hybrid  │ │Community│ │Impact  │ │Rename │ │MCP     │
+     │ Search  │ │Detect │ │Analysis│ │Graph  │ │Server  │
+     │BM25+TF  │ │Label  │ │BFS     │ │Smart  │ │16 Tools│
+     └─────────┘ └──────┘ └────────┘ └───────┘ └────────┘</code></pre> </div> <h2 id="quick-start">Quick Start</h2> <p>
+下面是最短启动路径：安装、索引、搜索、启动可视化界面。
+</p> <pre><code># 克隆并安装
+git clone https://github.com/okbexx/distill-vault.git
 cd distill-vault
-pnpm install
-pnpm build:index
-pnpm dev</code></pre> <h2>实测数据</h2> <p>
-当前图谱运行结果已经验证了这个方向的可行性：<strong>234 objects</strong>、<strong>1295 edges</strong>、<strong>55 communities</strong>、<strong>0.544 modularity</strong>。
+pip install -e .
+
+# 进入你的 Obsidian vault
+cd ~/my-vault
+
+# 查看 vault 概览
+distill status
+
+# 运行完整 6 阶段 pipeline
+distill run
+
+# 混合搜索
+distill search "Agent工作流" --mode hybrid
+
+# Lint 并自动修复
+distill lint --fix
+
+# 增量检查（staleness）
+distill run --incremental
+
+# 启动 Web UI（Sigma.js 图谱可视化）
+distill web --port 8420
+
+# 启动 MCP server（供 AI Agent 调用）
+python -m distill.mcp_server --vault ~/my-vault</code></pre> <h2>CLI 命令速查</h2> <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; overflow-x: auto;"> <table style="width: 100%; border-collapse: collapse; font-size: 14px;"> <thead> <tr style="border-bottom: 1px solid var(--border);"> <th style="text-align: left; padding: 8px 12px; color: var(--blue); font-weight: 600;">Command</th> <th style="text-align: left; padding: 8px 12px; color: var(--blue); font-weight: 600;">Description</th> </tr> </thead> <tbody style="color: var(--text-secondary);"> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill status</td><td style="padding: 8px 12px;">Vault overview & statistics</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill index [--watch]</td><td style="padding: 8px 12px;">Build/rebuild index</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill lint [--fix]</td><td style="padding: 8px 12px;">Check/fix structural issues</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill health</td><td style="padding: 8px 12px;">Full health report</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill search QUERY [--mode hybrid]</td><td style="padding: 8px 12px;">Search objects</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill promote [--dry-run]</td><td style="padding: 8px 12px;">Show/apply promotions</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill run [--watch] [--incremental]</td><td style="padding: 8px 12px;">Full 6-phase pipeline</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill web [--port 8420]</td><td style="padding: 8px 12px;">Start Web UI</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill init NAME</td><td style="padding: 8px 12px;">Create new vault from template</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill hook install</td><td style="padding: 8px 12px;">Install git hooks</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill hook uninstall</td><td style="padding: 8px 12px;">Remove distill-managed hooks</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill hook status</td><td style="padding: 8px 12px;">Show hook installation status</td></tr> <tr><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill commit MSG [--push] [--no-lint]</td><td style="padding: 8px 12px;">Lint → add → commit → pipeline → push</td></tr> </tbody> </table> </div> <p style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">
+所有命令均支持 <code style="color: var(--blue);">--format json</code> 输出机器可读格式。
+</p> <h2>MCP Tools（16 个）</h2> <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; overflow-x: auto;"> <table style="width: 100%; border-collapse: collapse; font-size: 14px;"> <thead> <tr style="border-bottom: 1px solid var(--border);"> <th style="text-align: left; padding: 8px 12px; color: var(--orange); font-weight: 600;">Tool</th> <th style="text-align: left; padding: 8px 12px; color: var(--orange); font-weight: 600;">Description</th> </tr> </thead> <tbody style="color: var(--text-secondary);"> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">vault_status</td><td style="padding: 8px 12px;">Vault overview & graph stats</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">vault_staleness</td><td style="padding: 8px 12px;">Check if index is stale</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">search</td><td style="padding: 8px 12px;">Hybrid search (BM25 + semantic)</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">cypher_query</td><td style="padding: 8px 12px;">Run Cypher queries on the graph</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">object_context</td><td style="padding: 8px 12px;">360° view of an object (in/out refs)</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">list_objects</td><td style="padding: 8px 12px;">List/filter vault objects</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">impact_upstream</td><td style="padding: 8px 12px;">What depends on this object?</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">impact_downstream</td><td style="padding: 8px 12px;">What does this object depend on?</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">detect_changes</td><td style="padding: 8px 12px;">Analyze uncommitted changes</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">community_detect</td><td style="padding: 8px 12px;">Run community detection</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">community_info</td><td style="padding: 8px 12px;">Get community details</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">rename</td><td style="padding: 8px 12px;">Graph-assisted smart rename</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">lint_check</td><td style="padding: 8px 12px;">Check for issues</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">lint_fix</td><td style="padding: 8px 12px;">Auto-fix issues</td></tr> <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">pipeline_run</td><td style="padding: 8px 12px;">Trigger pipeline execution</td></tr> <tr><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">pipeline_status</td><td style="padding: 8px 12px;">Get pipeline status</td></tr> </tbody> </table> </div> <h2>实测数据</h2> <p>
+当前图谱运行结果已经验证了这个方向的可行性：<strong>234 objects</strong>、<strong>1,295 edges</strong>、<strong>55 communities</strong>、<strong>0.544 modularity</strong>。
 </p> <p>
-这意味着 vault 不只是“能查”，而且已经具备足够清晰的结构分化，可以支持社区识别、影响分析和 Agent 查询等更高阶操作。
+这意味着 vault 不只是"能查"，而且已经具备足够清晰的结构分化，可以支持社区识别、影响分析和 Agent 查询等更高阶操作。
+</p> <p>
+当前核心回归子集为 33/33 通过，覆盖 broken-link filters、orphan buckets、pipeline/index 对齐、relation prefixes、frontmatter scope 与 system-doc info 级别等产品语义。
 </p> <blockquote> <p>
 distill-vault 的目标不是替代 Obsidian，而是给 Obsidian 增加一层图计算与 Agent 可调用的知识运行时。
 </p> </blockquote> </article>  </main> <footer class="footer"> <p>© 2026 Jarl.dev — 一个人的 AI 工作流</p> <p style="margin-top:8px;"> <a href="https://github.com/okbexx" target="_blank">GitHub</a>
