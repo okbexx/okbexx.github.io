@@ -10,7 +10,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       style="background: linear-gradient(135deg, rgba(56,189,248,0.12), rgba(167,139,250,0.08) 45%, rgba(249,115,22,0.08)); border: 1px solid var(--border); border-radius: 20px; padding: 32px; box-shadow: 0 0 0 1px rgba(56,189,248,0.04), 0 24px 80px rgba(0,0,0,0.28);"
     >
       <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(56,189,248,0.2); background: rgba(56,189,248,0.08); font-size: 13px; color: var(--blue); font-family: var(--font-mono);">
-        DISTILL PROJECT / KNOWLEDGE GRAPH RUNTIME
+        DISTILL PROJECT / KNOWLEDGE GRAPH RUNTIME / v6
       </div>
 
       <h1 style="margin: 18px 0 12px; font-size: 44px; line-height: 1.15;">
@@ -21,7 +21,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Graph-powered knowledge base runtime for Obsidian-compatible vaults
       </p>
       <p style="font-size: 18px; color: var(--text-secondary); margin: 0;">
-        把你的 Obsidian 知识库变成可查询、可分析、可视化的知识图谱
+        把你的 Obsidian 知识库变成可查询、可分析、可视化的知识图谱<br>
+        + 平台差异化 Skill 分发系统（Hermes / Codex / Claude 三端一键同步）
       </p>
 
       <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;">
@@ -107,43 +108,59 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
       </div>
       <div style="background: linear-gradient(180deg, rgba(167,139,250,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(167,139,250,0.18); border-radius: 16px; padding: 20px;">
-        <h3 style="margin-top: 0;">Lint & Auto-Fix</h3>
+        <h3 style="margin-top: 0;">Canonical Skill Specs + Platform Renderers</h3>
         <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-          自动检测断链、缺失 frontmatter、类型推断错误，支持 <code>--fix</code> 自动修复，让 vault 长期保持健康结构。
+          一个 canonical spec → 三种平台差异化产物。Hermes（YAML frontmatter）、Codex（纯 instruction markdown）、Claude（@-metadata 注释），一键 <code>install --to all</code> / <code>reconcile --to all</code>。不是三份手写文档，是一个源头三种格式。
         </p>
       </div>
       <div style="background: linear-gradient(180deg, rgba(52,211,153,0.08), rgba(22,27,34,0.96)); border: 1px solid rgba(52,211,153,0.18); border-radius: 16px; padding: 20px;">
-        <h3 style="margin-top: 0;">Web 可视化（Sigma.js）</h3>
+        <h3 style="margin-top: 0;">Skill Lifecycle CLI</h3>
         <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-          交互式图谱视图观察节点、关系与社区，暗色科技风界面，让抽象知识结构变成可探索的可视化界面。
+          <code>skill list</code> 发现 → <code>skill export</code> 渲染 → <code>skill install</code> 部署 → <code>skill verify</code> 校验 → <code>skill doctor</code> 诊断 → <code>skill reconcile</code> 修复。完整的 skill 生命周期管理，支持 <code>--format json</code> 接入 CI。
         </p>
       </div>
     </div>
 
     <h2>这轮产品收口解决了什么</h2>
     <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px;">
+      <div style="background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(167,139,250,0.04)); border: 1px solid rgba(56,189,248,0.14); border-radius: 16px; padding: 20px;">
+        <div style="font-size: 11px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 8px;">v6 · Platform Renderers</div>
+        <h3 style="margin-top: 0;">一个源头，三种格式</h3>
+        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+          不再所有平台出同一份文档。Hermes 读 YAML frontmatter + 本地化章节，Codex 读纯 instruction markdown，Claude 读 @-metadata 注释 + 精简编号规则。语义一致，结构各异。<code>install --to all</code> 和 <code>reconcile --to all</code> 一键同步三个平台。
+        </p>
+      </div>
+      <div style="background: linear-gradient(135deg, rgba(249,115,22,0.06), rgba(249,115,22,0.02)); border: 1px solid rgba(249,115,22,0.14); border-radius: 16px; padding: 20px;">
+        <div style="font-size: 11px; color: var(--orange); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 8px;">v5 · Reconcile State Machine</div>
+        <h3 style="margin-top: 0;">修复有了确定性路径</h3>
+        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+          <code>missing → install</code>、<code>drift → update</code>、<code>ok → noop</code>。不再是"重新装一遍看看"，而是先诊断状态，再走确定性转移。JSON 模式区分 <code>after</code>（已写入）和 <code>desired_after</code>（dry-run 计划）。
+        </p>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
+        <div style="font-size: 11px; color: var(--purple); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 8px;">v4 · Doctor</div>
+        <h3 style="margin-top: 0;">跨平台诊断一目了然</h3>
+        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+          一条命令看 hermes / codex / claude 三个平台的 skill 健康状态：<code>ok</code>、<code>drift</code>、<code>missing</code>。退出码非零即有异常，可接入 CI。
+        </p>
+      </div>
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
+        <div style="font-size: 11px; color: var(--green); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 8px;">Deterministic Export</div>
+        <h3 style="margin-top: 0;">Pipeline 产物可复现</h3>
+        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
+          导出产物不再包含时间戳、随机顺序等不确定字段。连续两次 <code>distill run</code> 输出完全一致——对 CI 和 diff review 来说这是硬性要求。
+        </p>
+      </div>
       <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
         <h3 style="margin-top: 0;">Obsidian 真实场景降噪</h3>
         <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-          pseudo-link（如 <code>GitHub:</code>、<code>站点:</code>）、兼容层引用以及 <code>.html</code> / 图片 / 文档等附件型链接，不再被误报成 broken object link。健康检查开始反映真实问题，而不是编辑器正常用法。
+          pseudo-link（如 <code>GitHub:</code>、<code>站点:</code>）、兼容层引用以及 <code>.html</code> / 图片 / 文档等附件型链接，不再被误报成 broken object link。健康检查开始反映真实问题。
         </p>
       </div>
       <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
-        <h3 style="margin-top: 0;">Orphan 语义分层</h3>
+        <h3 style="margin-top: 0;">Orphan 语义分层 + Frontmatter 收敛</h3>
         <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-          orphan 不再一锅端。现在会区分 <code>true_orphan</code> 和 <code>system_doc</code>，系统规范、运行时说明、AGENTS / CLAUDE / SKILL 文档被当作信息提示，而不是脏数据。
-        </p>
-      </div>
-      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
-        <h3 style="margin-top: 0;">Frontmatter 检查收敛</h3>
-        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-          frontmatter 完整性检查默认只压对象层文件，不再把系统 / 运维 / 输出类 markdown 都当知识卡片硬性要求；需要更严格时再通过 <code>lint.frontmatter_required_globs</code> 显式配置。
-        </p>
-      </div>
-      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px;">
-        <h3 style="margin-top: 0;">跨入口口径统一</h3>
-        <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 15px;">
-          index、lint、pipeline、health report 现在共享同一套链接解析和 orphan 语义。产品关注点从“有没有输出”升级成“不同入口看到的是不是同一个知识现实”。
+          orphan 区分 <code>true_orphan</code> 和 <code>system_doc</code>；frontmatter 检查默认只压对象层文件，系统/运维文档不再被当脏数据。
         </p>
       </div>
     </div>
@@ -238,7 +255,13 @@ python -m distill.mcp_server --vault ~/my-vault</code></pre>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill hook install</td><td style="padding: 8px 12px;">Install git hooks</td></tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill hook uninstall</td><td style="padding: 8px 12px;">Remove distill-managed hooks</td></tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill hook status</td><td style="padding: 8px 12px;">Show hook installation status</td></tr>
-          <tr><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill commit MSG [--push] [--no-lint]</td><td style="padding: 8px 12px;">Lint → add → commit → pipeline → push</td></tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--text);">distill commit MSG [--push] [--no-lint]</td><td style="padding: 8px 12px;">Lint → add → commit → pipeline → push</td></tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--purple);">distill skill list</td><td style="padding: 8px 12px;">List canonical skill specs</td></tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--purple);">distill skill export NAME [--to hermes|codex|claude]</td><td style="padding: 8px 12px;">Render skill for target platform</td></tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--purple);">distill skill install NAME [--to hermes|codex|claude|all]</td><td style="padding: 8px 12px;">Install skill to target platform(s)</td></tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--purple);">distill skill reconcile NAME [--to all] [--dry-run]</td><td style="padding: 8px 12px;">Detect drift & repair</td></tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);"><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--purple);">distill skill doctor</td><td style="padding: 8px 12px;">Cross-platform health check</td></tr>
+          <tr><td style="padding: 8px 12px; font-family: var(--font-mono); color: var(--purple);">distill skill verify NAME</td><td style="padding: 8px 12px;">Validate installed skill integrity</td></tr>
         </tbody>
       </table>
     </div>
@@ -277,15 +300,28 @@ python -m distill.mcp_server --vault ~/my-vault</code></pre>
     </div>
 
     <h2>实测数据</h2>
-    <p>
-      当前图谱运行结果已经验证了这个方向的可行性：<strong>234 objects</strong>、<strong>1,295 edges</strong>、<strong>55 communities</strong>、<strong>0.544 modularity</strong>。
-    </p>
-    <p>
-      这意味着 vault 不只是"能查"，而且已经具备足够清晰的结构分化，可以支持社区识别、影响分析和 Agent 查询等更高阶操作。
-    </p>
-    <p>
-      当前核心回归子集为 33/33 通过，覆盖 broken-link filters、orphan buckets、pipeline/index 对齐、relation prefixes、frontmatter scope 与 system-doc info 级别等产品语义。
-    </p>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 16px;">
+      <div style="background: linear-gradient(135deg, rgba(56,189,248,0.06), rgba(167,139,250,0.04)); border: 1px solid rgba(56,189,248,0.16); border-radius: 16px; padding: 22px; text-align: center;">
+        <div style="font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Graph Stats</div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--text); margin-top: 8px; line-height: 1.6;">
+          <span style="color: var(--blue);">234</span> objects · <span style="color: var(--orange);">1295</span> edges<br>
+          <span style="color: var(--purple);">55</span> communities · <span style="color: var(--green);">0.544</span> modularity
+        </div>
+      </div>
+      <div style="background: linear-gradient(135deg, rgba(249,115,22,0.06), rgba(249,115,22,0.02)); border: 1px solid rgba(249,115,22,0.16); border-radius: 16px; padding: 22px; text-align: center;">
+        <div style="font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Test Suite</div>
+        <div style="font-size: 36px; font-weight: 900; color: var(--green); margin-top: 8px;">97/97</div>
+        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">全部通过 · 覆盖 pipeline / skill / CLI / platform renderers</div>
+      </div>
+      <div style="background: linear-gradient(135deg, rgba(167,139,250,0.06), rgba(56,189,248,0.03)); border: 1px solid rgba(167,139,250,0.16); border-radius: 16px; padding: 22px; text-align: center;">
+        <div style="font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;">Skill System</div>
+        <div style="font-size: 18px; font-weight: 700; color: var(--text); margin-top: 8px; line-height: 1.6;">
+          <span style="color: var(--purple);">3</span> platform renderers<br>
+          <span style="color: var(--blue);">6</span> lifecycle commands<br>
+          <code>--to all</code> batch ops
+        </div>
+      </div>
+    </div>
 
     <blockquote>
       <p>
