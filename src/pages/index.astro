@@ -191,16 +191,16 @@ const principles = [
         持续记录系统演进、产品尝试和过程中的真实判断，形成这套一人系统的公开归档。
       </p>
     </div>
-    <ul class="blog-list build-log-list">
+    <ul class="record-list build-log-list">
       {posts.slice(0, 4).map((entry) => (
         <li>
-          <a href={`/blog/${entry.id}`} class="blog-item build-log-item">
-            <div class="blog-item-title">{entry.data.title}</div>
-            <div class="blog-item-desc">{entry.data.description}</div>
-            <div class="blog-item-meta">
+          <a href={`/blog/${entry.id}`} class="record-card build-log-item">
+            <div class="record-card-title">{entry.data.title}</div>
+            <div class="record-card-desc">{entry.data.description}</div>
+            <div class="record-card-meta">
               <span>{entry.data.date}</span>
               {entry.data.tags?.map((tag: string) => (
-                <span class="blog-item-tag">{tag}</span>
+                <span class="record-card-tag">{tag}</span>
               ))}
             </div>
           </a>
