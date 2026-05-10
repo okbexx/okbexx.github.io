@@ -11,8 +11,8 @@ const coreSystems = [
     label: '内部知识系统',
     title: 'Distill · 知识蒸馏塔',
     href: '/distill',
-    description: '把碎片输入蒸馏成可复用知识。来源、项目、概念、决策、约束、输出都有明确命运。AI 负责整理，人负责判断。',
-    points: ['对象有分类与生命周期', '流程按风险分层', '所有输出最终回流成可维护资产'],
+    description: '把来源、项目、概念、决策、约束和输出接成可维护的知识运行层。AI 负责整理，人负责判断。',
+    points: ['对象有清晰类型与生命周期', '流程强度按风险分层', '输出会持续回流成可维护资产'],
   },
   {
     icon: '🥊',
@@ -20,16 +20,16 @@ const coreSystems = [
     title: 'Technical Knockout · 架构与实现参考库',
     href: 'https://github.com/okbexx/tech-knockout',
     external: true,
-    description: '把优秀开源项目拆成可复用的架构模式和实现方向，作为用 coding agent 开发产品时的参考库。',
+    description: '把优秀开源项目拆成可复用的架构模式、实现路径和 trade-off，作为下一次构建的外部参考坐标。',
     points: ['持续拆解优秀开源项目并抽取可复用模式', '五层拆解定位、架构、质量、社区与决策', '为下一次构建提供更快、更稳、更有方向的参考'],
   },
   {
     icon: '🤖',
     label: '执行系统',
-    title: 'AI Agent Workflow · 一人执行系统',
+    title: 'Agent Workflow · 一人执行系统',
     href: '/blog',
-    description: '定义人和 AI 的分工边界，把探索、编码、验证和知识沉淀接成可重复的工作流。',
-    points: ['多 agent 协同推进复杂任务', '研究、实现、验证、沉淀有清晰分工', '把系统能力真正转成可交付产出'],
+    description: '把探索、编码、验证和知识沉淀接成可重复的执行闭环，让这套系统真正持续产出。',
+    points: ['多 agent 协同推进复杂任务', '研究、实现、验证、沉淀形成闭环', '把系统能力转成产品、文章与可复用流程'],
   },
 ];
 
@@ -52,23 +52,23 @@ const outputs = [
     label: '过程公开层',
     title: '公开构建 · 过程与判断归档',
     href: '/blog',
-    description: '持续公开系统演进、产品尝试和真实判断，形成可回看的过程、作品与生产力归档。',
+    description: '持续归档系统演进、产品尝试与关键判断，为后续构建保留可回看的过程上下文。',
     chips: [`${posts.length} 篇记录`, '持续更新'],
   },
 ];
 
 const principles = [
   {
-    title: '系统优于工具',
-    text: '工具会变，系统会积累复利。我的重点是把能力接成长期可维护的结构。',
+    title: '系统先于单点效率',
+    text: '每次构建都要回流成规则、知识或可复用资产，否则速度只是一时加速。',
   },
   {
-    title: '人做判断，AI 做执行',
-    text: 'AI 可以整理、生成、并行推进，但价值判断、关键取舍和方向负责必须由人来承担。',
+    title: '人负责方向，AI 负责放大',
+    text: 'AI 处理整理、生成、并行推进与验证，人承担目标、边界、取舍和最终责任。',
   },
   {
-    title: '研究服务下一次构建',
-    text: '无论是 Distill 还是 Technical Knockout，最终目的都是让下一次构建更快、更稳、更有方向。',
+    title: '研究直接服务实现',
+    text: '无论拆解开源项目还是整理知识，最终都要为下一次产品构建提供更快、更稳的起点。',
   },
 ];
 ---
@@ -80,7 +80,7 @@ const principles = [
     <div class="eyebrow">公开构建中的一人系统</div>
     <h1>把知识、工具和 AI 接成一套一个人的工作系统</h1>
     <p class="hero-copy">
-      我叫 Jarl。我在持续构建一套个人工作系统：把知识系统、架构参考和多 Agent 工作流接起来，把一个人的产出能力推到接近一个团队的水平。
+      这里公开展示一套正在运行的一人系统：Distill 负责知识蒸馏，Technical Knockout 负责架构参考，Agent Workflow 负责把判断变成实现、验证和沉淀。它持续产出产品原型、方法沉淀和可回看的构建记录。
     </p>
     <div class="hero-actions">
       <a class="primary-button" href="#systems">看我在构建什么</a>
@@ -110,7 +110,7 @@ const principles = [
       <div class="section-label">CORE SYSTEMS</div>
       <h2>我在构建什么</h2>
       <p>
-        Distill 管内部知识，Technical Knockout 提供外部优秀样本，Agent Workflow 把两者真正转成产品和输出。三者共同组成一套互相增益的工作系统。
+        Distill 管内部知识，Technical Knockout 管外部样本，Agent Workflow 负责执行与闭环。三者一起把研究、判断和实现接成长期运行的工作系统。
       </p>
     </div>
     <div class="feature-grid three-up">
@@ -176,7 +176,7 @@ const principles = [
       <div class="about-card">
         <h3>关于 Jarl</h3>
         <p>
-          工程师，系统实践者，长期公开构建一套“一个人如何借助 AI 获得团队级产出能力”的工作系统，持续发布它的结构、作品与演进过程。
+          工程师。正在把知识蒸馏、架构研究和多 Agent 执行接成一套长期运行的一人系统，并把过程、作品与判断持续公开。
         </p>
         <a href="/about">更多背景 →</a>
       </div>
@@ -188,11 +188,11 @@ const principles = [
       <div class="section-label">BUILD LOG</div>
       <h2>最新构建记录</h2>
       <p>
-        持续记录系统演进、产品尝试和过程中的真实判断，形成这套一人系统的公开归档。
+        系统演进、产品尝试、架构判断与 AI 协作实践，都在这里持续归档。
       </p>
     </div>
     <ul class="record-list build-log-list">
-      {posts.slice(0, 4).map((entry) => (
+      {posts.slice(0, 3).map((entry) => (
         <li>
           <a href={`/blog/${entry.id}`} class="record-card build-log-item">
             <div class="record-card-title">{entry.data.title}</div>
@@ -252,7 +252,7 @@ const principles = [
     }
 
     .hero-copy {
-      max-width: 760px;
+      max-width: 720px;
     }
 
     .hero-actions {
@@ -485,7 +485,7 @@ const principles = [
     }
 
     .build-log-item {
-      padding: 26px 0;
+      padding: 30px 0;
     }
 
     @media (max-width: 900px) {

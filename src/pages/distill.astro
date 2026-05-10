@@ -1,21 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Distill — 知识蒸馏系统">
+<BaseLayout title="Distill — 知识蒸馏系统" description="Distill 是 Jarl 一人系统的知识运行层，把来源、项目、概念、决策、约束和输出接成可维护资产。">
   <article class="prose" style="padding: 40px 0;">
 
     <h1 style="margin-top:0;">Distill · 知识蒸馏塔</h1>
 
     <p>
-      知识不是存进去的，是蒸馏出来的。
+      Distill 是这套一人系统的知识运行层。它把来源、项目、概念、实体、决策、约束和输出接成可维护的知识对象。
     </p>
     <p>
-      这不是 Notion 模板，不是空洞的方法论。这是一套我每天都在跑的知识操作系统——碎片信息从塔底进入，经过分类、晋升、淘汰，最终变成可复用的知识精华。
+      进入系统的信息先被分类，再按价值和风险决定是否晋升。高价值信息会沉淀成可复用资产，低价值信息保留在原始层即可。
     </p>
 
-    <h2>🧪 原料层 · 对象模型</h2>
+    <h2>🧪 对象层 · 知识原料模型</h2>
     <p>
-      知识不是一堆笔记，而是 7 种有明确命运的原料：
+      Distill 不把知识视作一堆笔记，而是 7 种有明确命运的知识原料：
     </p>
     <ul>
       <li><strong>来源</strong> — 原始输入，系统唯一入口</li>
@@ -27,7 +27,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <li><strong>输出</strong> — 对内或对外的产物</li>
     </ul>
 
-    <h2>🔥 蒸馏层 · 生命周期</h2>
+    <h2>🔥 生命周期 · 从输入到资产</h2>
     <p>
       每条知识从进入系统到归档，经历清晰的状态流转：
     </p>
@@ -41,15 +41,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <li><strong>archived</strong> — 归档，仅保留历史价值</li>
     </ol>
     <p>
-      不是所有原料都要蒸馏到最纯——看你需要什么纯度。大多数停在 raw 就够了。
+      不是所有信息都值得持续维护。大多数停在 raw 就够了，只有真正可复用的内容才需要进入更高层级。
     </p>
 
-    <h2>⚗️ 冷凝层 · 最短路径</h2>
+    <h2>⚗️ 运行原则 · 最短路径</h2>
     <p>
       核心原则：<strong>满足质量要求的最短路径</strong>。
     </p>
     <p>
-      不追求流程完美，先判断风险。低风险直接出料，高风险才升级蒸馏。流程简化不是放松质量，而是把质量要求和流程强度分开管理。
+      流程强度跟着风险走，不跟着形式走。低风险直接落地，高风险再升级流程，把质量要求和流程成本分开管理。
     </p>
 
     <h2>🤖 人机协同</h2>
@@ -57,17 +57,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       AI 做整理，你做判断。
     </p>
     <p>
-      在我的系统里，AI 自动完成：新建来源对象、更新索引、补充双向链接、生成日报、健康检查。我只需要做价值判断、高影响决策的确认、系统级规则的变更。
+      在我的系统里，AI 自动完成来源对象创建、索引更新、双向链接补充、巡检和草稿生成。人负责价值判断、高影响决策确认和系统级规则变更。
     </p>
 
     <div style="background: linear-gradient(135deg, rgba(56,189,248,0.08), rgba(167,139,250,0.08)); border: 1px solid rgba(56,189,248,0.2); border-radius: 16px; padding: 24px; margin: 24px 0;">
       <div style="font-size: 12px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 10px;">Runtime Layer · v6</div>
       <h3 style="margin: 0 0 10px;">distill-vault：把蒸馏塔变成可运行的知识图谱底盘 + 多平台 Skill 分发</h3>
       <p style="margin: 0 0 14px; color: var(--text-secondary); line-height: 1.7;">
-        Distill 讲的是知识系统的方法与结构，<strong>distill-vault</strong> 则是把这套结构真正跑起来的运行时：对象索引、图数据库、混合搜索、MCP、健康检查与自动化钩子都落成了可用产品。
+        <strong>distill-vault</strong> 是 Distill 的运行时实现：对象索引、图数据库、混合搜索、社区发现、MCP、健康检查与自动化钩子都落成了可用产品。
       </p>
       <p style="margin: 0 0 14px; color: var(--text-secondary); line-height: 1.7;">
-        v6 新增<strong>平台差异化 Skill Renderer</strong>：一个 canonical spec 自动产出 Hermes（YAML frontmatter）、Codex（纯 instruction）、Claude（@-metadata）三种格式。<code>install --to all</code> / <code>reconcile --to all</code> 一键三端同步。不是三份手写文档，是一个源头三种格式。
+        v6 新增<strong>平台差异化 Skill Renderer</strong>：一个 canonical spec 自动产出 Hermes、Codex、Claude 三种格式。<code>install --to all</code> / <code>reconcile --to all</code> 可以一键三端同步，让同一套知识结构直接进入不同 agent 的工作界面。
       </p>
       <div style="display: flex; gap: 10px; flex-wrap: wrap;">
         <a href="/distill-vault" style="display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 12px; background: var(--blue); color: #0D1117; font-weight: 700; text-decoration: none; border: 1px solid rgba(56,189,248,0.35);">
@@ -81,10 +81,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <h2>⚔️ Technical Knockout · 架构与实现参考库</h2>
     <p>
-      Technical Knockout 不是普通的项目评测，也不只服务于技术选型。它的目标是把优秀开源项目拆成可复用的<strong>架构模式、实现方向和关键取舍</strong>，作为我用 coding agent 开发产品时的参考库。
+      Distill 管内部知识，Technical Knockout 管外部参考。它把优秀开源项目拆成可复用的<strong>架构模式、实现路径和关键取舍</strong>，为用 coding agent 构建产品提供高质量样本。
     </p>
     <p>
-      我会对项目做完整的五层分析：定位 → 架构 → 质量 → 社区 → 决策。但五层分析只是方法，真正沉淀下来的，是哪些模块划分值得借鉴、哪些扩展方式更稳、哪些实现路径适合复用、哪些坑应该提前绕开。
+      五层分析只是入口，真正沉淀下来的，是哪些模块划分值得借鉴、哪些扩展方式更稳、哪些实现路径适合复用、哪些坑应该提前绕开。
     </p>
     <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 20px 0;">
       <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
@@ -104,7 +104,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <hr />
 
     <blockquote>
-      <p>90% 的笔记不值得留存。问题从来不在工具，在于你从来没有定义过"什么值得记"。</p>
+      <p>知识只有进入运行时，才会持续参与下一次构建。</p>
     </blockquote>
 
   </article>

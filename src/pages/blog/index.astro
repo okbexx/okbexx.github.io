@@ -5,11 +5,20 @@ import { getCollection } from 'astro:content';
 const entries = await getCollection('blog');
 const sorted = entries.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
-<BaseLayout title="构建记录">
+<BaseLayout title="构建记录" description="公开归档系统演进、产品尝试、架构判断与 AI 协作实践。">
   <section style="padding: 40px 0;">
     <h1 style="font-size: 36px; font-weight: 900; margin-bottom: 12px;">构建记录</h1>
     <p style="color: var(--text-secondary); font-size: 16px; margin-bottom: 40px; line-height: 1.8; max-width: 700px;">
-      系统演进 · 产品尝试 · AI 协作中的真实判断。这些记录持续归档这套一人系统的演进过程。
+      系统演进 · 产品尝试 · 架构判断 · AI 协作实践。这些记录共同构成这套一人系统的公开运行日志。
+    </p>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px;">
+      <span class="record-card-tag">系统演进</span>
+      <span class="record-card-tag">产品尝试</span>
+      <span class="record-card-tag">架构判断</span>
+      <span class="record-card-tag">AI 协作</span>
+    </div>
+    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 24px;">
+      已归档 {sorted.length} 篇记录，持续更新。
     </p>
     <ul class="record-list">
       {sorted.map((entry) => (
