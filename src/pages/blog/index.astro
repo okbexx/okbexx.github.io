@@ -1,15 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 const entries = await getCollection('blog');
 const sorted = entries.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
-<BaseLayout title="博客">
+<BaseLayout title="构建记录">
   <section style="padding: 40px 0;">
-    <h1 style="font-size: 36px; font-weight: 900; margin-bottom: 12px;">博客</h1>
-    <p style="color: var(--text-secondary); font-size: 16px; margin-bottom: 40px;">
-      知识管理 · AI 协作 · 超级个体的实践
+    <h1 style="font-size: 36px; font-weight: 900; margin-bottom: 12px;">构建记录</h1>
+    <p style="color: var(--text-secondary); font-size: 16px; margin-bottom: 40px; line-height: 1.8; max-width: 700px;">
+      系统演进 · 产品尝试 · AI 协作中的真实判断。这里不是内容分发归档，而是公开构建这套一人系统时留下的过程记录。
     </p>
     <ul class="blog-list">
       {sorted.map((entry) => (

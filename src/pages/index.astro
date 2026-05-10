@@ -4,84 +4,197 @@ import { getCollection } from 'astro:content';
 
 const entries = await getCollection('blog');
 const posts = entries.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const coreSystems = [
+  {
+    icon: '🧪',
+    label: '内部知识系统',
+    title: 'Distill · 知识蒸馏塔',
+    href: '/distill',
+    description: '把碎片输入蒸馏成可复用知识。来源、项目、概念、决策、约束、输出都有明确命运。AI 负责整理，人负责判断。',
+    points: ['对象有分类，不是囤笔记', '流程按风险分层，不追求过度蒸馏', '所有输出最终回流成可维护资产'],
+  },
+  {
+    icon: '🥊',
+    label: '外部样本层',
+    title: 'Technical Knockout · 架构与实现参考库',
+    href: 'https://github.com/okbexx/tech-knockout',
+    external: true,
+    description: '把优秀开源项目拆成可复用的架构模式和实现方向，作为用 coding agent 开发产品时的参考库。',
+    points: ['不是只做评测，而是抽取可复用模式', '五层拆解定位、架构、质量、社区与决策', '让下一次构建更快、更稳、更有方向'],
+  },
+  {
+    icon: '🤖',
+    label: '执行系统',
+    title: 'AI Agent Workflow · 一人执行系统',
+    href: '/blog',
+    description: '定义人和 AI 的分工边界，把探索、编码、验证和知识沉淀接成可重复的工作流。',
+    points: ['多 agent 协同而不是单工具炫技', '研究、实现、验证、沉淀有清晰分工', '把系统能力真正转成可交付产出'],
+  },
+];
+
+const outputs = [
+  {
+    label: '代表作 / 产品',
+    title: 'distill-vault · Distill Runtime',
+    href: '/distill-vault',
+    description: '把蒸馏塔变成真正可运行的知识底盘：图数据库、混合搜索、社区发现、MCP，以及面向 Hermes / Codex / Claude 的平台差异化 Skill 分发。',
+    chips: ['97/97 tests', '3 platform renderers'],
+  },
+  {
+    label: '能力扩展实验',
+    title: 'Build Your Own X · 用 AI 协作重学计算机系统',
+    href: '/super-individual/relearn-computer-systems',
+    description: '把复杂系统拆成持续学习与可交付输出。不是泛学习，而是借助 AI 协作，把复杂能力一点点变成可理解、可复用、可交付的资产。',
+    chips: ['每日学习实验', 'README + 学习卡'],
+  },
+  {
+    label: '过程公开层',
+    title: '公开构建 · 过程与判断归档',
+    href: '/blog',
+    description: '把系统演进、产品尝试和真实判断过程持续公开。不是经营人设，而是让过程、作品和生产力杠杆都看得见。',
+    chips: [`${posts.length} 篇记录`, '持续更新'],
+  },
+];
+
+const principles = [
+  {
+    title: '系统优于工具',
+    text: '工具会变，系统才会积累复利。我的重点不是追新，而是把能力接成长期可维护的结构。',
+  },
+  {
+    title: '人做判断，AI 做执行',
+    text: 'AI 可以整理、生成、并行推进，但价值判断、关键取舍和方向负责必须由人来承担。',
+  },
+  {
+    title: '研究是为了复用，不是为了看过',
+    text: '无论是 Distill 还是 Technical Knockout，最终目的都不是囤知识，而是让下一次构建更快、更稳、更有方向。',
+  },
+];
 ---
-<BaseLayout title="Jarl — 用 AI 做超级个体">
-  <section style="padding: 60px 0 40px;">
-    <p style="color: var(--blue); font-size: 15px; font-weight: 500; margin-bottom: 16px; letter-spacing: 2px;">AI 超级个人 · 工程师 · 内容创作者</p>
-    <h1 style="font-size: 48px; font-weight: 900; line-height: 1.2; margin-bottom: 20px;">
-      一个人 + AI<br>
-      <span style="background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">跑出团队级产出</span>
-    </h1>
-    <p style="font-size: 18px; color: var(--text-secondary); max-width: 560px; line-height: 1.7;">
-      我叫 Jarl。我在探索一个人如何通过 AI 工具栈和系统设计，获得接近一个团队的产出能力。
+<BaseLayout
+  title="公开构建中的一人系统"
+  description="Jarl 正在把知识、工具和 AI 接成一套一个人的工作系统：Distill、Technical Knockout 与多 Agent 工作流共同驱动真实产出。"
+>
+  <section class="hero-section">
+    <div class="eyebrow">公开构建中的一人系统</div>
+    <h1>把知识、工具和 AI 接成一套一个人的工作系统</h1>
+    <p class="hero-copy">
+      我叫 Jarl。我在持续验证一件事：一个人如何通过知识系统、架构参考和多 Agent 工作流，获得接近一个团队的产出能力。这里不是方法论展示，而是系统正在运行的现场。
     </p>
-  </section>
-
-  <section style="padding: 40px 0;">
-    <h2 style="font-size: 14px; font-weight: 700; color: var(--text-secondary); letter-spacing: 3px; margin-bottom: 24px; text-transform: uppercase;">我在做什么</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-      <a href="/distill" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.2s; text-decoration: none;">
-        <div style="font-size: 28px; margin-bottom: 12px;">🧪</div>
-        <div style="font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px;">Distill · 知识蒸馏塔</div>
-        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
-          一套真实的知识蒸馏系统。碎片信息从塔底进入，经过对象分类、层层晋升、淘汰废液，变成可复用的知识精华。不是方法论，是我每天都在跑的操作系统。
-        </p>
-      </a>
-
-      <a href="/distill-vault" style="background: linear-gradient(135deg, rgba(56,189,248,0.08), rgba(167,139,250,0.08)); border: 1px solid rgba(56,189,248,0.25); border-radius: 16px; padding: 32px; text-decoration: none; transition: border-color 0.2s;">
-        <div style="font-size: 28px; margin-bottom: 12px;">🕸️</div>
-        <div style="font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px;">distill-vault · 开源项目</div>
-        <p style="font-size: 13px; color: var(--blue); line-height: 1.5; margin-bottom: 8px; font-weight: 600;">
-          Graph-powered knowledge base runtime · v6
-        </p>
-        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
-          把 Obsidian 知识库变成可查询的知识图谱。图数据库 + 混合搜索 + 社区发现 + MCP + 平台差异化 Skill 分发（Hermes/Codex/Claude 三端一键同步）。
-        </p>
-        <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
-          <span style="display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(52,211,153,0.3); background: rgba(52,211,153,0.08); font-size: 12px; color: var(--green); font-weight: 600;">
-            97/97 tests
-          </span>
-          <span style="display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(167,139,250,0.3); background: rgba(167,139,250,0.08); font-size: 12px; color: var(--purple); font-weight: 600;">
-            3 platform renderers
-          </span>
-        </div>
-      </a>
-
-      <a href="/blog" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.2s; text-decoration: none;">
-        <div style="font-size: 28px; margin-bottom: 12px;">🤖</div>
-        <div style="font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px;">AI Agent 工作流</div>
-        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
-          多 Agent 并行协作的实践。Codex 写代码、Hermes 管知识、TrendRadar 采信息——一个人指挥一支 AI 团队，关键是分工边界怎么定。
-        </p>
-      </a>
-
-      <a href="/super-individual/relearn-computer-systems" style="background: linear-gradient(180deg, rgba(22,27,34,0.98), rgba(13,17,23,0.96)); border: 1px solid rgba(56,189,248,0.22); border-radius: 16px; padding: 32px; text-decoration: none; box-shadow: 0 18px 40px rgba(0,0,0,0.18);">
-        <div style="font-size: 28px; margin-bottom: 12px;">⚡</div>
-        <div style="font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px;">用 AI 协作重学计算机系统</div>
-        <p style="font-size: 14px; color: var(--purple); line-height: 1.5; margin-bottom: 12px; font-weight: 600;">
-          Build Your Own X · 每日学习实验
-        </p>
-        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
-          把复杂系统拆成“一天一个主题”的持续学习项目，借助 AI 协作产出 README 与学习卡。
-        </p>
-      </a>
-
-      <a href="/blog" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.2s; text-decoration: none;">
-        <div style="font-size: 28px; margin-bottom: 12px;">✍️</div>
-        <div style="font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px;">内容创作</div>
-        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
-          把实践过程变成可传播的内容。小红书图文 + 博客长文，不教方法论，只展示真实工作流。AI 超级个人的活标本。
-        </p>
-      </a>
+    <div class="hero-actions">
+      <a class="primary-button" href="#systems">看我在构建什么</a>
+      <a class="secondary-button" href="#build-log">查看最新构建记录</a>
+    </div>
+    <div class="hero-signal-grid">
+      <div class="signal-card">
+        <span>内部知识</span>
+        <strong>Distill</strong>
+        <p>把输入蒸馏成可复用知识资产</p>
+      </div>
+      <div class="signal-card">
+        <span>外部样本</span>
+        <strong>Technical Knockout</strong>
+        <p>给 coding agent 提供架构参考坐标</p>
+      </div>
+      <div class="signal-card">
+        <span>执行系统</span>
+        <strong>Agent Workflow</strong>
+        <p>把研究、实现、验证和沉淀接成闭环</p>
+      </div>
     </div>
   </section>
 
-  <section style="padding: 40px 0;">
-    <h2 style="font-size: 14px; font-weight: 700; color: var(--text-secondary); letter-spacing: 3px; margin-bottom: 24px; text-transform: uppercase;">最新文章</h2>
-    <ul class="blog-list">
-      {posts.slice(0, 5).map((entry) => (
+  <section id="systems" class="content-section">
+    <div class="section-heading">
+      <div class="section-label">CORE SYSTEMS</div>
+      <h2>我在构建什么</h2>
+      <p>
+        Distill 管内部知识，Technical Knockout 提供外部优秀样本，Agent Workflow 把两者真正转成产品和输出。这不是很多平行项目，而是一套互相增益的工作系统。
+      </p>
+    </div>
+    <div class="feature-grid three-up">
+      {coreSystems.map((system) => (
+        <a
+          href={system.href}
+          target={system.external ? '_blank' : undefined}
+          rel={system.external ? 'noreferrer' : undefined}
+          class="feature-card"
+        >
+          <div class="feature-topline">{system.icon} {system.label}</div>
+          <h3>{system.title}</h3>
+          <p>{system.description}</p>
+          <ul>
+            {system.points.map((point) => (
+              <li>{point}</li>
+            ))}
+          </ul>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <div class="section-label">RUNNING OUTPUTS</div>
+      <h2>这些系统，已经跑出了什么</h2>
+      <p>
+        我更关心系统实际跑出了什么，而不是它听起来有多完整。下面这些作品，是这套系统当前最清晰的外部证据。
+      </p>
+    </div>
+    <div class="feature-grid outputs-grid">
+      {outputs.map((item) => (
+        <a href={item.href} class="output-card">
+          <div class="feature-topline">{item.label}</div>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          <div class="chip-row">
+            {item.chips.map((chip) => (
+              <span class="chip">{chip}</span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section split-section">
+    <div>
+      <div class="section-label">WORKING PRINCIPLES</div>
+      <h2>我怎么工作</h2>
+      <div class="principle-list">
+        {principles.map((item) => (
+          <div class="principle-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="about-card-shell">
+      <div class="section-label">ABOUT</div>
+      <div class="about-card">
+        <h3>关于 Jarl</h3>
+        <p>
+          工程师，系统实践者，长期公开构建一套“一个人如何借助 AI 获得团队级产出能力”的工作系统。这里展示的不是抽象观点，而是我正在让它跑起来的过程。
+        </p>
+        <a href="/about">更多背景 →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="build-log" class="content-section build-log-section">
+    <div class="section-heading">
+      <div class="section-label">BUILD LOG</div>
+      <h2>最新构建记录</h2>
+      <p>
+        这里记录系统演进、产品尝试和过程中的真实判断。公开这些，不是为了经营人设，而是为了让过程、作品和杠杆都可见。
+      </p>
+    </div>
+    <ul class="blog-list build-log-list">
+      {posts.slice(0, 4).map((entry) => (
         <li>
-          <a href={`/blog/${entry.id}`} class="blog-item">
+          <a href={`/blog/${entry.id}`} class="blog-item build-log-item">
             <div class="blog-item-title">{entry.data.title}</div>
             <div class="blog-item-desc">{entry.data.description}</div>
             <div class="blog-item-meta">
@@ -94,8 +207,326 @@ const posts = entries.sort((a, b) => new Date(b.data.date).getTime() - new Date(
         </li>
       ))}
     </ul>
-    <a href="/blog" style="display: inline-block; margin-top: 24px; font-size: 15px; font-weight: 500;">
-      查看全部文章 →
-    </a>
+    <a href="/blog" class="inline-link">查看全部构建记录 →</a>
   </section>
+
+  <style>
+    .hero-section {
+      padding: 72px 0 52px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .eyebrow,
+    .section-label,
+    .feature-topline {
+      width: fit-content;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      background: rgba(56, 189, 248, 0.08);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .hero-section h1 {
+      max-width: 820px;
+      font-size: 54px;
+      line-height: 1.08;
+      letter-spacing: -1.8px;
+    }
+
+    .hero-copy,
+    .section-heading p,
+    .about-card p,
+    .principle-card p,
+    .feature-card p,
+    .output-card p {
+      color: var(--text-secondary);
+      font-size: 17px;
+      line-height: 1.85;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .primary-button,
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .primary-button {
+      background: linear-gradient(135deg, #38BDF8, #7DD3FC);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      color: #0D1117;
+      box-shadow: 0 18px 40px rgba(56, 189, 248, 0.24);
+    }
+
+    .secondary-button,
+    .about-card,
+    .signal-card,
+    .principle-card,
+    .feature-card,
+    .output-card {
+      background: linear-gradient(180deg, rgba(22, 27, 34, 0.98), rgba(13, 17, 23, 0.96));
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .secondary-button {
+      color: var(--text-secondary);
+    }
+
+    .primary-button:hover,
+    .secondary-button:hover,
+    .feature-card:hover,
+    .output-card:hover,
+    .build-log-item:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-signal-grid,
+    .feature-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-signal-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 8px;
+    }
+
+    .signal-card {
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+    }
+
+    .signal-card span {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .signal-card strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .signal-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .content-section {
+      padding: 44px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .section-heading {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 760px;
+    }
+
+    .section-heading h2,
+    .split-section h2 {
+      font-size: 36px;
+      line-height: 1.15;
+      letter-spacing: -1px;
+    }
+
+    .three-up {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .outputs-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .feature-card,
+    .output-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+      text-decoration: none;
+    }
+
+    .feature-card h3,
+    .output-card h3,
+    .principle-card h3,
+    .about-card h3 {
+      font-size: 22px;
+      line-height: 1.35;
+      color: var(--text);
+    }
+
+    .feature-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .feature-card li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .feature-card li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--purple);
+      font-size: 22px;
+      line-height: 1;
+      top: -2px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      background: rgba(56, 189, 248, 0.08);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .split-section {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .principle-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .principle-card,
+    .about-card {
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.14);
+    }
+
+    .about-card-shell {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .about-card a,
+    .inline-link {
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .build-log-section {
+      padding-bottom: 20px;
+    }
+
+    .build-log-list {
+      background: linear-gradient(180deg, rgba(22, 27, 34, 0.94), rgba(13, 17, 23, 0.92));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0 26px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+    }
+
+    .build-log-item {
+      padding: 26px 0;
+    }
+
+    @media (max-width: 900px) {
+      .hero-section h1 {
+        font-size: 44px;
+      }
+
+      .hero-signal-grid,
+      .three-up,
+      .outputs-grid,
+      .split-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-section {
+        padding-top: 48px;
+      }
+
+      .hero-section h1 {
+        font-size: 36px;
+        letter-spacing: -1px;
+      }
+
+      .section-heading h2,
+      .split-section h2 {
+        font-size: 30px;
+      }
+
+      .feature-card,
+      .output-card,
+      .signal-card,
+      .principle-card,
+      .about-card {
+        padding: 22px;
+      }
+
+      .build-log-list {
+        padding: 0 18px;
+      }
+    }
+  </style>
 </BaseLayout>
