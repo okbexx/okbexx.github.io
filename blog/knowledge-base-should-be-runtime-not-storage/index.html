@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>知识库应该是 runtime，不是 storage — Jarl</title><meta name="description" content="当 AI 开始参与检索、分析和执行时，个人知识库需要的不是更多存储，而是一套可编译、可检查、可影响分析的运行时。"><meta name="author" content="Jarl"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta property="article:author" content="Jarl"><style>@import"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap";:root{--bg: #0D1117;--bg-card: #161B22;--bg-card-hover: #1C2128;--border: rgba(139,148,158,.12);--text: #E6EDF3;--text-secondary: #8B949E;--blue: #38BDF8;--orange: #F97316;--purple: #A78BFA;--green: #34D399;--font-sans: "Noto Sans SC", -apple-system, sans-serif;--font-mono: "JetBrains Mono", monospace}*{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}a{color:var(--blue);text-decoration:none;transition:color .2s}a:hover{color:var(--purple)}body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(56,189,248,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}.nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;max-width:900px;margin:0 auto;padding:32px 24px}.nav-brand{font-size:20px;font-weight:900;color:var(--text);letter-spacing:-.5px}.nav-brand span{color:var(--blue)}.nav-links{display:flex;gap:32px;list-style:none}.nav-links a{font-size:15px;font-weight:500;color:var(--text-secondary);transition:color .2s}.nav-links a:hover{color:var(--text)}.main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 24px 80px}.footer{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:40px 24px;border-top:1px solid var(--border);text-align:center;color:var(--text-secondary);font-size:14px}.footer a{color:var(--text-secondary)}.footer a:hover{color:var(--blue)}.prose{max-width:700px;margin:0 auto}.prose h1{font-size:36px;font-weight:900;line-height:1.3;margin:60px 0 20px}.prose h2{font-size:26px;font-weight:700;line-height:1.4;margin:48px 0 16px;color:var(--blue)}.prose h3{font-size:20px;font-weight:700;margin:36px 0 12px}.prose p{margin:16px 0;font-size:17px;line-height:1.8;color:var(--text)}.prose ul,.prose ol{margin:16px 0;padding-left:24px}.prose li{margin:8px 0;font-size:17px;line-height:1.7}.prose strong{color:var(--orange);font-weight:700}.prose code{font-family:var(--font-mono);background:#38bdf814;padding:2px 8px;border-radius:4px;font-size:15px;color:var(--blue)}.prose pre{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin:20px 0;overflow-x:auto}.prose pre code{background:none;padding:0;color:var(--text)}.prose blockquote{border-left:4px solid var(--purple);background:#a78bfa0f;padding:16px 24px;margin:20px 0;border-radius:0 8px 8px 0}.prose blockquote p{color:var(--text-secondary)}.prose hr{border:none;border-top:1px solid var(--border);margin:40px 0}.prose img{max-width:100%;border-radius:12px;margin:20px 0}.prose table{width:100%;margin:24px 0;border-collapse:collapse;table-layout:fixed;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}.prose thead{background:#38bdf814}.prose th,.prose td{padding:14px 18px;text-align:left;font-size:15px;line-height:1.6;border-bottom:1px solid var(--border)}.prose th{color:var(--text);font-weight:700}.prose td{color:var(--text-secondary)}.prose tbody tr:last-child td{border-bottom:none}.record-list{list-style:none}.record-card{display:block;padding:28px 0;border-bottom:1px solid var(--border)}.record-card:last-child{border-bottom:none}.record-card-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px;transition:color .2s}a:hover .record-card-title{color:var(--blue)}.record-card-desc{font-size:15px;color:var(--text-secondary);line-height:1.6;margin-bottom:8px}.record-card-meta{font-size:13px;color:var(--text-secondary);display:flex;gap:16px}.record-card-tag{background:#38bdf814;color:var(--blue);padding:2px 10px;border-radius:100px;font-size:12px;font-weight:500}.article-meta{display:flex;gap:16px;align-items:center;color:var(--text-secondary);font-size:14px;margin-bottom:40px}
+</style></head> <body> <nav class="nav"> <a href="/" class="nav-brand">Jarl<span>.</span>dev</a> <ul class="nav-links"> <li><a href="/">首页</a></li> <li><a href="/blog">构建记录</a></li> <li><a href="/about">关于</a></li> </ul> </nav> <main class="main">  <article class="prose" style="padding: 40px 0;"> <div class="article-meta"> <span>2026-05-10</span> <span class="record-card-tag">蒸馏塔</span><span class="record-card-tag">distill-vault</span><span class="record-card-tag">个人知识库</span><span class="record-card-tag">AI协作</span> </div> <h1 id="知识库应该是-runtime不是-storage">知识库应该是 runtime，不是 storage</h1>
+<p>大多数知识库真正缺的，不是编辑器，不是双链，也不是再多一个 AI 总结按钮。</p>
+<p>它缺的是<strong>运行时</strong>。</p>
+<p>很多系统只解决了一件事：把东西存进去。</p>
+<ul>
+<li>网页摘录存进去</li>
+<li>聊天记录存进去</li>
+<li>灵感片段存进去</li>
+<li>会议纪要存进去</li>
+<li>项目结论存进去</li>
+</ul>
+<p>结果当然比散落在各处强。但做到这里，知识库最多只是一个 storage。</p>
+<p>而对持续和 AI 协作的人来说，真正关键的问题不是“有没有存住”，而是：</p>
+<blockquote>
+<p>这条知识在下一次检索、判断、执行和构建时，还能不能继续参与工作？</p>
+</blockquote>
+<p>这才是 runtime 该回答的问题。</p>
+<h2 id="storage-只解决别丢">Storage 只解决“别丢”</h2>
+<p>我越来越觉得，很多知识库后面之所以越用越乱，不是因为记得不够勤，也不是因为工具不够强，而是因为它们默认的世界观就是 storage。</p>
+<p>storage 的核心动作是保存。</p>
+<ul>
+<li>先把内容留下来</li>
+<li>以后再说怎么整理</li>
+<li>以后再说怎么复用</li>
+<li>以后再说怎么让 AI 理解</li>
+</ul>
+<p>问题在于，“以后”通常不会自己发生。</p>
+<p>信息一旦持续涌入，系统里很快就会混在一起：</p>
+<ul>
+<li>原始来源和二手总结混在一起</li>
+<li>临时判断和稳定结论混在一起</li>
+<li>正在推进的项目和已经过时的输出混在一起</li>
+<li>仍然有效的约束和早就失效的规则混在一起</li>
+</ul>
+<p>这时候文件都还在，链接也未必断，但系统已经开始失去可解释性。</p>
+<p>你会碰到几种非常常见的情况：</p>
+<ol>
+<li>改了一个概念定义，却不知道哪些项目页还在沿用旧说法。</li>
+<li>删除或覆盖一条来源后，才发现某个结论已经失去了证据链。</li>
+<li>让 AI “基于知识库回答”，却根本不知道它拿到的是原始来源、整理后的概念，还是一篇早就过期的输出。</li>
+</ol>
+<p>这些问题都不是“没存住”。</p>
+<p>这些问题是：<strong>存住之后，系统并不会反馈它现在还能不能工作。</strong></p>
+<h2 id="为什么很多笔记系统会一直重建">为什么很多笔记系统会一直重建</h2>
+<p>我之前写过一篇 <a href="/blog/why-your-note-system-keeps-rebuilding">《你的笔记系统为什么一直在重建？》</a>，核心判断是：问题不在工具，而在你从来没有定义过什么值得记，什么该晋升，什么该淘汰。</p>
+<p>现在我更想把这个判断再往前推一步：</p>
+<blockquote>
+<p>很多知识系统之所以反复重建，不只是因为分类做得差，而是因为它从一开始就被当成 storage 来设计，而不是 runtime。</p>
+</blockquote>
+<p>当你把知识库理解成 storage，你默认优化的是：</p>
+<ul>
+<li>输入够不够快</li>
+<li>记录够不够方便</li>
+<li>页面够不够好看</li>
+<li>组织方式够不够顺手</li>
+</ul>
+<p>这些都重要，但还不够。</p>
+<p>因为 runtime 关心的是另一组问题：</p>
+<ul>
+<li>系统里到底有哪些对象类型？</li>
+<li>它们的生命周期是什么？</li>
+<li>一次改动会影响到谁？</li>
+<li>哪些对象正在失效？</li>
+<li>哪些链接已经断了？</li>
+<li>AI 读到的到底是哪一层知识？</li>
+</ul>
+<p>如果这些问题没有被系统化回答，知识库就会越来越像一个“存量越来越大、反馈越来越少”的黑盒。</p>
+<p>黑盒一大，人就会本能地想重建。</p>
+<p>不是因为想折腾，而是因为旧系统已经不敢信了。</p>
+<h2 id="runtime-和-storage-的区别不是口号是反馈结构">Runtime 和 storage 的区别，不是口号，是反馈结构</h2>
+<p>我现在更愿意这样区分两者：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>维度</th><th>storage</th><th>runtime</th></tr></thead><tbody><tr><td>主要目标</td><td>把内容存住</td><td>让知识持续参与工作</td></tr><tr><td>最小单元</td><td>一篇篇笔记</td><td>有类型的知识对象</td></tr><tr><td>结构关注点</td><td>文件怎么放</td><td>对象如何关联、流转、失效</td></tr><tr><td>改动后的反馈</td><td>基本没有</td><td>有检查、分析和状态更新</td></tr><tr><td>与 AI 的关系</td><td>喂一堆 Markdown 让它猜</td><td>给一套可查询、可验证的知识运行面</td></tr></tbody></table>
+<p>如果要让知识库变成 runtime，我觉得至少要有四层能力。</p>
+<h3 id="1-对象模型">1. 对象模型</h3>
+<p>系统里不是只有“笔记”这一种东西。</p>
+<p>来源、项目、概念、实体、决策、约束、输出，它们的职责和命运都不一样。</p>
+<p>如果所有内容都以同一种文档形态堆在一起，后面就很难知道：</p>
+<ul>
+<li>什么是证据</li>
+<li>什么是结论</li>
+<li>什么是上下文</li>
+<li>什么是临时产物</li>
+</ul>
+<p>对象模型的价值，不是为了分类得更漂亮，而是为了让系统知道自己在处理什么。</p>
+<h3 id="2-生命周期">2. 生命周期</h3>
+<p>不是所有信息都值得长期维护。</p>
+<p>有些内容停在 raw 就够了，有些需要 parsed、linked、promoted、maintained，有些最终会 superseded 或 archived。</p>
+<p>生命周期不是形式主义。</p>
+<p>它解决的是：<strong>哪些内容值得继续投入维护成本。</strong></p>
+<h3 id="3-健康检查">3. 健康检查</h3>
+<p>代码世界里，大家默认接受编译器、测试和 CI 的存在。</p>
+<p>知识库也应该有类似的反馈：</p>
+<ul>
+<li>broken links</li>
+<li>orphan objects</li>
+<li>frontmatter 缺失</li>
+<li>结构异常</li>
+<li>过时对象</li>
+</ul>
+<p>如果一个系统只能无限写入、不能持续检查，那它迟早会在沉默中退化。</p>
+<h3 id="4-影响分析">4. 影响分析</h3>
+<p>这一点最像真正的 runtime。</p>
+<p>改一个核心概念，不该只被理解成“改了一篇笔记”。</p>
+<p>它实际上是在改系统中的一个事实节点。只要这个节点被项目、决策、输出复用，它就会产生传播效应。</p>
+<p>所以系统应该能回答：</p>
+<ul>
+<li>谁依赖这个概念？</li>
+<li>谁引用这个决策？</li>
+<li>谁会因为这次修改而需要一起更新？</li>
+</ul>
+<p>只有当知识改动开始具备可观测性，知识库才真正从静态存储变成运行中的系统。</p>
+<h2 id="distill-vault把知识库做成一套-runtime">distill-vault：把知识库做成一套 runtime</h2>
+<p><a href="/distill-vault">distill-vault</a> 就是我对这个问题的产品化回答。</p>
+<p>它不是再做一个笔记工具，而是把 Obsidian 兼容 vault 变成一套可扫描、可解析、可建图、可检查、可分析、可被 AI 直接调用的知识库运行时。</p>
+<p>目前这套 runtime 的骨架大概是这样：</p>
+<h3 id="对象层">对象层</h3>
+<p>知识先按对象进入系统，而不是先堆成一摞文件。</p>
+<p>当前核心对象包括：</p>
+<ul>
+<li>来源</li>
+<li>项目</li>
+<li>概念</li>
+<li>实体</li>
+<li>决策</li>
+<li>约束</li>
+<li>输出</li>
+</ul>
+<p>这让系统第一次能区分“原始输入”“稳定认知”“项目上下文”和“对外产物”。</p>
+<h3 id="pipeline-层">Pipeline 层</h3>
+<p>它的主干是一条 6 阶段流水线：</p>
+<p><code>Scan → Parse → Graph → Analyze → Promote → Export</code></p>
+<p>我很看重这条流水线，不只是因为它把步骤排出来了，而是因为它把知识处理变成了<strong>可重复执行的过程</strong>。</p>
+<ul>
+<li><strong>Scan</strong>：扫描 vault，识别变化</li>
+<li><strong>Parse</strong>：解析 Markdown、frontmatter、wikilink 和对象字段</li>
+<li><strong>Graph</strong>：把对象和关系写入图数据库</li>
+<li><strong>Analyze</strong>：做健康检查、社区发现、影响分析等分析任务</li>
+<li><strong>Promote</strong>：给“来源 → 稳定对象”的晋升提供建议</li>
+<li><strong>Export</strong>：导出报告、索引和给 Agent 使用的运行面</li>
+</ul>
+<p>这条链路更像 CI，而不是“记完一篇笔记就结束”。</p>
+<h3 id="图谱层">图谱层</h3>
+<p>底层我用了 <strong>KuzuDB</strong>。</p>
+<p>因为真正重要的从来不是 Markdown 文件本身，而是：</p>
+<ul>
+<li>有哪些对象</li>
+<li>它们各自带着哪些属性</li>
+<li>它们之间通过 wikilink 和 frontmatter 形成了什么关系</li>
+</ul>
+<p>一旦这些关系进入图，很多过去只能靠人脑维护的事情就能落成查询：</p>
+<ul>
+<li>一个概念被哪些项目复用？</li>
+<li>某个决策依赖哪些来源？</li>
+<li>哪些对象成了孤儿？</li>
+<li>某次修改的 upstream / downstream 影响范围有多大？</li>
+</ul>
+<h3 id="检索与-agent-接口层">检索与 Agent 接口层</h3>
+<p>如果知识库要成为 runtime，就不能只服务于“人打开来看看”。</p>
+<p>它还要能被 AI 稳定调用。</p>
+<p>所以我在 <code>distill-vault</code> 里把搜索、对象上下文、Cypher 查询、上下游影响分析、变更检测、pipeline 触发这些能力都暴露成了 MCP 工具。</p>
+<p>这样 Agent 拿到的就不再只是“几篇可能相关的 Markdown”，而是一套：</p>
+<ul>
+<li>有结构</li>
+<li>有索引</li>
+<li>有状态</li>
+<li>有分析能力</li>
+</ul>
+<p>的知识运行面。</p>
+<blockquote>
+<p>AI 真正需要的不是更多文本，而是更可靠的上下文。</p>
+</blockquote>
+<h2 id="这不是概念图它已经在真实-vault-上跑起来了">这不是概念图，它已经在真实 vault 上跑起来了</h2>
+<p>我不太喜欢只讲愿景，所以直接说几组已经跑出来的数据。</p>
+<p>根据我当前维护的项目记录，<code>distill-vault</code> 现在的状态大概是：</p>
+<ul>
+<li>当前版本：<code>v0.2.1</code></li>
+<li>在真实 <code>all_in_one</code> vault 上，完整 6 阶段 pipeline 耗时约 <code>0.70s</code></li>
+<li>同一份 vault 上，hybrid 搜索约 <code>0.66s</code></li>
+<li>健康检查约 <code>0.39s</code></li>
+<li>当前对象规模记录为 <code>274</code> 个对象、<code>342</code> 个 Markdown 文件</li>
+<li>MCP Server、Skill System、Web UI、Git Hooks 都已经进入 stable 阶段</li>
+<li>项目记录里，相关测试总数已经收口到 <code>296</code> 全绿</li>
+</ul>
+<p>这些数字不代表项目已经到终局。</p>
+<p>但它们足够说明一件事：这不是一个停留在“概念很好”的 demo，而是一套已经打通了对象模型、图数据库、搜索、健康检查、影响分析、Agent 接口和自动化钩子的系统。</p>
+<p>对我来说，更重要的不是“又做了一个工具”，而是终于把这句话落实成了能运行的东西：</p>
+<blockquote>
+<p>知识库不是用来堆东西的，它是下一次构建的运行时。</p>
+</blockquote>
+<h2 id="为什么这件事在-ai-时代更重要">为什么这件事在 AI 时代更重要</h2>
+<p>AI 把信息进入系统的速度放大了。</p>
+<p>这既是机会，也是压力。</p>
+<p>过去你一天可能只整理几条笔记。现在你可能同时在让 Agent：</p>
+<ul>
+<li>读资料</li>
+<li>总结结论</li>
+<li>写方案</li>
+<li>跑分析</li>
+<li>生成输出</li>
+<li>更新文档</li>
+</ul>
+<p>如果知识库还是 storage 逻辑，结果通常是输入越来越多，噪声越来越厚，AI 也越来越容易在错误的层上工作。</p>
+<p>它可能会：</p>
+<ul>
+<li>引用过时输出当事实</li>
+<li>把临时判断当稳定结论</li>
+<li>在缺失证据链的情况下继续推理</li>
+<li>忽略一个改动已经影响到的上下游对象</li>
+</ul>
+<p>所以 AI 时代的知识库，不只是“更需要搜索”。</p>
+<p>它更需要：</p>
+<ul>
+<li>让知识分层</li>
+<li>让状态可见</li>
+<li>让变更可查</li>
+<li>让影响可观测</li>
+<li>让 Agent 拿到的是运行面，而不是噪声堆</li>
+</ul>
+<p>这也是我为什么会把 Distill 放在整套系统的底层。</p>
+<p>Technical Knockout 给我外部样本，Agent Workflow 负责执行闭环，而 Distill 负责把内部知识变成可维护、可复用、可继续参与工作的资产。</p>
+<p>它不是配套件。</p>
+<p>它是底盘。</p>
+<h2 id="如果只记一件事">如果只记一件事</h2>
+<p>很多知识库的失败，不是因为你没有记下来。</p>
+<p>而是因为你记下来之后，系统再也没有告诉你：</p>
+<ul>
+<li>它还是否可信</li>
+<li>它还影响着谁</li>
+<li>它是否已经过时</li>
+<li>它能不能继续参与下一次构建</li>
+</ul>
+<p>storage 只能回答“东西还在不在”。</p>
+<p>runtime 回答的是另一件更重要的事：</p>
+<blockquote>
+<p>这套知识，现在还能不能工作。</p>
+</blockquote>
+<p>如果你也在用 Obsidian 管知识、用 AI 做检索、分析、写作或开发，那我越来越相信：<strong>知识库应该像代码仓库一样被治理。</strong></p>
+<p>至少对我来说，<a href="/distill-vault">distill-vault</a> 正在把这件事从判断，慢慢变成现实。</p> </article> <div style="padding: 40px 0; border-top: 1px solid var(--border); margin-top: 40px;"> <a href="/blog" style="font-size: 15px; font-weight: 500;">← 返回构建记录</a> </div>  </main> <footer class="footer"> <p>© 2026 Jarl.dev — 公开构建中的一人系统</p> <p style="margin-top:8px;"> <a href="https://github.com/okbexx" target="_blank">GitHub</a>
+·
+<a href="https://x.com/okbexx" target="_blank">X / Twitter</a> </p> </footer> </body></html>
