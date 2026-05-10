@@ -1,11 +1,11 @@
 ---
-title: "真正决定 AI 协作上限的，不是多 Agent，而是 harness"
+title: "Harness 决定 AI 协作上限"
 date: "2026-04-24"
-description: "社区已经开始往 harness、SDD、multi-agent automation 走了。我越来越觉得，AI 协作真正的关键不是堆更多 Agent，而是给 Agent 设计一层可控的工作系统：目标、边界、上下文、验证和沉淀。"
+description: "社区已经开始往 harness、SDD 和 multi-agent automation 演进。AI 协作的关键，在于为 Agent 设计一层可控的工作系统：目标、边界、上下文、验证和沉淀。"
 tags: ["AI协作", "Harness", "Agent工作流", "自动化", "系统设计"]
 ---
 
-# 真正决定 AI 协作上限的，不是多 Agent，而是 harness
+# Harness 决定 AI 协作上限
 
 这两年，AI 协作讨论的重心已经变了。
 

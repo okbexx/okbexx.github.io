@@ -15,7 +15,6 @@ const { Content } = await render(entry);
 ---
 <BaseLayout title={entry.data.title} description={entry.data.description} article={true}>
   <article class="prose" style="padding: 40px 0;">
-    <h1 style="margin-top:0;">{entry.data.title}</h1>
     <div class="article-meta">
       <span>{entry.data.date}</span>
       {entry.data.tags?.map((tag: string) => (
@@ -25,6 +24,6 @@ const { Content } = await render(entry);
     <Content />
   </article>
   <div style="padding: 40px 0; border-top: 1px solid var(--border); margin-top: 40px;">
-    <a href="/blog" style="font-size: 15px; font-weight: 500;">← 返回博客</a>
+    <a href="/blog" style="font-size: 15px; font-weight: 500;">← 返回构建记录</a>
   </div>
 </BaseLayout>

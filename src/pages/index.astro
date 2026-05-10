@@ -12,7 +12,7 @@ const coreSystems = [
     title: 'Distill · 知识蒸馏塔',
     href: '/distill',
     description: '把碎片输入蒸馏成可复用知识。来源、项目、概念、决策、约束、输出都有明确命运。AI 负责整理，人负责判断。',
-    points: ['对象有分类，不是囤笔记', '流程按风险分层，不追求过度蒸馏', '所有输出最终回流成可维护资产'],
+    points: ['对象有分类与生命周期', '流程按风险分层', '所有输出最终回流成可维护资产'],
   },
   {
     icon: '🥊',
@@ -21,7 +21,7 @@ const coreSystems = [
     href: 'https://github.com/okbexx/tech-knockout',
     external: true,
     description: '把优秀开源项目拆成可复用的架构模式和实现方向，作为用 coding agent 开发产品时的参考库。',
-    points: ['不是只做评测，而是抽取可复用模式', '五层拆解定位、架构、质量、社区与决策', '让下一次构建更快、更稳、更有方向'],
+    points: ['持续拆解优秀开源项目并抽取可复用模式', '五层拆解定位、架构、质量、社区与决策', '为下一次构建提供更快、更稳、更有方向的参考'],
   },
   {
     icon: '🤖',
@@ -29,7 +29,7 @@ const coreSystems = [
     title: 'AI Agent Workflow · 一人执行系统',
     href: '/blog',
     description: '定义人和 AI 的分工边界，把探索、编码、验证和知识沉淀接成可重复的工作流。',
-    points: ['多 agent 协同而不是单工具炫技', '研究、实现、验证、沉淀有清晰分工', '把系统能力真正转成可交付产出'],
+    points: ['多 agent 协同推进复杂任务', '研究、实现、验证、沉淀有清晰分工', '把系统能力真正转成可交付产出'],
   },
 ];
 
@@ -45,14 +45,14 @@ const outputs = [
     label: '能力扩展实验',
     title: 'Build Your Own X · 用 AI 协作重学计算机系统',
     href: '/super-individual/relearn-computer-systems',
-    description: '把复杂系统拆成持续学习与可交付输出。不是泛学习，而是借助 AI 协作，把复杂能力一点点变成可理解、可复用、可交付的资产。',
+    description: '把复杂系统拆成持续学习与可交付输出，借助 AI 协作，把复杂能力一点点变成可理解、可复用、可交付的资产。',
     chips: ['每日学习实验', 'README + 学习卡'],
   },
   {
     label: '过程公开层',
     title: '公开构建 · 过程与判断归档',
     href: '/blog',
-    description: '把系统演进、产品尝试和真实判断过程持续公开。不是经营人设，而是让过程、作品和生产力杠杆都看得见。',
+    description: '持续公开系统演进、产品尝试和真实判断，形成可回看的过程、作品与生产力归档。',
     chips: [`${posts.length} 篇记录`, '持续更新'],
   },
 ];
@@ -60,15 +60,15 @@ const outputs = [
 const principles = [
   {
     title: '系统优于工具',
-    text: '工具会变，系统才会积累复利。我的重点不是追新，而是把能力接成长期可维护的结构。',
+    text: '工具会变，系统会积累复利。我的重点是把能力接成长期可维护的结构。',
   },
   {
     title: '人做判断，AI 做执行',
     text: 'AI 可以整理、生成、并行推进，但价值判断、关键取舍和方向负责必须由人来承担。',
   },
   {
-    title: '研究是为了复用，不是为了看过',
-    text: '无论是 Distill 还是 Technical Knockout，最终目的都不是囤知识，而是让下一次构建更快、更稳、更有方向。',
+    title: '研究服务下一次构建',
+    text: '无论是 Distill 还是 Technical Knockout，最终目的都是让下一次构建更快、更稳、更有方向。',
   },
 ];
 ---
@@ -80,7 +80,7 @@ const principles = [
     <div class="eyebrow">公开构建中的一人系统</div>
     <h1>把知识、工具和 AI 接成一套一个人的工作系统</h1>
     <p class="hero-copy">
-      我叫 Jarl。我在持续验证一件事：一个人如何通过知识系统、架构参考和多 Agent 工作流，获得接近一个团队的产出能力。这里不是方法论展示，而是系统正在运行的现场。
+      我叫 Jarl。我在持续构建一套个人工作系统：把知识系统、架构参考和多 Agent 工作流接起来，把一个人的产出能力推到接近一个团队的水平。
     </p>
     <div class="hero-actions">
       <a class="primary-button" href="#systems">看我在构建什么</a>
@@ -110,7 +110,7 @@ const principles = [
       <div class="section-label">CORE SYSTEMS</div>
       <h2>我在构建什么</h2>
       <p>
-        Distill 管内部知识，Technical Knockout 提供外部优秀样本，Agent Workflow 把两者真正转成产品和输出。这不是很多平行项目，而是一套互相增益的工作系统。
+        Distill 管内部知识，Technical Knockout 提供外部优秀样本，Agent Workflow 把两者真正转成产品和输出。三者共同组成一套互相增益的工作系统。
       </p>
     </div>
     <div class="feature-grid three-up">
@@ -139,7 +139,7 @@ const principles = [
       <div class="section-label">RUNNING OUTPUTS</div>
       <h2>这些系统，已经跑出了什么</h2>
       <p>
-        我更关心系统实际跑出了什么，而不是它听起来有多完整。下面这些作品，是这套系统当前最清晰的外部证据。
+        下面这些作品，是这套系统当前最清晰的外部证据。
       </p>
     </div>
     <div class="feature-grid outputs-grid">
@@ -176,7 +176,7 @@ const principles = [
       <div class="about-card">
         <h3>关于 Jarl</h3>
         <p>
-          工程师，系统实践者，长期公开构建一套“一个人如何借助 AI 获得团队级产出能力”的工作系统。这里展示的不是抽象观点，而是我正在让它跑起来的过程。
+          工程师，系统实践者，长期公开构建一套“一个人如何借助 AI 获得团队级产出能力”的工作系统，持续发布它的结构、作品与演进过程。
         </p>
         <a href="/about">更多背景 →</a>
       </div>
@@ -188,7 +188,7 @@ const principles = [
       <div class="section-label">BUILD LOG</div>
       <h2>最新构建记录</h2>
       <p>
-        这里记录系统演进、产品尝试和过程中的真实判断。公开这些，不是为了经营人设，而是为了让过程、作品和杠杆都可见。
+        持续记录系统演进、产品尝试和过程中的真实判断，形成这套一人系统的公开归档。
       </p>
     </div>
     <ul class="blog-list build-log-list">
