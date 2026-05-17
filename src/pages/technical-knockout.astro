@@ -1,0 +1,534 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const analysisLayers = [
+  {
+    step: '01',
+    title: '定位与画像',
+    text: '先判断项目解决什么问题、面向谁、与已有工具的关系，以及它真正处在什么生态位置。',
+  },
+  {
+    step: '02',
+    title: '架构解剖',
+    text: '读源码、看模块边界、画核心流程，抽出可以被下一次构建复用的架构模式。',
+  },
+  {
+    step: '03',
+    title: '质量与成熟度',
+    text: '检查测试、CI、文档、错误处理、扩展点和维护信号，区分原型、玩具和可持续项目。',
+  },
+  {
+    step: '04',
+    title: '社区与生态',
+    text: '看项目是否有真实用户、真实问题、真实衍生，以及它在同类工具里的位置。',
+  },
+  {
+    step: '05',
+    title: '选型决策',
+    text: '给出是否值得采用、适合什么场景、有什么风险，以及最值得学习的实现取舍。',
+  },
+];
+
+const sampleProjects = [
+  {
+    name: 'pi-mono',
+    category: 'Coding Agent',
+    value: 'TypeScript Agent 工具箱：CLI、SDK、Provider 与扩展结构完整，适合作为 coding agent 架构样本。',
+    verdict: '推荐采用 · 架构学习价值高',
+  },
+  {
+    name: 'superpowers',
+    category: 'AI Coding Workflow',
+    value: '把技能、设计先行、TDD 与审查流程打包成跨平台 Agentic 工作流。',
+    verdict: '推荐采用 · 方法论样本强',
+  },
+  {
+    name: 'GitNexus',
+    category: 'Code Intelligence',
+    value: '通过知识图谱和 MCP 给 AI Agent 提供代码库感知，适合研究代码智能基础设施。',
+    verdict: '观望 · 架构学习价值高',
+  },
+  {
+    name: 'openhuman',
+    category: 'Desktop AI / Agent Platform',
+    value: '本地优先个人 AI 桌面平台，memory、skills、tools、channels、voice、webhooks 一体化。',
+    verdict: '观望 · 系统设计样本强',
+  },
+];
+
+const useCases = [
+  {
+    title: '采用判断',
+    text: '这个项目值不值得用？适合直接接入、局部借鉴，还是只适合观察？',
+  },
+  {
+    title: '架构学习',
+    text: '它有哪些模块划分、扩展方式、状态管理和工作流设计值得复用？',
+  },
+  {
+    title: '构建前校准',
+    text: '下一次用 coding agent 做产品前，先用高质量样本校准方向和边界。',
+  },
+];
+---
+<BaseLayout
+  title="Technical Knockout — 架构与实现参考库"
+  description="Technical Knockout 把优秀开源项目拆成可复用的架构模式、实现路径和关键取舍，为一人系统和 coding agent 构建提供外部参考坐标。"
+>
+  <section class="tk-hero">
+    <div class="eyebrow">TECHNICAL KNOCKOUT</div>
+    <h1>架构与实现参考库</h1>
+    <p class="hero-copy">
+      Technical Knockout 把优秀开源项目拆成下一次构建可复用的参考坐标。它面向 coding agent 时代的外部样本层，把定位、架构、质量、社区和取舍转成可被复用的构建资产。
+    </p>
+    <div class="hero-actions">
+      <a class="primary-button" href="https://github.com/okbexx/tech-knockout" target="_blank" rel="noreferrer">查看 GitHub 仓库</a>
+      <a class="secondary-button" href="#framework">查看分析框架</a>
+    </div>
+    <div class="signal-grid">
+      <div class="signal-card">
+        <span>Sample Layer</span>
+        <strong>外部样本</strong>
+        <p>持续拆解优秀开源项目，提炼可复用模式、反例和 trade-off。</p>
+      </div>
+      <div class="signal-card">
+        <span>For Agents</span>
+        <strong>构建前参考</strong>
+        <p>让 coding agent 进入实现前，先站在已有优秀样本上。</p>
+      </div>
+      <div class="signal-card">
+        <span>Decision Asset</span>
+        <strong>选型与架构判断</strong>
+        <p>每份报告都要回答“能不能用”和“哪里值得学”。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section problem-section">
+    <div class="section-heading">
+      <div class="section-label">WHY IT EXISTS</div>
+      <h2>研究要服务下一次构建</h2>
+      <p>
+        AI 编程让实现速度变快，但方向判断、架构选择和取舍判断仍然昂贵。Technical Knockout 负责把外部优秀项目拆成可复用结构，让每一次调研都能回到下一次产品构建里。
+      </p>
+    </div>
+    <div class="thesis-card">
+      <p>
+        <strong>Distill</strong> 管内部知识，<strong>Technical Knockout</strong> 管外部样本，<strong>Agent Workflow</strong> 管执行闭环。三者接起来，一个人的研究、判断和实现才不会散落在聊天记录、收藏夹和临时灵感里。
+      </p>
+    </div>
+  </section>
+
+  <section id="framework" class="content-section">
+    <div class="section-heading">
+      <div class="section-label">FIVE-LAYER ANALYSIS</div>
+      <h2>五层分析框架</h2>
+      <p>
+        每个项目都从同一套框架进入，避免只看 README、Star 或功能表。真正要留下来的，是项目背后的结构、取舍和可迁移模式。
+      </p>
+    </div>
+    <div class="layer-grid">
+      {analysisLayers.map((layer) => (
+        <article class="layer-card">
+          <div class="layer-step">{layer.step}</div>
+          <h3>{layer.title}</h3>
+          <p>{layer.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section split-section">
+    <div>
+      <div class="section-label">DUAL USE</div>
+      <h2>同一份分析，服务两个场景</h2>
+      <p class="section-copy">
+        Technical Knockout 同时回答两个问题：这个项目是否值得采用，以及它能否改变下一次构建方式。
+      </p>
+    </div>
+    <div class="use-case-list">
+      {useCases.map((item) => (
+        <article class="use-case-card">
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <div class="section-label">CURRENT SAMPLES</div>
+      <h2>已经沉淀的样本</h2>
+      <p>
+        目前样本集中在 Coding Agent、AI Coding Workflow、Code Intelligence、Desktop AI 等方向。每个样本都保留源码、本地报告和分类横评入口。
+      </p>
+    </div>
+    <div class="sample-grid">
+      {sampleProjects.map((project) => (
+        <article class="sample-card">
+          <div class="sample-category">{project.category}</div>
+          <h3>{project.name}</h3>
+          <p>{project.value}</p>
+          <div class="sample-verdict">{project.verdict}</div>
+        </article>
+      ))}
+    </div>
+    <div class="repo-card">
+      <div>
+        <div class="section-label">REPOSITORY</div>
+        <h3>完整报告与横评在 GitHub 持续更新</h3>
+        <p>
+          仓库包含项目分析报告、分类横评和保留的源码副本索引。公开站点负责解释它在一人系统里的位置，GitHub 负责承载完整分析资产。
+        </p>
+      </div>
+      <a class="secondary-button" href="https://github.com/okbexx/tech-knockout" target="_blank" rel="noreferrer">打开仓库 →</a>
+    </div>
+  </section>
+
+  <section class="content-section system-section">
+    <div class="section-heading">
+      <div class="section-label">IN THE SYSTEM</div>
+      <h2>它在一人系统里的位置</h2>
+      <p>
+        Technical Knockout 是外部参考层。它把“看过一个项目”升级成“下一次构建可以直接复用的判断资产”。
+      </p>
+    </div>
+    <div class="system-flow">
+      <a href="/distill" class="flow-node">
+        <span>01</span>
+        <strong>Distill</strong>
+        <p>内部知识运行层</p>
+      </a>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node active">
+        <span>02</span>
+        <strong>Technical Knockout</strong>
+        <p>外部架构参考层</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <a href="/blog" class="flow-node">
+        <span>03</span>
+        <strong>Agent Workflow</strong>
+        <p>执行与验证闭环</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="content-section cta-section">
+    <div>
+      <div class="section-label">NEXT</div>
+      <h2>让研究成为下一次构建的起点</h2>
+      <p>
+        下一步会继续把高价值开源项目拆成可复用结构，并把其中最稳定的方法沉淀成公开文章、架构图和 agent 工作流。
+      </p>
+    </div>
+    <div class="hero-actions">
+      <a class="primary-button" href="https://github.com/okbexx/tech-knockout" target="_blank" rel="noreferrer">看完整分析库</a>
+      <a class="secondary-button" href="/blog">看构建记录</a>
+    </div>
+  </section>
+
+  <style>
+    .tk-hero,
+    .content-section {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .tk-hero {
+      padding: 72px 0 44px;
+    }
+
+    .content-section {
+      padding: 44px 0;
+    }
+
+    .eyebrow,
+    .section-label {
+      width: fit-content;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(249, 115, 22, 0.24);
+      background: rgba(249, 115, 22, 0.08);
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .tk-hero h1 {
+      max-width: 820px;
+      font-size: 56px;
+      line-height: 1.06;
+      letter-spacing: -1.8px;
+    }
+
+    .hero-copy,
+    .section-heading p,
+    .section-copy,
+    .thesis-card p,
+    .repo-card p,
+    .cta-section p,
+    .layer-card p,
+    .use-case-card p,
+    .sample-card p,
+    .flow-node p,
+    .signal-card p {
+      color: var(--text-secondary);
+      font-size: 17px;
+      line-height: 1.85;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      color: var(--text);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .primary-button,
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .primary-button {
+      background: linear-gradient(135deg, #F97316, #FDBA74);
+      border: 1px solid rgba(249, 115, 22, 0.45);
+      color: #0D1117;
+      box-shadow: 0 18px 40px rgba(249, 115, 22, 0.2);
+    }
+
+    .secondary-button,
+    .signal-card,
+    .layer-card,
+    .use-case-card,
+    .sample-card,
+    .repo-card,
+    .flow-node,
+    .thesis-card,
+    .cta-section {
+      background: linear-gradient(180deg, rgba(22, 27, 34, 0.98), rgba(13, 17, 23, 0.96));
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .secondary-button {
+      color: var(--text-secondary);
+    }
+
+    .primary-button:hover,
+    .secondary-button:hover,
+    .signal-card:hover,
+    .layer-card:hover,
+    .sample-card:hover,
+    .flow-node:hover {
+      transform: translateY(-2px);
+    }
+
+    .signal-grid,
+    .layer-grid,
+    .sample-grid,
+    .system-flow {
+      display: grid;
+      gap: 18px;
+    }
+
+    .signal-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 8px;
+    }
+
+    .signal-card,
+    .layer-card,
+    .use-case-card,
+    .sample-card,
+    .thesis-card,
+    .repo-card,
+    .flow-node,
+    .cta-section {
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+    }
+
+    .signal-card span,
+    .layer-step,
+    .sample-category,
+    .flow-node span {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+
+    .signal-card strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .section-heading {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 760px;
+    }
+
+    .section-heading h2,
+    .split-section h2,
+    .cta-section h2 {
+      font-size: 36px;
+      line-height: 1.15;
+      letter-spacing: -1px;
+    }
+
+    .thesis-card {
+      border-color: rgba(56, 189, 248, 0.18);
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(167, 139, 250, 0.05));
+    }
+
+    .thesis-card strong {
+      color: var(--blue);
+    }
+
+    .layer-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .layer-card,
+    .sample-card,
+    .use-case-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .layer-card h3,
+    .sample-card h3,
+    .use-case-card h3,
+    .repo-card h3,
+    .flow-node strong {
+      font-size: 21px;
+      line-height: 1.3;
+      color: var(--text);
+    }
+
+    .split-section {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .use-case-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .sample-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sample-category,
+    .sample-verdict {
+      color: var(--blue);
+    }
+
+    .sample-verdict {
+      margin-top: auto;
+      width: fit-content;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      background: rgba(56, 189, 248, 0.08);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .repo-card,
+    .cta-section {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .repo-card > div,
+    .cta-section > div {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 620px;
+    }
+
+    .system-flow {
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: stretch;
+    }
+
+    .flow-node {
+      text-decoration: none;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .flow-node.active {
+      border-color: rgba(249, 115, 22, 0.38);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(22, 27, 34, 0.96));
+    }
+
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      color: var(--text-secondary);
+      font-size: 24px;
+    }
+
+    @media (max-width: 860px) {
+      .tk-hero h1 {
+        font-size: 42px;
+      }
+
+      .signal-grid,
+      .layer-grid,
+      .sample-grid,
+      .split-section,
+      .system-flow,
+      .repo-card,
+      .cta-section {
+        grid-template-columns: 1fr;
+      }
+
+      .repo-card,
+      .cta-section {
+        align-items: stretch;
+      }
+
+      .flow-arrow {
+        display: none;
+      }
+    }
+  </style>
+</BaseLayout>

@@ -72,6 +72,7 @@ const { title, description = 'Jarl.dev — 公开构建中的一人系统，持�
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 18px;
       max-width: 900px;
       margin: 0 auto;
       padding: 32px 24px;
@@ -85,11 +86,13 @@ const { title, description = 'Jarl.dev — 公开构建中的一人系统，持�
     .nav-brand span { color: var(--blue); }
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 26px;
       list-style: none;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
     .nav-links a {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
       color: var(--text-secondary);
       transition: color 0.2s;
@@ -282,6 +285,8 @@ const { title, description = 'Jarl.dev — 公开构建中的一人系统，持�
     <a href="/" class="nav-brand">Jarl<span>.</span>dev</a>
     <ul class="nav-links">
       <li><a href="/">首页</a></li>
+      <li><a href="/distill">Distill</a></li>
+      <li><a href="/technical-knockout">架构参考</a></li>
       <li><a href="/blog">构建记录</a></li>
       <li><a href="/about">关于</a></li>
     </ul>
