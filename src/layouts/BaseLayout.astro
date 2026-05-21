@@ -258,7 +258,9 @@ const { title, description = 'Jarl.dev — 公开构建中的一人系统，持�
       font-size: 13px;
       color: var(--text-secondary);
       display: flex;
-      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
     }
     .record-card-tag {
       background: rgba(56,189,248,0.08);
@@ -267,6 +269,80 @@ const { title, description = 'Jarl.dev — 公开构建中的一人系统，持�
       border-radius: 100px;
       font-size: 12px;
       font-weight: 500;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        overflow-x: hidden;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+        padding: 22px 18px 18px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 5px 9px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: rgba(22,27,34,0.72);
+        font-size: 13px;
+        line-height: 1.2;
+      }
+
+      .main {
+        padding: 0 18px 64px;
+      }
+
+      .record-card {
+        padding: 24px 0;
+      }
+
+      .record-card-title {
+        font-size: 19px;
+        line-height: 1.45;
+      }
+
+      .record-card-meta {
+        gap: 8px 6px;
+      }
+
+      .record-card-meta > span:first-child {
+        flex-basis: 100%;
+        margin-bottom: 2px;
+      }
+
+      .record-card-tag {
+        padding: 2px 8px;
+        line-height: 1.45;
+      }
+
+      .article-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .nav-links {
+        gap: 6px;
+      }
+
+      .nav-links a {
+        padding: 4px 6px;
+        font-size: 12px;
+      }
     }
 
     /* meta line */
