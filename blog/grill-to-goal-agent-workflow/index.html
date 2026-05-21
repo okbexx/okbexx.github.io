@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>从 Grill 到 Goal：AI 编码的完整工作流 — Jarl</title><meta name="description" content="AI 编码真正的变化，不是模型更会写代码，而是工作流从一次性 prompt 走向可对齐、可托管、可验证的工程任务。Grill 负责想清楚，Goal 负责跑到底。"><meta name="author" content="Jarl"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta property="article:author" content="Jarl"><style>@import"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap";:root{--bg: #0D1117;--bg-card: #161B22;--bg-card-hover: #1C2128;--border: rgba(139,148,158,.12);--text: #E6EDF3;--text-secondary: #8B949E;--blue: #38BDF8;--orange: #F97316;--purple: #A78BFA;--green: #34D399;--font-sans: "Noto Sans SC", -apple-system, sans-serif;--font-mono: "JetBrains Mono", monospace}*{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}a{color:var(--blue);text-decoration:none;transition:color .2s}a:hover{color:var(--purple)}body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(56,189,248,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}.nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:900px;margin:0 auto;padding:32px 24px}.nav-brand{font-size:20px;font-weight:900;color:var(--text);letter-spacing:-.5px}.nav-brand span{color:var(--blue)}.nav-links{display:flex;gap:26px;list-style:none;flex-wrap:wrap;justify-content:flex-end}.nav-links a{font-size:14px;font-weight:500;color:var(--text-secondary);transition:color .2s}.nav-links a:hover{color:var(--text)}.main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 24px 80px}.footer{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:40px 24px;border-top:1px solid var(--border);text-align:center;color:var(--text-secondary);font-size:14px}.footer a{color:var(--text-secondary)}.footer a:hover{color:var(--blue)}.prose{max-width:700px;margin:0 auto}.prose h1{font-size:36px;font-weight:900;line-height:1.3;margin:60px 0 20px}.prose h2{font-size:26px;font-weight:700;line-height:1.4;margin:48px 0 16px;color:var(--blue)}.prose h3{font-size:20px;font-weight:700;margin:36px 0 12px}.prose p{margin:16px 0;font-size:17px;line-height:1.8;color:var(--text)}.prose ul,.prose ol{margin:16px 0;padding-left:24px}.prose li{margin:8px 0;font-size:17px;line-height:1.7}.prose strong{color:var(--orange);font-weight:700}.prose code{font-family:var(--font-mono);background:#38bdf814;padding:2px 8px;border-radius:4px;font-size:15px;color:var(--blue)}.prose pre{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin:20px 0;overflow-x:auto}.prose pre code{background:none;padding:0;color:var(--text)}.prose blockquote{border-left:4px solid var(--purple);background:#a78bfa0f;padding:16px 24px;margin:20px 0;border-radius:0 8px 8px 0}.prose blockquote p{color:var(--text-secondary)}.prose hr{border:none;border-top:1px solid var(--border);margin:40px 0}.prose img{max-width:100%;border-radius:12px;margin:20px 0}.prose table{width:100%;margin:24px 0;border-collapse:collapse;table-layout:fixed;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}.prose thead{background:#38bdf814}.prose th,.prose td{padding:14px 18px;text-align:left;font-size:15px;line-height:1.6;border-bottom:1px solid var(--border)}.prose th{color:var(--text);font-weight:700}.prose td{color:var(--text-secondary)}.prose tbody tr:last-child td{border-bottom:none}.record-list{list-style:none}.record-card{display:block;padding:28px 0;border-bottom:1px solid var(--border)}.record-card:last-child{border-bottom:none}.record-card-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px;transition:color .2s}a:hover .record-card-title{color:var(--blue)}.record-card-desc{font-size:15px;color:var(--text-secondary);line-height:1.6;margin-bottom:8px}.record-card-meta{font-size:13px;color:var(--text-secondary);display:flex;gap:16px}.record-card-tag{background:#38bdf814;color:var(--blue);padding:2px 10px;border-radius:100px;font-size:12px;font-weight:500}.article-meta{display:flex;gap:16px;align-items:center;color:var(--text-secondary);font-size:14px;margin-bottom:40px}
+</style></head> <body> <nav class="nav"> <a href="/" class="nav-brand">Jarl<span>.</span>dev</a> <ul class="nav-links"> <li><a href="/">首页</a></li> <li><a href="/distill">Distill</a></li> <li><a href="/technical-knockout">架构参考</a></li> <li><a href="/blog">构建记录</a></li> <li><a href="/about">关于</a></li> </ul> </nav> <main class="main">  <article class="prose" style="padding: 40px 0;"> <div class="article-meta"> <span>2026-05-21</span> <span class="record-card-tag">AI协作</span><span class="record-card-tag">Agent工作流</span><span class="record-card-tag">Codex</span><span class="record-card-tag">Claude Code</span><span class="record-card-tag">方法论</span> </div> <p><img src="/images/blog/grill-to-goal-agent-workflow/cover-gpt-image-2-jarl-workflow.png" alt="从 Grill 到 Goal：AI 编码的完整工作流"></p>
+<h1 id="从-grill-到-goalai-编码的完整工作流">从 Grill 到 Goal：AI 编码的完整工作流</h1>
+<p>我最近一直在想 AI 编码工作流里的两个环节：先用 grill 把需求问透，再用 goal 让 agent 自主循环执行。</p>
+<p>这个方向真正重要的，不是某个新命令，而是 AI 编码正在发生的一次范式变化：</p>
+<blockquote>
+<p>从“让 AI 帮我写一段代码”，变成“把一个工程任务交给可托管的执行系统”。</p>
+</blockquote>
+<p>它比单纯模型升级重要得多。</p>
+<h2 id="以前的问题ai-很会动手但不一定知道该往哪动手">以前的问题：AI 很会动手，但不一定知道该往哪动手</h2>
+<p>很多人用 AI 编码工具，最常见的流程是这样：</p>
+<ol>
+<li>写一个大概的 prompt。</li>
+<li>Agent 开始改代码。</li>
+<li>人看结果，发现方向不太对。</li>
+<li>继续补充要求，让它再改。</li>
+<li>来回几轮，最后勉强能用。</li>
+</ol>
+<p>这个流程的问题不在于 AI 不够努力。恰恰相反，它太容易动手了。</p>
+<p>需求没想清楚，它也会动手。边界没卡住，它也会动手。验收标准没定义，它也会动手。它不会因为你的目标模糊而停下来，它会根据当前上下文补全一个它认为合理的世界，然后开始执行。</p>
+<p>这在小任务里还好。变量名改错了，再改回来就行。可一旦任务跨文件、跨模块、跨接口，跑偏的成本会迅速放大。</p>
+<p>真正贵的不是 AI 多跑了几轮，而是它在错误方向上跑得太快。</p>
+<h2 id="grill-解决的是对齐问题">Grill 解决的是对齐问题</h2>
+<p><code>grill-me</code> 这类流程的价值，不是让 agent 显得更聪明，而是强迫人和 agent 在动手前把问题讲清楚。</p>
+<p>一个好的 grill 不是泛泛地问“你想怎么做”，而是沿着决策树往下追：</p>
+<ul>
+<li>这次任务的终点是什么？</li>
+<li>哪些东西明确不做？</li>
+<li>哪些假设如果错了，整个方案会翻车？</li>
+<li>现在的代码结构支持这个方向吗？</li>
+<li>失败时怎么判断是方案问题、数据问题，还是第三方依赖问题？</li>
+<li>什么证据能证明任务真的完成了？</li>
+</ul>
+<p>这些问题听起来像是在拖慢速度，但在真实项目里，它其实是在前置返工成本。</p>
+<p>我越来越觉得，AI 协作里最重要的不是“模型能不能写”，而是“动手之前有没有对齐”。</p>
+<p>没有对齐，agent 就是一个更快的打字机。有了对齐，它才有机会变成一个工程协作者。</p>
+<h2 id="goal-解决的是持续执行问题">Goal 解决的是持续执行问题</h2>
+<p>但只对齐还不够。</p>
+<p>以前即使把需求讲清楚，后面仍然需要人不断推着 agent 走：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>你：跑一下测试。</span></span>
+<span class="line"><span>你：继续修。</span></span>
+<span class="line"><span>你：再查一下这个失败。</span></span>
+<span class="line"><span>你：把刚才的改动整理一下。</span></span></code></pre>
+<p>这就像你把需求给一个同事讲清楚之后，每十分钟还要走到他工位旁边问一句：“干完了吗？”</p>
+<p><code>/goal</code> 想解决的是这个问题：人不再逐步驱动 agent，而是给它一个明确目标，让它自己循环执行，直到目标达成或遇到阻塞。</p>
+<p>一个弱目标是：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>修复搜索 bug</span></span></code></pre>
+<p>一个强目标是：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>修复中文搜索“机器学习”返回空结果的问题。</span></span>
+<span class="line"><span>验证标准：所有搜索相关测试通过，且中文搜索“机器学习”返回至少 3 条结果。</span></span>
+<span class="line"><span>只改搜索服务相关代码，不动其他模块。</span></span>
+<span class="line"><span>如果问题来自第三方分词库，停止并报告依赖版本和可选方案。</span></span></code></pre>
+<p>两者的差异不在措辞，而在可执行性。</p>
+<p>强 goal 里至少有四个关键要素：</p>
+<ol>
+<li><strong>完成状态</strong>：什么叫修好了。</li>
+<li><strong>验证证据</strong>：用什么证明修好了。</li>
+<li><strong>执行边界</strong>：哪些地方不能碰。</li>
+<li><strong>阻塞条件</strong>：什么时候不要硬跑，应该停下来报告。</li>
+</ol>
+<p>这才是 agent 能自主循环的前提。</p>
+<h2 id="真正的工作流grill--goal--loop--evidence">真正的工作流：Grill → Goal → Loop → Evidence</h2>
+<p>我更愿意把这套流程理解成四段：</p>
+<h3 id="1-grill把问题问透">1. Grill：把问题问透</h3>
+<p>这一段的目标不是产出代码，而是产出判断。</p>
+<p>你要把模糊愿望变成明确任务，把隐含假设变成显性约束，把“差不多”变成“可以验收”。</p>
+<p>比如“给搜索加模糊匹配”不是一个足够清楚的任务。至少还要继续问：</p>
+<ul>
+<li>是中文、英文都支持，还是只支持中文？</li>
+<li>容错是一个字符、一个词，还是语义近似？</li>
+<li>是召回更多结果，还是重排已有结果？</li>
+<li>响应时间上限是多少？</li>
+<li>高亮、排序、分页是否受影响？</li>
+</ul>
+<p>问完这些，任务才开始从愿望变成工程对象。</p>
+<h3 id="2-goal把判断写成可托管目标">2. Goal：把判断写成可托管目标</h3>
+<p>Grill 完之后，不要直接说“按刚才讨论的做”。</p>
+<p>要把讨论结果压缩成一个可执行目标：目标、验收、边界、策略、阻塞条件一次性写清楚。</p>
+<p>这一步很重要，因为 agent 执行时读到的不是你脑子里的上下文，而是你交给它的目标描述。</p>
+<p>如果目标写得松散，agent 会补全空白。如果目标写得精确，agent 才能沿着你定义的轨道跑。</p>
+<h3 id="3-loop让-agent-自主推进">3. Loop：让 agent 自主推进</h3>
+<p>进入执行阶段后，agent 应该自己完成一组循环：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>读取现状 → 做一个有界动作 → 运行验证 → 根据结果调整 → 再验证</span></span></code></pre>
+<p>人不应该再充当每一步的按钮。</p>
+<p>当然，这不代表完全不管。更好的方式是让 agent 在三种情况下停下来：</p>
+<ul>
+<li>遇到目标外决策。</li>
+<li>验证手段缺失。</li>
+<li>继续执行会明显扩大风险。</li>
+</ul>
+<p>这时候需要人介入，因为这已经不是执行问题，而是判断问题。</p>
+<h3 id="4-evidence用证据判断是否完成">4. Evidence：用证据判断是否完成</h3>
+<p>最后一步最容易被忽略。</p>
+<p>Agent 不能因为自己说“完成了”就算完成。真正的完成应该依赖证据：</p>
+<ul>
+<li>测试结果</li>
+<li>benchmark 结果</li>
+<li>git diff</li>
+<li>页面截图</li>
+<li>日志输出</li>
+<li>API 响应</li>
+<li>复现步骤是否消失</li>
+</ul>
+<p>没有证据的“完成”，只是一次语言输出。</p>
+<p>这也是 <code>/goal</code> 这类机制真正值得期待的地方：它把完成从“模型自我声明”拉回到“外部证据判断”。</p>
+<h2 id="这不是更快的代码生成而是更完整的工程系统">这不是更快的代码生成，而是更完整的工程系统</h2>
+<p>很多人会把 AI 编码理解成效率工具：以前写一小时，现在十分钟。</p>
+<p>但我越来越觉得，更大的变化不在这里。</p>
+<p>真正重要的是，我们开始围绕 agent 设计一套工作系统：</p>
+<ul>
+<li>怎么输入任务</li>
+<li>怎么对齐目标</li>
+<li>怎么限制边界</li>
+<li>怎么提供上下文</li>
+<li>怎么让它持续执行</li>
+<li>怎么观察过程</li>
+<li>怎么验证结果</li>
+<li>怎么把经验沉淀到下一次</li>
+</ul>
+<p>这已经不是 prompt engineering，而是 agent workflow design。</p>
+<p>模型能力当然重要，但模型只是底盘。真正决定上限的，是外面那层 harness。</p>
+<p>没有 harness，agent 会动；有了 harness，agent 才开始能工作。</p>
+<h2 id="我的实践倾向">我的实践倾向</h2>
+<p>我现在更愿意采用这样的节奏：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>先讨论 → 再 grill → 写 goal → 放手跑 → 看证据 → 沉淀经验</span></span></code></pre>
+<p>简单任务不需要这么重。改一个文案、加一个字段、查一个函数，普通 prompt 就够了。</p>
+<p>但只要任务具备这些特征，就值得进入这套流程：</p>
+<ul>
+<li>下一步取决于执行中发现什么。</li>
+<li>涉及多个文件或模块。</li>
+<li>失败原因不确定，需要探索。</li>
+<li>有明确验证方式。</li>
+<li>跑偏成本明显高于前置对齐成本。</li>
+</ul>
+<p>比如 debug、性能优化、依赖迁移、架构调整、测试修复、长期自动化任务，都很适合。</p>
+<p>相反，如果没有验证手段，或者项目本身混乱到 agent 无法判断什么叫完成，直接上 goal 反而危险。它会很努力地跑，但你不知道它跑向哪里。</p>
+<h2 id="写在最后">写在最后</h2>
+<p>Grill 和 Goal 放在一起，代表的是 AI 编码工具的一条清晰演进线：</p>
+<ul>
+<li>Grill 让任务被想清楚。</li>
+<li>Goal 让任务被持续推进。</li>
+<li>Evidence 让完成变得可信。</li>
+<li>Harness 让这一切可以重复发生。</li>
+</ul>
+<p>这套东西的重点不是“让 AI 更快写代码”。</p>
+<p>它真正改变的是协作结构：人不再逐句遥控 agent，而是负责定义目标、做关键判断和验收结果；agent 则在清楚边界内自主推进。</p>
+<p>也就是说，AI 编码的核心能力正在从“生成代码”转向“执行工程任务”。</p>
+<p>这可能才是 agent 真正进入工作流的开始。</p> </article> <div style="padding: 40px 0; border-top: 1px solid var(--border); margin-top: 40px;"> <a href="/blog" style="font-size: 15px; font-weight: 500;">← 返回构建记录</a> </div>  </main> <footer class="footer"> <p>© 2026 Jarl.dev — 公开构建中的一人系统</p> <p style="margin-top:8px;"> <a href="https://github.com/okbexx" target="_blank">GitHub</a>
+·
+<a href="https://x.com/okbexx" target="_blank">X / Twitter</a> </p> </footer> </body></html>
