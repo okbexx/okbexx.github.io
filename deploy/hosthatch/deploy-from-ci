@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+APP_DIR="/opt/apps/okbexx-site"
+STATE_DIR="$APP_DIR/state"
+COMPOSE_FILE="$APP_DIR/docker-compose.yml"
+ENV_FILE="$STATE_DIR/.env"
+CURRENT_FILE="$STATE_DIR/current-version"
+PREVIOUS_FILE="$STATE_DIR/previous-version"
+LOG_FILE="$STATE_DIR/deploy.log"
+LOCK_FILE="$STATE_DIR/deploy.lock"
+HEALTH_URL="http://127.0.0.1:8092/healthz"
+ROOT_URL="http://127.0.0.1:8092/"
+
+log() {
+  printf '[%s] %s\n' "$(date -Is)" "$*" | tee -a "$LOG_FILE"
+}
+
+command_text="${SSH_ORIGINAL_COMMAND:-${*:-}}"
+if [[ ! "$command_text" =~ ^deploy[[:space:]]+([0-9a-f]{40})$ ]]; then
+  printf 'usage: deploy <40-char-git-sha>\n' >&2
+  exit 64
+fi
+
+next_version="${BASH_REMATCH[1]}"
+
+mkdir -p "$STATE_DIR"
+touch "$LOG_FILE"
+
+exec 9>"$LOCK_FILE"
+if ! flock -n 9; then
+  log "another deployment is already running"
+  exit 75
+fi
+
+write_env() {
+  local version="$1"
+  printf 'IMAGE_TAG=%s\n' "$version" > "$ENV_FILE"
+}
+
+check_site() {
+  local attempt
+  for attempt in $(seq 1 20); do
+    if curl -fsS "$HEALTH_URL" >/dev/null && curl -fsS "$ROOT_URL" >/dev/null; then
+      return 0
+    fi
+    sleep 2
+  done
+  return 1
+}
+
+compose() {
+  docker compose --project-directory "$APP_DIR" --env-file "$ENV_FILE" -f "$COMPOSE_FILE" "$@"
+}
+
+rollback() {
+  local previous="$1"
+  if [[ -z "$previous" ]]; then
+    log "no previous version exists; cannot roll back"
+    return 1
+  fi
+
+  log "rolling back to $previous"
+  write_env "$previous"
+  compose pull
+  compose up -d --remove-orphans
+
+  if check_site; then
+    printf '%s\n' "$previous" > "$CURRENT_FILE"
+    log "rollback succeeded: $previous"
+    return 0
+  fi
+
+  log "rollback failed: $previous"
+  return 1
+}
+
+current_version=""
+if [[ -f "$CURRENT_FILE" ]]; then
+  current_version="$(tr -d '\n' < "$CURRENT_FILE")"
+fi
+
+if [[ "$current_version" == "$next_version" ]]; then
+  log "version already deployed: $next_version"
+  exit 0
+fi
+
+if [[ -n "$current_version" ]]; then
+  printf '%s\n' "$current_version" > "$PREVIOUS_FILE"
+fi
+
+log "deploying $next_version"
+write_env "$next_version"
+
+if ! compose pull; then
+  log "docker compose pull failed for $next_version"
+  rollback "$current_version" || true
+  exit 1
+fi
+
+if ! compose up -d --remove-orphans; then
+  log "docker compose up failed for $next_version"
+  rollback "$current_version" || true
+  exit 1
+fi
+
+if ! check_site; then
+  log "health check failed for $next_version"
+  rollback "$current_version" || true
+  exit 1
+fi
+
+printf '%s\n' "$next_version" > "$CURRENT_FILE"
+log "deploy succeeded: $next_version"

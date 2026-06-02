@@ -1,0 +1,12 @@
+services:
+  okbexx-site:
+    image: ghcr.io/okbexx/okbexx-site:${IMAGE_TAG:?IMAGE_TAG is required}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8092:80"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/healthz | grep -q '^ok$'"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
