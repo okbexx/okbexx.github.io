@@ -4,6 +4,8 @@ import { getCollection } from 'astro:content';
 
 const entries = await getCollection('blog');
 const posts = entries.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const featuredPost = posts.find((entry) => entry.id === 'ai-coding-needs-acceptance-not-plans');
+const recentPosts = posts.filter((entry) => entry.id !== featuredPost?.id).slice(0, 3);
 
 const coreSystems = [
   {
@@ -23,6 +25,14 @@ const coreSystems = [
     points: ['持续拆解优秀开源项目并抽取可复用模式', '五层拆解定位、架构、质量、社区与决策', '为下一次构建提供更快、更稳、更有方向的参考'],
   },
   {
+    icon: '✅',
+    label: '验收契约层',
+    title: 'OpenNori · 人能判断完成',
+    href: '/blog/ai-coding-needs-acceptance-not-plans',
+    description: '把自然语言目标变成验收标准、当前缺口、证据和完成报告，让 agent 推进，但让人保留完成判断。',
+    points: ['先定义什么叫完成', '每次只推进一个验收缺口', '证据和用户决策分开'],
+  },
+  {
     icon: '🤖',
     label: '执行系统',
     title: 'Agent Workflow · 一人执行系统',
@@ -33,6 +43,13 @@ const coreSystems = [
 ];
 
 const outputs = [
+  {
+    label: '当前主线 / OpenNori',
+    title: 'AI 编码缺的不是计划，而是验收',
+    href: '/blog/ai-coding-needs-acceptance-not-plans',
+    description: '这篇文章解释了 OpenNori 背后的思想：AI 编码需要补上的不是更长的计划，而是人能判断完成的验收契约。',
+    chips: ['验收契约', 'Loop Engineer'],
+  },
   {
     label: '代表作 / 产品',
     title: 'distill-vault · Distill Runtime',
@@ -72,14 +89,14 @@ const principles = [
 ];
 ---
 <BaseLayout
-  title="公开构建中的一人系统"
-  description="Jarl 正在把知识、工具和 AI 接成一套一个人的工作系统：Distill、Technical Knockout 与多 Agent 工作流共同驱动真实产出。"
+  title="人能验收的 AI 编码工作系统"
+  description="Jarl 正在构建一套人能验收的 AI 编码工作系统：Distill 提供上下文，Technical Knockout 提供参考，OpenNori 提供验收契约，Agent Workflow 负责执行循环。"
 >
   <section class="hero-section">
-    <div class="eyebrow">公开构建中的一人系统</div>
-    <h1>把知识、工具和 AI 接成一套一个人的工作系统</h1>
+    <div class="eyebrow">人能验收的 AI 编码工作系统</div>
+    <h1>让 agent 有上下文、有参考、有验收，也知道什么时候该停</h1>
     <p class="hero-copy">
-      这里公开展示一套正在运行的一人系统：Distill 负责知识蒸馏，Technical Knockout 负责架构参考，Agent Workflow 负责把判断变成实现、验证和沉淀。它持续产出产品原型、方法沉淀和可回看的构建记录。
+      这里公开展示一套正在运行的 AI 编码工作系统：Distill 提供上下文和记忆，Technical Knockout 提供外部架构参考，OpenNori 提供验收契约，Agent Workflow 负责把判断变成实现、验证和沉淀。
     </p>
     <div class="hero-actions">
       <a class="primary-button" href="#systems">看我在构建什么</a>
@@ -97,6 +114,11 @@ const principles = [
         <p>给 coding agent 提供架构参考坐标</p>
       </div>
       <div class="signal-card">
+        <span>验收契约</span>
+        <strong>OpenNori</strong>
+        <p>让目标、证据和完成判断可审阅</p>
+      </div>
+      <div class="signal-card">
         <span>执行系统</span>
         <strong>Agent Workflow</strong>
         <p>把研究、实现、验证和沉淀接成闭环</p>
@@ -109,10 +131,10 @@ const principles = [
       <div class="section-label">CORE SYSTEMS</div>
       <h2>我在构建什么</h2>
       <p>
-        Distill 管内部知识，Technical Knockout 管外部样本，Agent Workflow 负责执行与闭环。三者一起把研究、判断和实现接成长期运行的工作系统。
+        Distill 管内部知识，Technical Knockout 管外部样本，OpenNori 管验收契约，Agent Workflow 负责执行循环。四者一起把研究、判断、实现和完成确认接成长期运行的工作系统。
       </p>
     </div>
-    <div class="feature-grid three-up">
+    <div class="feature-grid system-grid">
       {coreSystems.map((system) => (
         <a
           href={system.href}
@@ -175,7 +197,7 @@ const principles = [
       <div class="about-card">
         <h3>关于 Jarl</h3>
         <p>
-          工程师。正在把知识蒸馏、架构研究和多 Agent 执行接成一套长期运行的一人系统，并把过程、作品与判断持续公开。
+          工程师。正在把知识蒸馏、架构研究、验收契约和多 agent 执行接成一套长期运行的 AI 编码工作系统，并把过程、作品与判断持续公开。
         </p>
         <a href="/about">更多背景 →</a>
       </div>
@@ -187,11 +209,24 @@ const principles = [
       <div class="section-label">BUILD LOG</div>
       <h2>最新构建记录</h2>
       <p>
-        系统演进、产品尝试、架构判断与 AI 协作实践，都在这里持续归档。
+        系统演进、产品尝试、架构判断与 AI 协作实践，都在这里持续归档。当前主线是 OpenNori 背后的验收思想。
       </p>
     </div>
+    {featuredPost && (
+      <a href={`/blog/${featuredPost.id}`} class="featured-record">
+        <div class="feature-topline">当前主线</div>
+        <div class="record-card-title">{featuredPost.data.title}</div>
+        <div class="record-card-desc">{featuredPost.data.description}</div>
+        <div class="record-card-meta">
+          <span>{featuredPost.data.date}</span>
+          {featuredPost.data.tags?.map((tag: string) => (
+            <span class="record-card-tag">{tag}</span>
+          ))}
+        </div>
+      </a>
+    )}
     <ul class="record-list build-log-list">
-      {posts.slice(0, 3).map((entry) => (
+      {recentPosts.map((entry) => (
         <li>
           <a href={`/blog/${entry.id}`} class="record-card build-log-item">
             <div class="record-card-title">{entry.data.title}</div>
@@ -310,7 +345,7 @@ const principles = [
     }
 
     .hero-signal-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       margin-top: 8px;
     }
 
@@ -364,12 +399,12 @@ const principles = [
       letter-spacing: -1px;
     }
 
-    .three-up {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+    .system-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .outputs-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .feature-card,
@@ -483,6 +518,19 @@ const principles = [
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
     }
 
+    .featured-record {
+      display: block;
+      padding: 28px;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(167, 139, 250, 0.08));
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+    }
+
+    .featured-record .feature-topline {
+      margin-bottom: 14px;
+    }
+
     .build-log-item {
       padding: 30px 0;
     }
@@ -493,7 +541,7 @@ const principles = [
       }
 
       .hero-signal-grid,
-      .three-up,
+      .system-grid,
       .outputs-grid,
       .split-section {
         grid-template-columns: 1fr;
