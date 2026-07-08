@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AI 编码缺的不是计划，而是验收 — Jarl</title><meta name="description" content="我开始做 OpenNori 之前已经有了这个判断：AI 编码真正需要补上的，不是更长的计划，而是一层能让人判断完成、让 agent 每次只推进一个缺口并在关键决策处停下来的验收契约。"><meta name="author" content="Jarl"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta property="article:author" content="Jarl"><style>@import"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap";:root{--bg: #0D1117;--bg-card: #161B22;--bg-card-hover: #1C2128;--border: rgba(139,148,158,.12);--text: #E6EDF3;--text-secondary: #8B949E;--blue: #38BDF8;--orange: #F97316;--purple: #A78BFA;--green: #34D399;--font-sans: "Noto Sans SC", -apple-system, sans-serif;--font-mono: "JetBrains Mono", monospace}*{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}a{color:var(--blue);text-decoration:none;transition:color .2s}a:hover{color:var(--purple)}body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(56,189,248,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}.nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:900px;margin:0 auto;padding:32px 24px}.nav-brand{font-size:20px;font-weight:900;color:var(--text);letter-spacing:-.5px}.nav-brand span{color:var(--blue)}.nav-links{display:flex;gap:26px;list-style:none;flex-wrap:wrap;justify-content:flex-end}.nav-links a{font-size:14px;font-weight:500;color:var(--text-secondary);transition:color .2s}.nav-links a:hover{color:var(--text)}.main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 24px 80px}.footer{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:40px 24px;border-top:1px solid var(--border);text-align:center;color:var(--text-secondary);font-size:14px}.footer a{color:var(--text-secondary)}.footer a:hover{color:var(--blue)}.prose{max-width:700px;margin:0 auto}.prose h1{font-size:36px;font-weight:900;line-height:1.3;margin:60px 0 20px}.prose h2{font-size:26px;font-weight:700;line-height:1.4;margin:48px 0 16px;color:var(--blue)}.prose h3{font-size:20px;font-weight:700;margin:36px 0 12px}.prose p{margin:16px 0;font-size:17px;line-height:1.8;color:var(--text)}.prose ul,.prose ol{margin:16px 0;padding-left:24px}.prose li{margin:8px 0;font-size:17px;line-height:1.7}.prose strong{color:var(--orange);font-weight:700}.prose code{font-family:var(--font-mono);background:#38bdf814;padding:2px 8px;border-radius:4px;font-size:15px;color:var(--blue)}.prose pre{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin:20px 0;overflow-x:auto}.prose pre code{background:none;padding:0;color:var(--text)}.prose blockquote{border-left:4px solid var(--purple);background:#a78bfa0f;padding:16px 24px;margin:20px 0;border-radius:0 8px 8px 0}.prose blockquote p{color:var(--text-secondary)}.prose hr{border:none;border-top:1px solid var(--border);margin:40px 0}.prose img{max-width:100%;border-radius:12px;margin:20px 0}.prose table{width:100%;margin:24px 0;border-collapse:collapse;table-layout:fixed;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}.prose thead{background:#38bdf814}.prose th,.prose td{padding:14px 18px;text-align:left;font-size:15px;line-height:1.6;border-bottom:1px solid var(--border)}.prose th{color:var(--text);font-weight:700}.prose td{color:var(--text-secondary)}.prose tbody tr:last-child td{border-bottom:none}.record-list{list-style:none}.record-card{display:block;padding:28px 0;border-bottom:1px solid var(--border)}.record-card:last-child{border-bottom:none}.record-card-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px;transition:color .2s}a:hover .record-card-title{color:var(--blue)}.record-card-desc{font-size:15px;color:var(--text-secondary);line-height:1.6;margin-bottom:8px}.record-card-meta{font-size:13px;color:var(--text-secondary);display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}.record-card-tag{background:#38bdf814;color:var(--blue);padding:2px 10px;border-radius:100px;font-size:12px;font-weight:500;white-space:nowrap}@media(max-width:640px){body{overflow-x:hidden}.nav{align-items:flex-start;flex-direction:column;gap:14px;padding:22px 18px 18px}.nav-links{width:100%;justify-content:flex-start;gap:8px}.nav-links a{display:block;padding:5px 9px;border:1px solid var(--border);border-radius:999px;background:#161b22b8;font-size:13px;line-height:1.2}.main{padding:0 18px 64px}.record-card{padding:24px 0}.record-card-title{font-size:19px;line-height:1.45}.record-card-meta{gap:8px 6px}.record-card-meta>span:first-child{flex-basis:100%;margin-bottom:2px}.record-card-tag{padding:2px 8px;line-height:1.45}.article-meta{align-items:flex-start;flex-direction:column;gap:8px}}@media(max-width:360px){.nav-links{gap:6px}.nav-links a{padding:4px 6px;font-size:12px}}.article-meta{display:flex;gap:16px;align-items:center;color:var(--text-secondary);font-size:14px;margin-bottom:40px}
+</style></head> <body> <nav class="nav"> <a href="/" class="nav-brand">Jarl<span>.</span>dev</a> <ul class="nav-links"> <li><a href="/">首页</a></li> <li><a href="/distill">Distill</a></li> <li><a href="/technical-knockout">架构参考</a></li> <li><a href="/blog">构建记录</a></li> <li><a href="/about">关于</a></li> </ul> </nav> <main class="main">  <article class="prose" style="padding: 40px 0;"> <div class="article-meta"> <span>2026-07-08</span> <span class="record-card-tag">AI协作</span><span class="record-card-tag">Agent工作流</span><span class="record-card-tag">OpenNori</span><span class="record-card-tag">方法论</span> </div> <h1 id="ai-编码缺的不是计划而是验收">AI 编码缺的不是计划，而是验收</h1>
+<p>在开始做 OpenNori 之前，我已经反复遇到同一个问题，并逐渐形成了一个判断：</p>
+<blockquote>
+<p>AI 编码缺的不是更长的计划，而是一个让人能判断“这件事到底算不算完成”的验收层。</p>
+</blockquote>
+<p>很多 agent 已经很会写代码了。它能读文件、改实现、跑测试、修报错，甚至能自己拆任务、自己推进很久。</p>
+<p>但越是这样，一个更基础的问题就越明显：</p>
+<p>它完成的，到底是不是你想要的完成？</p>
+<h2 id="agent-最危险的能力是太容易继续">Agent 最危险的能力，是太容易继续</h2>
+<p>人给 agent 一个目标：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>帮我把设置页做完整。</span></span></code></pre>
+<p>它通常不会停下来问“完整是什么意思”。它会根据当前上下文补全一个合理版本，然后开始执行。</p>
+<p>这个过程很流畅，也很危险。</p>
+<p>因为“设置页做完整”在不同人眼里可能完全不是一件事：</p>
+<ul>
+<li>是只展示已有字段，还是可以编辑？</li>
+<li>保存成功后要不要有反馈？</li>
+<li>保存失败怎么恢复？</li>
+<li>刷新页面后怎么证明数据真的保存了？</li>
+<li>权限不足时页面应该怎么表现？</li>
+<li>手机号、头像、密码这些高风险字段算不算在内？</li>
+</ul>
+<p>如果这些问题没有被确认，agent 依然可以写出一个看起来不错的页面。</p>
+<p>只是它完成的是它脑子里的版本，不一定是用户能接受的版本。</p>
+<p>以前 AI 不够强时，这个问题没那么刺眼。因为它跑不远，人很快会接管。</p>
+<p>现在 agent 能跑得越来越远，问题反而变严重了：它可以在一个错误的完成定义上，非常努力地跑很久。</p>
+<h2 id="计划解决不了验收问题">计划解决不了验收问题</h2>
+<p>很多人会说，那就先让 agent 写计划。</p>
+<p>计划当然有用。但计划解决的是“准备怎么做”，不是“什么叫做完”。</p>
+<p>一个计划可能写得很完整：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>1. 新增表单字段</span></span>
+<span class="line"><span>2. 接入保存接口</span></span>
+<span class="line"><span>3. 增加 loading 状态</span></span>
+<span class="line"><span>4. 添加错误提示</span></span>
+<span class="line"><span>5. 运行测试</span></span></code></pre>
+<p>这仍然没有回答几个关键问题：</p>
+<ul>
+<li>用户从哪里进入这个页面？</li>
+<li>哪些字段可编辑，哪些字段只读？</li>
+<li>保存成功后用户看到什么？</li>
+<li>保存失败后用户还能不能恢复？</li>
+<li>什么证据能证明这件事完成了？</li>
+<li>哪些判断必须由人来做，不能由 agent 自己宣布？</li>
+</ul>
+<p>计划是执行前的路线图。</p>
+<p>验收标准是完成后的判断依据。</p>
+<p>AI 编码真正容易缺失的，恰恰是后者。</p>
+<h2 id="我想要的不是任务列表而是验收契约">我想要的不是任务列表，而是验收契约</h2>
+<p>这个判断后来长成了 OpenNori。它的核心想法很简单：</p>
+<p>把一个自然语言目标，变成一份人能审阅、agent 能执行、结果能复查的验收契约。</p>
+<p>这里的“契约”不是法律意义上的东西，也不是繁琐流程。它只是要求在动手前，把完成判断说清楚。</p>
+<p>一个好的验收标准，不应该写成：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>设置页 CRUD 可用。</span></span></code></pre>
+<p>这句话太空了。</p>
+<p>它应该更接近：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>用户从个人中心进入设置页，修改昵称并点击保存后，可以看到明确的成功反馈；刷新页面后，新昵称仍然显示；如果保存接口失败，页面保留用户输入并展示可理解的错误提示。</span></span></code></pre>
+<p>这才是人能判断的东西。</p>
+<p>它包含了入口、动作、可见结果、持久化、失败边界和证据方向。</p>
+<p>我在工具内部会把这种验收标准简称为 AC，也就是 Acceptance Criteria。但对大多数读者来说，直接叫“验收标准”更好。缩写不是重点，重点是把“做完”的含义从 agent 的自我理解里拿出来，放到人可以审阅的地方。</p>
+<h2 id="每次只推进一个缺口">每次只推进一个缺口</h2>
+<p>只有验收标准还不够。</p>
+<p>另一个关键思想是：不要让 agent 一口气把所有事情跑到底。</p>
+<p>更稳的方式是让它每次只推进一个当前缺口：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>读取当前状态</span></span>
+<span class="line"><span>找到当前缺口</span></span>
+<span class="line"><span>推进一轮</span></span>
+<span class="line"><span>提交证据</span></span>
+<span class="line"><span>遇到人类决策就停下</span></span></code></pre>
+<p>这也是后来进入 OpenNori 的 Loop Engineer 思想。</p>
+<p>它不是让 agent 变成一个永不停机的自动化机器。恰恰相反，它要求 agent 知道什么时候该停。</p>
+<p>好的 agent 不应该每次都问人下一步做什么。那样人还是在遥控。</p>
+<p>但它也不应该遇到所有问题都自己替人决定。那样人会失去完成定义和风险判断权。</p>
+<p>我想要的节奏是中间态：</p>
+<ul>
+<li>能自动推进的执行问题，agent 自己推进。</li>
+<li>需要证据的地方，agent 自己收集。</li>
+<li>涉及验收标准、架构偏离、风险豁免、最终接受的地方，agent 必须停下来。</li>
+</ul>
+<p>所以好的 AI 编码系统，不是让 agent 永不停机，而是让它知道什么时候该停下来等人判断。</p>
+<h2 id="证据和决策必须分开">证据和决策必须分开</h2>
+<p>AI 编码里还有一个常见混乱：把证据和决策混在一起。</p>
+<p>测试通过，是证据。</p>
+<p>页面截图，是证据。</p>
+<p>接口返回 200，是证据。</p>
+<p>Git diff 很小，是证据。</p>
+<p>但这些都不等于“用户接受了”。</p>
+<p>证据只能说明某个判断有依据，不能替用户做判断。</p>
+<p>比如一个页面通过了所有测试，但布局很挤，文案很难懂，移动端按钮遮住了内容。agent 可以提供截图、浏览器记录、UI observation log，但最终“这个体验是否可以接受”，仍然是人的判断。</p>
+<p>再比如一个功能客观上完成了，但偏离了项目原本的技术约束。agent 可以说明偏离原因、影响范围和替代方案，但不能自己批准这个风险。</p>
+<p>这个思想要守住的边界就是：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>Agent 负责推进和提交证据。</span></span>
+<span class="line"><span>人负责定义完成和接受结果。</span></span></code></pre>
+<p>这个边界一旦模糊，agent 就会很容易把“我已经做了很多”包装成“这件事已经完成”。</p>
+<h2 id="完成报告不是总结而是判断界面">完成报告不是总结，而是判断界面</h2>
+<p>很多 agent 的最终回复像工作日志：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>我修改了 A、B、C 文件。</span></span>
+<span class="line"><span>我新增了 X 逻辑。</span></span>
+<span class="line"><span>我运行了测试，全部通过。</span></span></code></pre>
+<p>这些信息有价值，但还不够。</p>
+<p>人真正需要的是一个完成判断：</p>
+<ul>
+<li>当前目标是什么？</li>
+<li>当前缺口解决了吗？</li>
+<li>哪些验收标准已经通过？</li>
+<li>哪些证据可以复查？</li>
+<li>是否还有风险？</li>
+<li>是否需要用户做决定？</li>
+<li>下一步是继续、接受、豁免，还是回退？</li>
+</ul>
+<p>所以完成报告不应该只是“我做了什么”的总结。</p>
+<p>它更应该像一个判断界面：把证据、风险和需要人的决策摆清楚，让用户可以决定是否接受。</p>
+<p>这也是我为什么不想把 OpenNori 做成一个流程归档工具。</p>
+<p>流程归档关心发生过什么。</p>
+<p>验收报告关心现在能不能接受。</p>
+<p>两者很不一样。</p>
+<h2 id="opennori-不想替代人">OpenNori 不想替代人</h2>
+<p>我不希望 OpenNori 变成一个更重的项目管理系统，也不希望它变成 agent runtime。</p>
+<p>它不负责让 agent 接管一切。</p>
+<p>它只补一层很薄但很关键的东西：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>目标 -> 验收标准 -> 当前缺口 -> 证据 -> 完成判断</span></span></code></pre>
+<p>人仍然用自然语言说目标。</p>
+<p>Agent 仍然负责编码、验证、修复、整理报告。</p>
+<p>OpenNori 只是把这个问题持续摆到中间：</p>
+<blockquote>
+<p>这件事，用户到底凭什么判断完成？</p>
+</blockquote>
+<p>如果这个问题没有答案，就不该急着实现。</p>
+<p>如果证据不够，就不该宣布完成。</p>
+<p>如果需要人做判断，agent 就不该替人判断。</p>
+<h2 id="人的位置会更靠前">人的位置会更靠前</h2>
+<p>AI 越能执行，人越不应该被拖进每一个细节。</p>
+<p>但这不代表人要退出。</p>
+<p>人的位置会更靠前：定义目标、划定边界、确认验收标准、判断风险、接受结果。</p>
+<p>Agent 的位置会更靠后：读取上下文、推进当前缺口、运行验证、提交证据、整理报告。</p>
+<p>这不是把工作全部交给 AI。</p>
+<p>这是把执行交给 AI，把判断留在人手里。</p>
+<p>我开始做 OpenNori，想解决的就是这个界面问题。</p>
+<p>不是让 AI 编码更热闹，而是让 AI 编码更可接受。</p>
+<p>如果只记一句话，我希望是：</p>
+<blockquote>
+<p>AI 编码真正需要补上的，不是更长的计划，而是人能判断完成的验收契约。</p>
+</blockquote> </article> <div style="padding: 40px 0; border-top: 1px solid var(--border); margin-top: 40px;"> <a href="/blog" style="font-size: 15px; font-weight: 500;">← 返回构建记录</a> </div>  </main> <footer class="footer"> <p>© 2026 Jarl.dev — 公开构建中的一人系统</p> <p style="margin-top:8px;"> <a href="https://github.com/okbexx" target="_blank">GitHub</a>
+·
+<a href="https://x.com/okbexx" target="_blank">X / Twitter</a> </p> </footer> </body></html>
