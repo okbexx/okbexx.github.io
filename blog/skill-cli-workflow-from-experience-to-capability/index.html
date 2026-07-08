@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Skill + CLI Workflow：把一次经验变成长期能力 — Jarl</title><meta name="description" content="AI 协作真正可复用的，不是某次对话里的 prompt，而是能把经验沉淀成 Skill、CLI、Memory 和验证闭环的能力工厂。"><meta name="author" content="Jarl"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta property="article:author" content="Jarl"><style>@import"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap";:root{--bg: #0D1117;--bg-card: #161B22;--bg-card-hover: #1C2128;--border: rgba(139,148,158,.12);--text: #E6EDF3;--text-secondary: #8B949E;--blue: #38BDF8;--orange: #F97316;--purple: #A78BFA;--green: #34D399;--font-sans: "Noto Sans SC", -apple-system, sans-serif;--font-mono: "JetBrains Mono", monospace}*{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}a{color:var(--blue);text-decoration:none;transition:color .2s}a:hover{color:var(--purple)}body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(56,189,248,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}.nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:900px;margin:0 auto;padding:32px 24px}.nav-brand{font-size:20px;font-weight:900;color:var(--text);letter-spacing:-.5px}.nav-brand span{color:var(--blue)}.nav-links{display:flex;gap:26px;list-style:none;flex-wrap:wrap;justify-content:flex-end}.nav-links a{font-size:14px;font-weight:500;color:var(--text-secondary);transition:color .2s}.nav-links a:hover{color:var(--text)}.main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 24px 80px}.footer{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:40px 24px;border-top:1px solid var(--border);text-align:center;color:var(--text-secondary);font-size:14px}.footer a{color:var(--text-secondary)}.footer a:hover{color:var(--blue)}.prose{max-width:700px;margin:0 auto}.prose h1{font-size:36px;font-weight:900;line-height:1.3;margin:60px 0 20px}.prose h2{font-size:26px;font-weight:700;line-height:1.4;margin:48px 0 16px;color:var(--blue)}.prose h3{font-size:20px;font-weight:700;margin:36px 0 12px}.prose p{margin:16px 0;font-size:17px;line-height:1.8;color:var(--text)}.prose ul,.prose ol{margin:16px 0;padding-left:24px}.prose li{margin:8px 0;font-size:17px;line-height:1.7}.prose strong{color:var(--orange);font-weight:700}.prose code{font-family:var(--font-mono);background:#38bdf814;padding:2px 8px;border-radius:4px;font-size:15px;color:var(--blue)}.prose pre{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin:20px 0;overflow-x:auto}.prose pre code{background:none;padding:0;color:var(--text)}.prose blockquote{border-left:4px solid var(--purple);background:#a78bfa0f;padding:16px 24px;margin:20px 0;border-radius:0 8px 8px 0}.prose blockquote p{color:var(--text-secondary)}.prose hr{border:none;border-top:1px solid var(--border);margin:40px 0}.prose img{max-width:100%;border-radius:12px;margin:20px 0}.prose table{width:100%;margin:24px 0;border-collapse:collapse;table-layout:fixed;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}.prose thead{background:#38bdf814}.prose th,.prose td{padding:14px 18px;text-align:left;font-size:15px;line-height:1.6;border-bottom:1px solid var(--border)}.prose th{color:var(--text);font-weight:700}.prose td{color:var(--text-secondary)}.prose tbody tr:last-child td{border-bottom:none}.record-list{list-style:none}.record-card{display:block;padding:28px 0;border-bottom:1px solid var(--border)}.record-card:last-child{border-bottom:none}.record-card-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px;transition:color .2s}a:hover .record-card-title{color:var(--blue)}.record-card-desc{font-size:15px;color:var(--text-secondary);line-height:1.6;margin-bottom:8px}.record-card-meta{font-size:13px;color:var(--text-secondary);display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}.record-card-tag{background:#38bdf814;color:var(--blue);padding:2px 10px;border-radius:100px;font-size:12px;font-weight:500;white-space:nowrap}@media(max-width:640px){body{overflow-x:hidden}.nav{align-items:flex-start;flex-direction:column;gap:14px;padding:22px 18px 18px}.nav-links{width:100%;justify-content:flex-start;gap:8px}.nav-links a{display:block;padding:5px 9px;border:1px solid var(--border);border-radius:999px;background:#161b22b8;font-size:13px;line-height:1.2}.main{padding:0 18px 64px}.record-card{padding:24px 0}.record-card-title{font-size:19px;line-height:1.45}.record-card-meta{gap:8px 6px}.record-card-meta>span:first-child{flex-basis:100%;margin-bottom:2px}.record-card-tag{padding:2px 8px;line-height:1.45}.article-meta{align-items:flex-start;flex-direction:column;gap:8px}}@media(max-width:360px){.nav-links{gap:6px}.nav-links a{padding:4px 6px;font-size:12px}}.article-meta{display:flex;gap:16px;align-items:center;color:var(--text-secondary);font-size:14px;margin-bottom:40px}
+</style></head> <body> <nav class="nav"> <a href="/" class="nav-brand">Jarl<span>.</span>dev</a> <ul class="nav-links"> <li><a href="/">首页</a></li> <li><a href="/distill">Distill</a></li> <li><a href="/technical-knockout">架构参考</a></li> <li><a href="/blog">构建记录</a></li> <li><a href="/about">关于</a></li> </ul> </nav> <main class="main">  <article class="prose" style="padding: 40px 0;"> <div class="article-meta"> <span>2026-06-03</span> <span class="record-card-tag">AI协作</span><span class="record-card-tag">Agent工作流</span><span class="record-card-tag">Codex</span><span class="record-card-tag">Skill</span><span class="record-card-tag">CLI</span><span class="record-card-tag">方法论</span> </div> <h1 id="skill--cli-workflow把一次经验变成长期能力">Skill + CLI Workflow：把一次经验变成长期能力</h1>
+<p>这段时间我越来越强烈地感觉到，AI 协作里最容易被浪费的东西，不是 token，也不是模型调用次数。</p>
+<p>真正被浪费的，是一次次已经跑通的经验。</p>
+<p>你让 agent 分析一个帖子，第一次它摸索了一遍页面结构、登录态、正文和回复怎么抓、怎么区分观点和证据。下一次换一个帖子，如果所有步骤又重新靠对话临时组织，这次经验就没有真正进入系统。</p>
+<p>你让 agent 排查一台服务器，第一次它知道了应该先看 inventory、再看日志、再做只读验证、最后把非敏感事实写回知识库。下一次如果还要从头提醒，这个流程也没有真正沉淀。</p>
+<p>AI 编码和 agent 工作流的上限，不只取决于模型会不会做一次任务，而取决于系统能不能把一次任务变成下一次的起点。</p>
+<p>这就是我做 <code>skill-cli-workflow</code> 的原因。</p>
+<h2 id="prompt-不是能力">Prompt 不是能力</h2>
+<p>很多人会把一次有效协作归结为“我写了一个好 prompt”。</p>
+<p>这当然有用。但 prompt 有一个天然问题：它太容易停留在会话里。</p>
+<p>一次 prompt 能让当前任务跑通，却不一定能回答几个更重要的问题：</p>
+<ul>
+<li>这个流程以后还会不会出现？</li>
+<li>哪些步骤是稳定的，哪些只是这次碰巧有效？</li>
+<li>成功能不能被验证？</li>
+<li>哪些动作有安全边界？</li>
+<li>该写进 AGENTS.md、Skill、CLI，还是只写进记忆？</li>
+<li>什么时候应该升级，什么时候应该克制？</li>
+</ul>
+<p>如果这些问题没有被回答，prompt 就只是一次对话里的临时组织能力。</p>
+<p>它不是系统资产。</p>
+<p>真正的能力资产，应该能在下一次任务开始时被触发、被执行、被验证、被复盘。</p>
+<h2 id="skill-和-cli-的分工">Skill 和 CLI 的分工</h2>
+<p>我现在更愿意把 agent 能力分成两层：</p>
+<blockquote>
+<p>Skill 负责编排，CLI 负责执行。</p>
+</blockquote>
+<p>Skill 不应该变成一篇长理论文章，也不应该承担复杂执行逻辑。它更像一份给 agent 的操作手册：遇到什么情况、先判断什么、调用什么工具、哪些边界不能碰、最后怎么验证。</p>
+<p>CLI 则是实际执行层。它必须能离开模型单独运行，能在终端里复现，能通过 <code>doctor</code> 检查环境，能把机器可读结果写到 stdout，把人类日志写到 stderr。涉及写入时，默认应该 dry-run，真正修改必须显式 <code>--apply</code> 或 <code>--yes</code>。</p>
+<p>这个分工看起来朴素，但它能解决很多 agent 工具链里的老问题：</p>
+<ul>
+<li>Skill 太重，agent 每次读一堆背景，执行却不稳定。</li>
+<li>脚本太散，路径、依赖、参数、输出格式都靠临时记忆。</li>
+<li>MCP 被当成本地脚本壳，协议价值不大，排障成本却变高。</li>
+<li>AGENTS.md 被塞满细节，最后全局上下文越来越噪。</li>
+</ul>
+<p>Skill + CLI 的意义，不是为了追求形式完整，而是把“什么时候做”和“怎么执行”拆开。</p>
+<h2 id="mcp-不是敌人">MCP 不是敌人</h2>
+<p>这套工作流不是“反 MCP”。</p>
+<p>MCP 适合承担协议层职责：远端服务、多客户端集成、动态工具发现、schema 暴露、权限隔离、生态插件。这些场景里，MCP 有它自己的价值。</p>
+<p>但如果一个 MCP 只是把本地脚本包了一层，而且真实需求是本地高频执行、终端复现、环境检查、结构化输出和安全确认，那它未必是最合适的形态。</p>
+<p>这时候 CLI 往往更直接。</p>
+<p>关键不在于 MCP 或 CLI 谁更先进，而在于这个能力到底需要什么边界。</p>
+<p>如果需要协议，就保留 MCP。
+如果需要可复现执行，就沉淀 CLI。
+如果需要 agent 自动识别和编排，就再加 Skill。</p>
+<p>工具形态应该服务流程，而不是反过来让流程迁就工具形态。</p>
+<h2 id="agentsmd-只应该做路由">AGENTS.md 只应该做路由</h2>
+<p>我以前很容易把一些有用规则写进 AGENTS.md。</p>
+<p>这很危险。</p>
+<p>AGENTS.md 是全局入口。它适合写硬约束和短路由，比如“写入某些仓库前必须 fetch”“服务器重大变更后必须回写长期记录”“沉淀重复流程时先用 skill-cli-workflow 判断形态”。</p>
+<p>但它不适合承载完整方法论。</p>
+<p>一旦把具体 CLI 参数、项目事实、一次性复盘、长篇流程都塞进 AGENTS.md，agent 每次启动都会背负一堆不一定相关的上下文。短期看是“记住了”，长期看是在污染所有任务。</p>
+<p>所以我现在把层次拆开：</p>
+<ul>
+<li>AGENTS.md：只写路由和硬约束。</li>
+<li>Skill：写操作规程。</li>
+<li>CLI：做真实执行。</li>
+<li>Memory / all_in_one：记录事实、经验、决策和证据。</li>
+<li>Long-task：承接跨会话复杂任务。</li>
+</ul>
+<p>这几个东西不是互相替代，而是各自站在自己的层级上。</p>
+<h2 id="不是每件事都值得沉淀">不是每件事都值得沉淀</h2>
+<p><code>skill-cli-workflow</code> 最重要的部分，其实不是鼓励我多做 Skill 或多写 CLI。</p>
+<p>它真正重要的是加了一道反过度工程化检查。</p>
+<p>一个流程要不要沉淀，至少要问几个问题：</p>
+<ul>
+<li>它会重复吗？</li>
+<li>它容易出错吗？</li>
+<li>它能验证吗？</li>
+<li>它跨越 repo、浏览器、服务器、知识库或登录态边界吗？</li>
+<li>它需要状态或记忆吗？</li>
+<li>未来的我或别人会复用吗？</li>
+</ul>
+<p>如果答案都是否，那就直接执行。</p>
+<p>如果只是一个小提醒，写一条记忆或 AGENTS.md 短路由可能就够了。</p>
+<p>如果只是固定几步命令，脚本或 checklist 就够了。</p>
+<p>只有当它高频、可验证、需要复现，或者需要 agent 自动识别和编排时，才值得升级成 CLI 或 Skill + CLI。</p>
+<p>沉淀不是越多越好。真正有用的系统，应该同时有升级路径和降级能力。</p>
+<h2 id="一个能力的成熟度">一个能力的成熟度</h2>
+<p>我现在会用一个很简单的成熟度模型看这些能力：</p>
+<ul>
+<li>L0：临时执行。</li>
+<li>L1：记录流程。</li>
+<li>L2：Checklist 或脚本。</li>
+<li>L3：CLI。</li>
+<li>L4：Skill + CLI。</li>
+<li>L5：Skill + CLI + Memory + Long-task + 测试。</li>
+<li>L6：可分享、可安装、可配置的产品化能力。</li>
+</ul>
+<p>这个模型的价值不是分类本身，而是防止我一上来就做大。</p>
+<p>比如分析 linux.do 帖子，第一次做完后，不应该马上写一个复杂 CLI。更合理的是先沉淀成一个轻量 Skill：规定怎么抓来源、怎么区分作者主张和 Codex 推断、什么时候看评论、什么时候写回知识库。</p>
+<p>等至少几次真实分析后，如果发现抓取、抽字段、生成来源对象草稿这些步骤稳定重复，再升级成 CLI。</p>
+<p>这比一开始就搭平台更稳。</p>
+<h2 id="它什么时候用">它什么时候用</h2>
+<p><code>skill-cli-workflow</code> 不是只在任务结束后才用。</p>
+<p>它有三种时机：</p>
+<p>第一种是事前设计。
+当我已经知道一个流程要长期复用，可以先判断它应该是脚本、CLI、Skill、MCP，还是只写进 AGENTS.md。</p>
+<p>第二种是事中转化。
+对话中突然发现“这个流程以后肯定还会再用”，就停一下，先做架构决策，再决定是否沉淀。</p>
+<p>第三种是事后复盘。
+一个陌生流程第一次跑通后，不要马上抽象。先让真实过程发生，再回头把它整理成可复用资产。</p>
+<p>我更信任第三种。</p>
+<p>因为真实任务会暴露很多设计前看不到的东西：访问限制、登录态、工具失败、验证方式、边界条件、哪些步骤其实不稳定。</p>
+<p>没有真实样例，抽象很容易变成漂亮但没用的框架。</p>
+<h2 id="最终目标能力工厂">最终目标：能力工厂</h2>
+<p>所以 <code>skill-cli-workflow</code> 对我来说，不是一个单独的 Skill。</p>
+<p>它更像一个能力工厂的入口。</p>
+<p>每次遇到可复用流程，它先回答：</p>
+<ul>
+<li>这件事值不值得沉淀？</li>
+<li>现在该沉淀到哪一层？</li>
+<li>哪些产物要建，哪些不要建？</li>
+<li>安全边界在哪里？</li>
+<li>怎么验证它真的可用？</li>
+<li>下一次什么时候升级？</li>
+</ul>
+<p>这套判断稳定下来之后，AI 协作就不再只是一次次对话。</p>
+<p>每一次任务都会多一个可能性：它不只是被完成，还可能变成系统的一部分。</p>
+<p>这才是我现在最在意的方向。</p>
+<p>不是让 agent 多记一点话，而是让它参与构建一套会积累的工作系统。</p> </article> <div style="padding: 40px 0; border-top: 1px solid var(--border); margin-top: 40px;"> <a href="/blog" style="font-size: 15px; font-weight: 500;">← 返回构建记录</a> </div>  </main> <footer class="footer"> <p>© 2026 Jarl.dev — 公开构建中的一人系统</p> <p style="margin-top:8px;"> <a href="https://github.com/okbexx" target="_blank">GitHub</a>
+·
+<a href="https://x.com/okbexx" target="_blank">X / Twitter</a> </p> </footer> </body></html>
